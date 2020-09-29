@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AEP Mobile SDK Sample App</string>
+    <string name="titleText">AEP Mobile SDK Sample App</string>
+
+    <string name="tab_Griffon">Griffon</string>
+    <string name="tab_Analytics">Analytics</string>
+
+    <string name="analytics_btnEmitActionEvent">Send trackAction Event</string>
+    <string name="analytics_btnEmitStateEvent">Send trackState Event</string>
+    <string name="analytics_btnSendQueue">Send Queued Hits</string>
+    <string name="analytics_btnClearQueue">Clear Queue</string>
+
+    <string name="griffon_btnConnectToGriffonSession">Connect</string>
+
+
+
+</resources>
