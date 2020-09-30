@@ -54,7 +54,7 @@ public class MainApp extends Application {
             Signal.registerExtension();
             Griffon.registerExtension();
 
-            MobileCore.configureWithAppID("launch-EN8fc4e9cda45e4514b075f0cf5e249742-development");
+            MobileCore.configureWithAppID("your App id");
             MobileCore.start(new AdobeCallback () {
 
                     @Override
