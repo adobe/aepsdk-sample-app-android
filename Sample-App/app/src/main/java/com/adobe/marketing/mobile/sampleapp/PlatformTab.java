@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.adobe.marketing.mobile.sampleapp.platform.CommerceUtil;
 import com.adobe.marketing.mobile.sampleapp.platform.ProductCart;
 import com.adobe.marketing.mobile.sampleapp.platform.ProductContent;
 
@@ -151,8 +152,10 @@ public class PlatformTab extends Fragment implements NavigationAware {
         if (item != null) {
             if (checked) {
                 ProductCart.addItem(item, 1);
+                CommerceUtil.sendProductListAddXdmEvent(item, 1);
             } else {
                 ProductCart.removeItem(item);
+                CommerceUtil.sendProductListRemoveXdmEvent(item, 1);
             }
 
             // Update display of total price
@@ -174,6 +177,8 @@ public class PlatformTab extends Fragment implements NavigationAware {
         int radioButtonId = radioGroup.getCheckedRadioButtonId();
         RadioButton radioButton = (RadioButton) getView().findViewById(radioButtonId);
         String paymentMethod = String.valueOf(radioButton.getText());
+
+        CommerceUtil.sendPurchaseXdmEvent(paymentMethod, ProductCart.getTotalPrice());
 
         clearCart();
     }
