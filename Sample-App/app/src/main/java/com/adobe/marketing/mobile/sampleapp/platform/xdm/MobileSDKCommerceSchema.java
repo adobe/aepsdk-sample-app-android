@@ -23,10 +23,7 @@ import java.util.Map;
  *
  * Title		:	Mobile SDK Commerce Schema
  * Version		:	1.0
- * ID			:	https://ns.adobe.com/acopprod3/schemas/95f430276fa51f45c81234aadc64f4e00dad6753d659345a
- * Alt ID		:	_acopprod3.schemas.95f430276fa51f45c81234aadc64f4e00dad6753d659345a
  * Type			:	schemas
- * IMS Org		:	FAF554945B90342F0A495E2C@AdobeOrg
  */
 @SuppressWarnings("unused")
 public class MobileSDKCommerceSchema implements com.adobe.marketing.mobile.xdm.Schema {
@@ -56,7 +53,7 @@ public class MobileSDKCommerceSchema implements com.adobe.marketing.mobile.xdm.S
 	 */
 	@Override
 	public String getSchemaIdentifier() {
-		return "https://ns.adobe.com/acopprod3/schemas/95f430276fa51f45c81234aadc64f4e00dad6753d659345a";
+		return "";
 	}
 
 	/**
@@ -66,7 +63,7 @@ public class MobileSDKCommerceSchema implements com.adobe.marketing.mobile.xdm.S
 	 */
 	@Override
 	public String getDatasetIdentifier() {
-		return "5f05095dba13bf191536d178";
+		return "";
 	}
 
 	@Override

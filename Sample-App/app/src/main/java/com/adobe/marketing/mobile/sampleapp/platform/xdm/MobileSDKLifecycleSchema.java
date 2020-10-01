@@ -22,10 +22,7 @@ import java.util.Map;
  *
  * Title		:	Mobile SDK Lifecycle Schema
  * Version		:	1.1
- * ID			:	https://ns.adobe.com/acopprod3/schemas/711b0b9afc7162017bfe022cda7af34a15232797b4a69107
- * Alt ID		:	_acopprod3.schemas.711b0b9afc7162017bfe022cda7af34a15232797b4a69107
  * Type			:	schemas
- * IMS Org		:	FAF554945B90342F0A495E2C@AdobeOrg
  */
 @SuppressWarnings("unused")
 public class MobileSDKLifecycleSchema implements com.adobe.marketing.mobile.xdm.Schema {
@@ -57,7 +54,7 @@ public class MobileSDKLifecycleSchema implements com.adobe.marketing.mobile.xdm.
 	 */
 	@Override
 	public String getSchemaIdentifier() {
-		return "https://ns.adobe.com/acopprod3/schemas/711b0b9afc7162017bfe022cda7af34a15232797b4a69107";
+		return "";
 	}
 
 	/**
@@ -67,7 +64,7 @@ public class MobileSDKLifecycleSchema implements com.adobe.marketing.mobile.xdm.
 	 */
 	@Override
 	public String getDatasetIdentifier() {
-		return "5f05094a112ea71914bd169c";
+		return "";
 	}
 
 	@Override
