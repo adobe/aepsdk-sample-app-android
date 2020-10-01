@@ -14,7 +14,6 @@ import android.util.Log;
 import com.adobe.marketing.mobile.ExperiencePlatform;
 import com.adobe.marketing.mobile.ExperiencePlatformCallback;
 import com.adobe.marketing.mobile.ExperiencePlatformEvent;
-import com.adobe.marketing.mobile.xdm.Checkouts;
 import com.adobe.marketing.mobile.xdm.Commerce;
 import com.adobe.marketing.mobile.xdm.MobileSDKCommerceSchema;
 import com.adobe.marketing.mobile.xdm.Order;
@@ -22,7 +21,6 @@ import com.adobe.marketing.mobile.xdm.PaymentsItem;
 import com.adobe.marketing.mobile.xdm.ProductListAdds;
 import com.adobe.marketing.mobile.xdm.ProductListItemsItem;
 import com.adobe.marketing.mobile.xdm.ProductListRemovals;
-import com.adobe.marketing.mobile.xdm.ProductViews;
 import com.adobe.marketing.mobile.xdm.Purchases;
 
 import java.math.BigDecimal;
@@ -54,12 +52,6 @@ public class CommerceUtil {
 	private static final String CURRENCY_CODE_USD = "USD";
 
 	/**
-	 * View(s) of a product have occurred.
-	 * See <a href="https://github.com/adobe/xdm/blob/master/docs/reference/context/experienceevent.schema.md#xdmeventtype">Experience Event</a>
-	 */
-	private static final String EVENT_TYPE_COMMERCE_PRODUCT_VIEWS           = "commerce.productViews";
-
-	/**
 	 * Addition of a product to the product list. Example a product is added to a shopping cart.
 	 * See <a href="https://github.com/adobe/xdm/blob/master/docs/reference/context/experienceevent.schema.md#xdmeventtype">Experience Event</a>
 	 */
@@ -73,49 +65,11 @@ public class CommerceUtil {
 	private static final String EVENT_TYPE_COMMERCE_PRODUCT_LIST_REMOVALS   = "commerce.productListRemovals";
 
 	/**
-	 * An action during a checkout process of a product list, there can be more than one checkout
-	 * event if there are multiple steps in a checkout process. If there are multiple steps the
-	 * event time information and referenced page or experience is used to identify the step
-	 * individual events represent in order.
-	 * See <a href="https://github.com/adobe/xdm/blob/master/docs/reference/context/experienceevent.schema.md#xdmeventtype">Experience Event</a>
-	 */
-	private static final String EVENT_TYPE_COMMERCE_CHECKOUTS               = "commerce.checkouts";
-
-	/**
 	 * An order has been accepted. Purchase is the only required action in a commerce conversion.
 	 * Purchase must have a product list referenced.
 	 * See <a href="https://github.com/adobe/xdm/blob/master/docs/reference/context/experienceevent.schema.md#xdmeventtype">Experience Event</a>
 	 */
 	private static final String EVENT_TYPE_COMMERCE_PURCHASES               = "commerce.purchases";
-
-
-	/**
-	 * Creates and sends a product view event to the Adobe Data Platform.
-	 * A {@code commerce.productViews} event is a {@link Commerce} object with {@link Commerce#setProductViews(ProductViews)}
-	 * set, along with a {@link ProductListItemsItem} list containing the details of the
-	 * viewed product.
-	 *
-	 * This method should be called when a product details are viewed.
-	 *
-	 * @param item the {@link ProductContent.ProductItem} which was viewed
-	 */
-	public static void sendProductViewXdmEvent(final ProductContent.ProductItem item) {
-		Log.d(LOG_TAG, "sendProductViewXdmEvent with item '" + item + "'");
-
-		ProductListItemsItem productItem = createProductListItemsItem(item, 0);
-
-		if (productItem == null) {
-			Log.w(LOG_TAG, "sendProductViewXdmEvent - Cannot create '" + EVENT_TYPE_COMMERCE_PRODUCT_VIEWS +
-				  "' event as given product item is null.");
-			return;
-		}
-
-		List<ProductListItemsItem> itemsList = new ArrayList<>();
-		itemsList.add(productItem);
-
-		createAndSendEvent(itemsList, EVENT_TYPE_COMMERCE_PRODUCT_VIEWS);
-
-	}
 
 	/**
 	 * Creates and sends a product list add event to the Adobe Data Platform.
@@ -175,40 +129,6 @@ public class CommerceUtil {
 		itemsList.add(productItem);
 
 		createAndSendEvent(itemsList, EVENT_TYPE_COMMERCE_PRODUCT_LIST_REMOVALS);
-	}
-
-	/**
-	 * Creates and sends a cart checkout event to the Adobe Data Platform.
-	 * A {@code commerce.checkouts} event is a {@link Commerce} object with
-	 * {@link Commerce#setCheckouts(Checkouts)}
-	 * set, along with a {@link ProductListItemsItem} list containing the details of all the
-	 * products in the shopping cart.
-	 *
-	 * This method should be called when an action during the shopping cart checkout process is taken.
-	 * There may be more than one checkout events if there are multiple steps in the checkout process.
-	 */
-	public static void sendCheckoutXdmEvent() {
-		Log.d(LOG_TAG, "sendCheckoutXdmEvent");
-
-		// create list of all products in shopping cart
-		List<ProductListItemsItem> itemsList = new ArrayList<>();
-		ProductListItemsItem productItem;
-
-		for (ProductCart.CartItem cartItem : ProductCart.ITEMS) {
-			productItem = createProductListItemsItem(cartItem.item, cartItem.quantity);
-
-			if (productItem != null) {
-				itemsList.add(productItem);
-			}
-		}
-
-		if (itemsList.isEmpty()) {
-			Log.w(LOG_TAG, "sendCheckoutXdmEvent - Cannot send '" + EVENT_TYPE_COMMERCE_CHECKOUTS +
-				  "' event as there are not items in the cart.");
-			return;
-		}
-
-		createAndSendEvent(itemsList, EVENT_TYPE_COMMERCE_CHECKOUTS);
 	}
 
 	/**
@@ -295,17 +215,6 @@ public class CommerceUtil {
 		Commerce commerce = new Commerce();
 
 		switch (eventType) {
-			case EVENT_TYPE_COMMERCE_CHECKOUTS:
-				Checkouts checkouts = new Checkouts();
-				checkouts.setValue(1);
-				commerce.setCheckouts(checkouts);
-				break;
-
-			case EVENT_TYPE_COMMERCE_PRODUCT_VIEWS:
-				ProductViews productViews = new ProductViews();
-				productViews.setValue(1);
-				commerce.setProductViews(productViews);
-				break;
 
 			case EVENT_TYPE_COMMERCE_PRODUCT_LIST_ADDS:
 				ProductListAdds productListAdds = new ProductListAdds();
