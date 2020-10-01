@@ -41,6 +41,19 @@ tools:context=".PlatformTab">
                     android:orientation="vertical"
                     android:layout_margin="10dp"
                     >
+
+                    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:id="@+id/item_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        app:layoutManager="LinearLayoutManager"
+                        tools:context=".PlatformTab"
+                        tools:listitem="@layout/item_list_content" />
+                    <!--
                     <CheckBox
                         android:id="@+id/checkbox_purchase_one"
                         android:layout_width="wrap_content"
@@ -61,7 +74,7 @@ tools:context=".PlatformTab">
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Item Four" />
-
+                    -->
                 </LinearLayout>
 
             </LinearLayout>

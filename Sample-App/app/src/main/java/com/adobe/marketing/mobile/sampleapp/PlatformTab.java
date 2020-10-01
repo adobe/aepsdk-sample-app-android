@@ -1,13 +1,23 @@
+/*
+ Copyright 2020 Adobe
+ All Rights Reserved.
+
+ NOTICE: Adobe permits you to use, modify, and distribute this file in
+ accordance with the terms of the Adobe license agreement accompanying
+ it.
+ */
+
 package com.adobe.marketing.mobile.sampleapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -20,8 +30,6 @@ import java.text.NumberFormat;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PlatformTab#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class PlatformTab extends Fragment implements NavigationAware {
     private static final String LOG_TAG = "PlatformTab";
@@ -30,59 +38,42 @@ public class PlatformTab extends Fragment implements NavigationAware {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment PlatformTab.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PlatformTab newInstance() {
-        PlatformTab fragment = new PlatformTab();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("1", // sku
-        "Item One", // name
-        "First Item", // details
-        1.00, // price
-        "USD", // currency
-        null, // image small
-        null // image large
+        ProductContent.addItem(new ProductContent.ProductItem("625–740", // sku
+                "Red", // name
+                "The color of apples, strawberries, and firetrucks!", // details
+                9.95, // price
+                "USD", // currency
+                Color.RED // image
         ));
         // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("2", // sku
-                "Item Two", // name
-                "Second Item", // details
-                2.00, // price
+        ProductContent.addItem(new ProductContent.ProductItem("450-495", // sku
+                "Blue", // name
+                "The color of the sky, oceans, and blueberries!", // details
+                12.98, // price
                 "USD", // currency
-                null, // image small
-                null // image large
+                Color.BLUE // image
         ));
         // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("3", // sku
-                "Item Three", // name
-                "Third Item", // details
-                3.00, // price
+        ProductContent.addItem(new ProductContent.ProductItem("495–570", // sku
+                "Green", // name
+                "The color of grass, leaves, and avocados!", // details
+                10.95, // price
                 "USD", // currency
-                null, // image small
-                null // image large
+                Color.GREEN // image
         ));
         // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("4", // sku
-                "Item Four", // name
-                "Fourth Item", // details
-                4.00, // price
+        ProductContent.addItem(new ProductContent.ProductItem("570–590", // sku
+                "Yellow", // name
+                "The color of the Sun, busy bees, and daisies!", // details
+                5.99, // price
                 "USD", // currency
-                null, // image small
-                null // image large
+                Color.YELLOW // image
         ));
-
 
     }
 
@@ -95,28 +86,40 @@ public class PlatformTab extends Fragment implements NavigationAware {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        int checkboxIds[] = new int[] {
-                R.id.checkbox_purchase_one,
-                R.id.checkbox_purchase_two,
-                R.id.checkbox_purchase_three,
-                R.id.checkbox_purchase_four,
-        };
 
-        for (int id : checkboxIds) {
-            view.findViewById(id).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onPurchaseCheckboxClicked(v);
-                }
-            });
-        }
-
+        // Set click handler for Purchase button
         view.findViewById(R.id.button_purchase).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onPurchase(v);
             }
         });
+
+        // Define click handler for product list items to add/remove items from cart
+        View.OnClickListener itemViewClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProductContent.ProductItem item = (ProductContent.ProductItem) view.getTag();
+                TextView textView = (TextView) view.findViewById(R.id.label);
+
+                if (ProductCart.ITEM_MAP.containsKey(item.sku)) {
+                    textView.setText("Add");
+                    ProductCart.removeItem(item);
+                    CommerceUtil.sendProductListRemoveXdmEvent(item, 1);
+                } else {
+                    textView.setText("In Cart");
+                    ProductCart.addItem(item, 1);
+                    CommerceUtil.sendProductListAddXdmEvent(item, 1);
+                }
+
+                // Update display of total price
+                updateTotalPriceView();
+            }
+        };
+
+        // Set view adapter for product list
+        View recyclerView = (RecyclerView) view.findViewById(R.id.item_list);
+        ((RecyclerView) recyclerView).setAdapter(new ItemViewAdapter(ProductContent.ITEMS, itemViewClickListener));
     }
 
     @Override
@@ -129,40 +132,9 @@ public class PlatformTab extends Fragment implements NavigationAware {
 
     }
 
-    private void onPurchaseCheckboxClicked(View view) {
-        // Is the view now checked?
-        boolean checked = ((CheckBox) view).isChecked();
-        ProductContent.ProductItem item = null;
-        // Check which checkbox was clicked
-        switch(view.getId()) {
-            case R.id.checkbox_purchase_one:
-                item = ProductContent.ITEM_MAP.get("1");
-                break;
-            case R.id.checkbox_purchase_two:
-                item = ProductContent.ITEM_MAP.get("2");
-                break;
-            case R.id.checkbox_purchase_three:
-                item = ProductContent.ITEM_MAP.get("3");
-                break;
-            case R.id.checkbox_purchase_four:
-                item = ProductContent.ITEM_MAP.get("4");
-                break;
-        }
-
-        if (item != null) {
-            if (checked) {
-                ProductCart.addItem(item, 1);
-                CommerceUtil.sendProductListAddXdmEvent(item, 1);
-            } else {
-                ProductCart.removeItem(item);
-                CommerceUtil.sendProductListRemoveXdmEvent(item, 1);
-            }
-
-            // Update display of total price
-            updateTotalPriceView();
-        }
-    }
-
+    /**
+     * Update the total price {@code TextView} with the current price listed in the {@link ProductCart}.
+     */
     private void updateTotalPriceView() {
         NumberFormat format = NumberFormat.getCurrencyInstance();
         String currency = format.format(ProductCart.getTotalPrice());
@@ -171,6 +143,10 @@ public class PlatformTab extends Fragment implements NavigationAware {
         priceView.setText(String.valueOf(currency));
     }
 
+    /**
+     * Handle a purchase event.
+     * @param view the "purchase" view, which in this case is a button and it no really useful.
+     */
     private void onPurchase(View view) {
         // Get selected payment method
         RadioGroup radioGroup = (RadioGroup) getView().findViewById(R.id.radio_payment_method);
@@ -178,27 +154,27 @@ public class PlatformTab extends Fragment implements NavigationAware {
         RadioButton radioButton = (RadioButton) getView().findViewById(radioButtonId);
         String paymentMethod = String.valueOf(radioButton.getText());
 
+        // Send "commerce.purchase" event to Adobe Experience Platform Edge
         CommerceUtil.sendPurchaseXdmEvent(paymentMethod, ProductCart.getTotalPrice());
 
         clearCart();
     }
 
+    /**
+     * Clears the "Cart" by removing all items in the {@link ProductCart}, removes "in cart" status
+     * in each product item's view, and clears total price view.
+     */
     private void clearCart() {
-        ProductCart.clearCart();
 
-        int ids[] = new int[] {
-                    R.id.checkbox_purchase_one,
-                    R.id.checkbox_purchase_two,
-                    R.id.checkbox_purchase_three,
-                    R.id.checkbox_purchase_four,
-        };
-
-        for (int id : ids) {
-            CheckBox checkbox = (CheckBox)getView().findViewById(id);
-            if (checkbox.isChecked()) {
-                checkbox.toggle();
-            }
+        // Update item list and clear "In Cart" label
+        View recyclerView = (RecyclerView) getView().findViewById(R.id.item_list);
+        for (ProductCart.CartItem cartItem : ProductCart.ITEMS) {
+            View itemView = recyclerView.findViewWithTag(cartItem.item);
+            TextView labelView = itemView.findViewById(R.id.label);
+            labelView.setText("Add");
         }
+
+        ProductCart.clearCart();
 
         // Update display of total price
         updateTotalPriceView();
