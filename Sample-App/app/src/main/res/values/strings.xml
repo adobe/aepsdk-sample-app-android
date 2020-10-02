@@ -21,6 +21,7 @@
     <string name="credit_card">Credit Card</string>
     <string name="gift_card">Gift Card</string>
     <string name="purchase">Purchase</string>
+    <string name="purchase_complete_msg">Thank you for your purchase!</string>
 
 
 </resources>

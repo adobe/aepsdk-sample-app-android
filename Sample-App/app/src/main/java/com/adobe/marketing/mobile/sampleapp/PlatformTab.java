@@ -9,6 +9,7 @@
 
 package com.adobe.marketing.mobile.sampleapp;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import com.adobe.marketing.mobile.sampleapp.platform.CommerceUtil;
 import com.adobe.marketing.mobile.sampleapp.platform.ProductCart;
 import com.adobe.marketing.mobile.sampleapp.platform.ProductContent;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.NumberFormat;
 
@@ -130,6 +132,10 @@ public class PlatformTab extends Fragment implements NavigationAware {
         CommerceUtil.sendPurchaseXdmEvent(paymentMethod, ProductCart.getTotalPrice());
 
         clearCart();
+
+        Resources res = getResources();
+        View mainView = getView().findViewById(R.id.mainLayout);
+        Snackbar.make(mainView, res.getString(R.string.purchase_complete_msg), Snackbar.LENGTH_SHORT).show();
     }
 
     /**
