@@ -42,39 +42,9 @@ public class PlatformTab extends Fragment implements NavigationAware {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("625–740", // sku
-                "Red", // name
-                "The color of apples, strawberries, and firetrucks!", // details
-                9.95, // price
-                "USD", // currency
-                Color.RED // image
-        ));
-        // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("450-495", // sku
-                "Blue", // name
-                "The color of the sky, oceans, and blueberries!", // details
-                12.98, // price
-                "USD", // currency
-                Color.BLUE // image
-        ));
-        // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("495–570", // sku
-                "Green", // name
-                "The color of grass, leaves, and avocados!", // details
-                10.95, // price
-                "USD", // currency
-                Color.GREEN // image
-        ));
-        // Add ProductContent
-        ProductContent.addItem(new ProductContent.ProductItem("570–590", // sku
-                "Yellow", // name
-                "The color of the Sun, busy bees, and daisies!", // details
-                5.99, // price
-                "USD", // currency
-                Color.YELLOW // image
-        ));
-
+        if (ProductContent.ITEMS.isEmpty()) {
+            addItemsToProductList();
+        }
     }
 
     @Override
@@ -103,11 +73,11 @@ public class PlatformTab extends Fragment implements NavigationAware {
                 TextView textView = (TextView) view.findViewById(R.id.label);
 
                 if (ProductCart.ITEM_MAP.containsKey(item.sku)) {
-                    textView.setText("Add");
+                    textView.setText(R.string.label_add);
                     ProductCart.removeItem(item);
                     CommerceUtil.sendProductListRemoveXdmEvent(item, 1);
                 } else {
-                    textView.setText("In Cart");
+                    textView.setText(R.string.label_in_cart);
                     ProductCart.addItem(item, 1);
                     CommerceUtil.sendProductListAddXdmEvent(item, 1);
                 }
@@ -118,8 +88,10 @@ public class PlatformTab extends Fragment implements NavigationAware {
         };
 
         // Set view adapter for product list
-        View recyclerView = (RecyclerView) view.findViewById(R.id.item_list);
-        ((RecyclerView) recyclerView).setAdapter(new ItemViewAdapter(ProductContent.ITEMS, itemViewClickListener));
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.item_list);
+        recyclerView.setAdapter(new ItemViewAdapter(ProductContent.ITEMS, itemViewClickListener));
+
+        updateTotalPriceView();
     }
 
     @Override
@@ -161,22 +133,66 @@ public class PlatformTab extends Fragment implements NavigationAware {
     }
 
     /**
+     * Populate the product content list with items for "sale".
+     */
+    private void addItemsToProductList() {
+        // Add ProductContent
+        ProductContent.addItem(new ProductContent.ProductItem("625–740", // sku
+                "Red", // name
+                "The color of apples, strawberries, and firetrucks!", // details
+                9.95, // price
+                "USD", // currency
+                Color.RED // image
+        ));
+        // Add ProductContent
+        ProductContent.addItem(new ProductContent.ProductItem("450-495", // sku
+                "Blue", // name
+                "The color of the sky, oceans, and blueberries!", // details
+                12.98, // price
+                "USD", // currency
+                Color.BLUE // image
+        ));
+        // Add ProductContent
+        ProductContent.addItem(new ProductContent.ProductItem("495–570", // sku
+                "Green", // name
+                "The color of grass, leaves, and avocados!", // details
+                10.95, // price
+                "USD", // currency
+                Color.GREEN // image
+        ));
+        // Add ProductContent
+        ProductContent.addItem(new ProductContent.ProductItem("570–590", // sku
+                "Yellow", // name
+                "The color of the Sun, busy bees, and daisies!", // details
+                5.99, // price
+                "USD", // currency
+                Color.YELLOW // image
+        ));
+    }
+
+    /**
+     * Updates the product list view with the correct "in cart" or "add" status label.
+     */
+    private void updateProductCartStatus() {
+        View recyclerView = (RecyclerView) getView().findViewById(R.id.item_list);
+        for (ProductContent.ProductItem product : ProductContent.ITEMS) {
+            View itemView = recyclerView.findViewWithTag(product);
+            TextView labelView = itemView.findViewById(R.id.label);
+            if (ProductCart.ITEM_MAP.containsKey(product.sku)) {
+                labelView.setText(R.string.label_in_cart);
+            } else {
+                labelView.setText(R.string.label_add);
+            }
+        }
+    }
+
+    /**
      * Clears the "Cart" by removing all items in the {@link ProductCart}, removes "in cart" status
      * in each product item's view, and clears total price view.
      */
     private void clearCart() {
-
-        // Update item list and clear "In Cart" label
-        View recyclerView = (RecyclerView) getView().findViewById(R.id.item_list);
-        for (ProductCart.CartItem cartItem : ProductCart.ITEMS) {
-            View itemView = recyclerView.findViewWithTag(cartItem.item);
-            TextView labelView = itemView.findViewById(R.id.label);
-            labelView.setText("Add");
-        }
-
         ProductCart.clearCart();
-
-        // Update display of total price
+        updateProductCartStatus();
         updateTotalPriceView();
     }
 }

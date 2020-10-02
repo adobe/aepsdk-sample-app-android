@@ -1,24 +1,4 @@
 /*
- * Copyright 2019 Adobe
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
-/*
  Copyright 2020 Adobe
  All Rights Reserved.
 
@@ -35,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.adobe.marketing.mobile.sampleapp.platform.ProductCart;
 import com.adobe.marketing.mobile.sampleapp.platform.ProductContent;
 
 import java.util.List;
@@ -72,6 +53,12 @@ public class ItemViewAdapter
 
 		holder.itemView.setTag(mValues.get(position));
 		holder.itemView.setOnClickListener(mOnClickListener);
+
+		if (ProductCart.ITEM_MAP.containsKey(holder.mItem.sku)) {
+			holder.mLabel.setText(R.string.label_in_cart);
+		} else {
+			holder.mLabel.setText(R.string.label_add);
+		}
 	}
 
 	@Override
@@ -79,11 +66,12 @@ public class ItemViewAdapter
 		return mValues.size();
 	}
 
-	public class ProductViewHolder extends RecyclerView.ViewHolder {
+	public static class ProductViewHolder extends RecyclerView.ViewHolder {
 		public final View mView;
 		public final ImageView mImageView;
 		public final TextView mNameView;
 		public final TextView mPriceView;
+		public final TextView mLabel;
 		public ProductContent.ProductItem mItem;
 
 		public ProductViewHolder(final View view) {
@@ -92,6 +80,7 @@ public class ItemViewAdapter
 			mImageView = (ImageView) view.findViewById(R.id.item_image);
 			mNameView = (TextView) view.findViewById(R.id.name);
 			mPriceView = (TextView) view.findViewById(R.id.price);
+			mLabel = (TextView) view.findViewById(R.id.label);
 		}
 
 		@Override

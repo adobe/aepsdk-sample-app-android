@@ -38,15 +38,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:textColor="@color/colorPrimaryDark"
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:text="Add" />
-    <!--
-    <Button
-        android:id="@+id/button_product_item"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:textAppearance="?attr/textAppearanceListItem"
-        android:text="Add" />
-    -->
+        android:textAppearance="?attr/textAppearanceListItem" />
+
 </LinearLayout>

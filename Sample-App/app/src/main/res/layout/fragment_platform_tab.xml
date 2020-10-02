@@ -30,10 +30,10 @@ tools:context=".PlatformTab">
                     android:id="@+id/lblStatusTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:textStyle="bold"
-                    android:text="Select Items for Purchase" />
+                    android:text="@string/select_items_for_purchase" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,8 +42,7 @@ tools:context=".PlatformTab">
                     android:layout_margin="10dp"
                     >
 
-                    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <androidx.recyclerview.widget.RecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
                         xmlns:tools="http://schemas.android.com/tools"
                         android:id="@+id/item_list"
                         android:layout_width="match_parent"
@@ -53,28 +52,7 @@ tools:context=".PlatformTab">
                         app:layoutManager="LinearLayoutManager"
                         tools:context=".PlatformTab"
                         tools:listitem="@layout/item_list_content" />
-                    <!--
-                    <CheckBox
-                        android:id="@+id/checkbox_purchase_one"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Item One" />
-                    <CheckBox
-                        android:id="@+id/checkbox_purchase_two"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Item Two" />
-                    <CheckBox
-                        android:id="@+id/checkbox_purchase_three"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Item Three" />
-                    <CheckBox
-                        android:id="@+id/checkbox_purchase_four"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Item Four" />
-                    -->
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -97,9 +75,9 @@ tools:context=".PlatformTab">
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Checkout" />
+                    android:text="@string/checkout" />
 
                 <TextView
                     android:id="@+id/lblTotalPrice"
@@ -108,8 +86,7 @@ tools:context=".PlatformTab">
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorAccent"
                     android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="10dp"
-                    android:text="$0" />
+                    android:layout_marginTop="10dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -132,7 +109,7 @@ tools:context=".PlatformTab">
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
                             android:checked="true"
-                            android:text="Credit Card" />
+                            android:text="@string/credit_card" />
 
                         <RadioButton
                             android:id="@+id/radio_payment_gift"
@@ -140,7 +117,7 @@ tools:context=".PlatformTab">
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_margin="5dp"
-                            android:text="Gift Card" />
+                            android:text="@string/gift_card" />
                     </RadioGroup>
 
 
@@ -167,7 +144,7 @@ tools:context=".PlatformTab">
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Purchase" />
+                        android:text="@string/purchase" />
 
 
                 </LinearLayout>

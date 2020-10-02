@@ -14,6 +14,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_Platform">Platform</string>
+    <string name="label_add">Add</string>
+    <string name="label_in_cart">In Cart</string>
+    <string name="select_items_for_purchase">Select Items for Purchase</string>
+    <string name="checkout">Checkout</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="gift_card">Gift Card</string>
+    <string name="purchase">Purchase</string>
 
 
 </resources>
