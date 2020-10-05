@@ -9,6 +9,7 @@
 
 package com.adobe.marketing.mobile.sampleapp;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+
+import com.google.android.material.snackbar.Snackbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,44 +28,13 @@ import android.view.ViewGroup;
  */
 public class PlatformTab extends Fragment implements NavigationAware {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
     public PlatformTab() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PlatformTab.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PlatformTab newInstance(String param1, String param2) {
-        PlatformTab fragment = new PlatformTab();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -69,6 +42,31 @@ public class PlatformTab extends Fragment implements NavigationAware {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_platform_tab, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        Button buttonAddToCart = view.findViewById(R.id.button_add_to_cart);
+        buttonAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources res = getResources();
+                View view = getView().findViewById(R.id.layoutMain);
+                Snackbar.make(view, res.getString(R.string.add_to_cart_not_implemented_message), Snackbar.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
+        Button buttonPurchase = view.findViewById(R.id.button_purchase);
+        buttonPurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Resources res = getResources();
+                View view = getView().findViewById(R.id.layoutMain);
+                Snackbar.make(view, res.getString(R.string.purchase_complete_message), Snackbar.LENGTH_SHORT)
+                        .show();
+            }
+        });
     }
 
     @Override

@@ -17,6 +17,8 @@
     <string name="commerce_example">Commerce Example</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="purchase">Purchase</string>
+    <string name="add_to_cart_not_implemented_message">Add to Cart is not implemented.\nThis assignment is left for you to complete.</string>
+    <string name="purchase_complete_message">Thank you for your purchase!</string>
 
 
 </resources>
