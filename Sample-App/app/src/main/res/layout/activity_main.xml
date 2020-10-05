@@ -36,6 +36,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/tab_Analytics" />
 
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_Platform" />
+
         </com.google.android.material.tabs.TabLayout>
 
     </androidx.viewpager.widget.ViewPager>

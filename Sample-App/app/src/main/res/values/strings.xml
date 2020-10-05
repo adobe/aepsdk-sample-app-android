@@ -11,7 +11,9 @@
     <string name="analytics_btnClearQueue">Clear Queue</string>
 
     <string name="griffon_btnConnectToGriffonSession">Connect</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_Platform">Platform</string>
 
 
 </resources>

@@ -18,9 +18,9 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     private int numoftabs;
 
     // TODO: Places these tab titles in string resources. Access them like this: Resources.getSystem().getString(R.string.<string_name>)
-    private String[] tabTitles = new String[]{"Griffon","Analytics"};
+    private String[] tabTitles = new String[]{"Griffon", "Analytics", "Platform"};
 
-    private Fragment[] tabFragments = new Fragment[]{new GriffonTab(), new AnalyticsTab()};
+    private Fragment[] tabFragments = new Fragment[]{new GriffonTab(), new AnalyticsTab(), new PlatformTab()};
 
     private GriffonTab griffonTab = null;
     private AnalyticsTab analyticsTab = null;
