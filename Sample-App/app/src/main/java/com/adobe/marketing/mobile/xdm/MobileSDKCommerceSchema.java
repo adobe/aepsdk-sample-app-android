@@ -26,12 +26,9 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class MobileSDKCommerceSchema implements com.adobe.marketing.mobile.xdm.Schema {
 	private Commerce commerce;
-	private Device device;
-	private Environment environment;
 	private String eventMergeId;
 	private String eventType;
 	private IdentityMap identityMap;
-	private PlaceContext placeContext;
 	private List<ProductListItemsItem> productListItems;
 	private java.util.Date timestamp;
 
@@ -71,12 +68,9 @@ public class MobileSDKCommerceSchema implements com.adobe.marketing.mobile.xdm.S
 	public Map<String, Object> serializeToXdm() {
 		Map<String, Object> map = new HashMap<>();
 		if (this.commerce != null) { map.put("commerce", this.commerce.serializeToXdm()); }
-		if (this.device != null) { map.put("device", this.device.serializeToXdm()); }
-		if (this.environment != null) { map.put("environment", this.environment.serializeToXdm()); }
 		if (this.eventMergeId != null) { map.put("eventMergeId", this.eventMergeId); }
 		if (this.eventType != null) { map.put("eventType", this.eventType); }
 		if (this.identityMap != null) { map.put("identityMap", this.identityMap.serializeToXdm()); }
-		if (this.placeContext != null) { map.put("placeContext", this.placeContext.serializeToXdm()); }
 		if (this.productListItems != null) { map.put("productListItems", com.adobe.marketing.mobile.xdm.Formatters.serializeFromList(this.productListItems)); }
 		if (this.timestamp != null) { map.put("timestamp", com.adobe.marketing.mobile.xdm.Formatters.dateToISO8601String(this.timestamp)); }
 
@@ -100,41 +94,8 @@ public class MobileSDKCommerceSchema implements com.adobe.marketing.mobile.xdm.S
 	 */
 	public void setCommerce(final Commerce newValue) {
 		this.commerce = newValue;
-	} 
-	/**
-	 * Returns the Device property
-	 * An identified device, application or device browser instance that is trackable across sessions, normally by cookies.
-	 * @return {@link Device} value or null if the property is not set
-	 */
-	public Device getDevice() {
-		return this.device;
 	}
 
-	/**
-	 * Sets the Device property
-	 * An identified device, application or device browser instance that is trackable across sessions, normally by cookies.
-	 * @param newValue the new Device value
-	 */
-	public void setDevice(final Device newValue) {
-		this.device = newValue;
-	} 
-	/**
-	 * Returns the Environment property
-	 * Information about the surrounding situation the event observation occurred in, specifically detailing transitory information such as the network or software versions.
-	 * @return {@link Environment} value or null if the property is not set
-	 */
-	public Environment getEnvironment() {
-		return this.environment;
-	}
-
-	/**
-	 * Sets the Environment property
-	 * Information about the surrounding situation the event observation occurred in, specifically detailing transitory information such as the network or software versions.
-	 * @param newValue the new Environment value
-	 */
-	public void setEnvironment(final Environment newValue) {
-		this.environment = newValue;
-	} 
 	/**
 	 * Returns the ExperienceEvent merge ID property
 	 * An ID to correlate or merge multiple Experience events together that are essentially the same event or should be merged. This is intended to be populated by the data producer prior to ingestion.
@@ -186,23 +147,7 @@ public class MobileSDKCommerceSchema implements com.adobe.marketing.mobile.xdm.S
 	public void setIdentityMap(final IdentityMap newValue) {
 		this.identityMap = newValue;
 	} 
-	/**
-	 * Returns the Place context property
-	 * The transient circumstances related to the observation. Examples include locale specific information such as weather, local time, traffic, day of the week, workday vs. holiday, and working hours.
-	 * @return {@link PlaceContext} value or null if the property is not set
-	 */
-	public PlaceContext getPlaceContext() {
-		return this.placeContext;
-	}
 
-	/**
-	 * Sets the Place context property
-	 * The transient circumstances related to the observation. Examples include locale specific information such as weather, local time, traffic, day of the week, workday vs. holiday, and working hours.
-	 * @param newValue the new Place context value
-	 */
-	public void setPlaceContext(final PlaceContext newValue) {
-		this.placeContext = newValue;
-	} 
 	/**
 	 * Returns the Product list items property
 	 * A list of items representing a product selected by a customer with specific options and pricing that are for that usage context at a specific point of time and may differ from the product record.
