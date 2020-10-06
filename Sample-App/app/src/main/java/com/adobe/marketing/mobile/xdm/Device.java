@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Device}
  * An identified device, application or device browser instance that is trackable across sessions, normally by cookies.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.504991 -0700 PDT m=+2.048462895 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.082993 -0700 PDT m=+2.443201311 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Device implements com.adobe.marketing.mobile.xdm.Property {
@@ -28,13 +27,13 @@ public class Device implements com.adobe.marketing.mobile.xdm.Property {
 	private boolean isPushOptIn;
 	private LocationPermissionEnum locationPermission;
 	private String manufacturer;
-	private String modelNumber;
 	private String model;
+	private String modelNumber;
 	private int screenHeight;
 	private ScreenOrientationEnum screenOrientation;
 	private int screenWidth;
-	private String typeIDService;
 	private String type;
+	private String typeIDService;
 	private String typeID;
 
 	public Device() {}
@@ -48,13 +47,13 @@ public class Device implements com.adobe.marketing.mobile.xdm.Property {
 		map.put("isPushOptIn", this.isPushOptIn);
 		if (this.locationPermission != null) { map.put("locationPermission", this.locationPermission.toString()); }
 		if (this.manufacturer != null) { map.put("manufacturer", this.manufacturer); }
-		if (this.modelNumber != null) { map.put("modelNumber", this.modelNumber); }
 		if (this.model != null) { map.put("model", this.model); }
+		if (this.modelNumber != null) { map.put("modelNumber", this.modelNumber); }
 		map.put("screenHeight", this.screenHeight);
 		if (this.screenOrientation != null) { map.put("screenOrientation", this.screenOrientation.toString()); }
 		map.put("screenWidth", this.screenWidth);
-		if (this.typeIDService != null) { map.put("typeIDService", this.typeIDService); }
 		if (this.type != null) { map.put("type", this.type); }
+		if (this.typeIDService != null) { map.put("typeIDService", this.typeIDService); }
 		if (this.typeID != null) { map.put("typeID", this.typeID); }
 
 		return map;
@@ -163,23 +162,6 @@ public class Device implements com.adobe.marketing.mobile.xdm.Property {
 		this.manufacturer = newValue;
 	} 
 	/**
-	 * Returns the Model number property
-	 * The unique model number designation assigned by the manufacturer for this device. Model numbers are not versions, but unique identifiers that identify a particular model configuration. While the model for a particular phone might be 'iPhone 6S' the model number would be 'A1633', or 'A1634' based on configuration at the time of sale.
-	 * @return {@link String} value or null if the property is not set
-	 */
-	public String getModelNumber() {
-		return this.modelNumber;
-	}
-
-	/**
-	 * Sets the Model number property
-	 * The unique model number designation assigned by the manufacturer for this device. Model numbers are not versions, but unique identifiers that identify a particular model configuration. While the model for a particular phone might be 'iPhone 6S' the model number would be 'A1633', or 'A1634' based on configuration at the time of sale.
-	 * @param newValue the new Model number value
-	 */
-	public void setModelNumber(final String newValue) {
-		this.modelNumber = newValue;
-	} 
-	/**
 	 * Returns the Model property
 	 * The name of the model for the device. This is the common, human-readable, or marketing name for the device. For example, the 'iPhone 6S' is a particular model of mobile phone.
 	 * @return {@link String} value or null if the property is not set
@@ -195,6 +177,23 @@ public class Device implements com.adobe.marketing.mobile.xdm.Property {
 	 */
 	public void setModel(final String newValue) {
 		this.model = newValue;
+	} 
+	/**
+	 * Returns the Model number property
+	 * The unique model number designation assigned by the manufacturer for this device. Model numbers are not versions, but unique identifiers that identify a particular model configuration. While the model for a particular phone might be 'iPhone 6S' the model number would be 'A1633', or 'A1634' based on configuration at the time of sale.
+	 * @return {@link String} value or null if the property is not set
+	 */
+	public String getModelNumber() {
+		return this.modelNumber;
+	}
+
+	/**
+	 * Sets the Model number property
+	 * The unique model number designation assigned by the manufacturer for this device. Model numbers are not versions, but unique identifiers that identify a particular model configuration. While the model for a particular phone might be 'iPhone 6S' the model number would be 'A1633', or 'A1634' based on configuration at the time of sale.
+	 * @param newValue the new Model number value
+	 */
+	public void setModelNumber(final String newValue) {
+		this.modelNumber = newValue;
 	} 
 	/**
 	 * Returns the Screen height property
@@ -248,23 +247,6 @@ public class Device implements com.adobe.marketing.mobile.xdm.Property {
 		this.screenWidth = newValue;
 	} 
 	/**
-	 * Returns the Type identifier service property
-	 * The namespace of the service that is used to identify the device type.
-	 * @return {@link String} value or null if the property is not set
-	 */
-	public String getTypeIDService() {
-		return this.typeIDService;
-	}
-
-	/**
-	 * Sets the Type identifier service property
-	 * The namespace of the service that is used to identify the device type.
-	 * @param newValue the new Type identifier service value
-	 */
-	public void setTypeIDService(final String newValue) {
-		this.typeIDService = newValue;
-	} 
-	/**
 	 * Returns the Type property
 	 * Type of device being tracked.
 	 * @return {@link String} value or null if the property is not set
@@ -280,6 +262,23 @@ public class Device implements com.adobe.marketing.mobile.xdm.Property {
 	 */
 	public void setType(final String newValue) {
 		this.type = newValue;
+	} 
+	/**
+	 * Returns the Type identifier service property
+	 * The namespace of the service that is used to identify the device type.
+	 * @return {@link String} value or null if the property is not set
+	 */
+	public String getTypeIDService() {
+		return this.typeIDService;
+	}
+
+	/**
+	 * Sets the Type identifier service property
+	 * The namespace of the service that is used to identify the device type.
+	 * @param newValue the new Type identifier service value
+	 */
+	public void setTypeIDService(final String newValue) {
+		this.typeIDService = newValue;
 	} 
 	/**
 	 * Returns the Type identifier property

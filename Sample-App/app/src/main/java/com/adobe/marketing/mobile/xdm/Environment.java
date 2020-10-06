@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Environment}
  * Information about the surrounding situation the event observation occurred in, specifically detailing transitory information such as the network or software versions.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.499635 -0700 PDT m=+2.043106614 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.084145 -0700 PDT m=+2.444353263 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Environment implements com.adobe.marketing.mobile.xdm.Property {

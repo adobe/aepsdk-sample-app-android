@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code ProductListAdds}
  * Addition of a product to the product list, for example a product is added to a shopping cart.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.499534 -0700 PDT m=+2.043006050 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.081014 -0700 PDT m=+2.441222149 by XDMTool
  */
 @SuppressWarnings("unused")
 public class ProductListAdds implements com.adobe.marketing.mobile.xdm.Property {

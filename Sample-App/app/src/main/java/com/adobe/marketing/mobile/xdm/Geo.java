@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Geo}
  * The geographic location where the experience was delivered.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.506307 -0700 PDT m=+2.049779479 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.081349 -0700 PDT m=+2.441557208 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Geo implements com.adobe.marketing.mobile.xdm.Property {

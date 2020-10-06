@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code ProductListOpens}
  * Initializations of a new product list, for example a shopping cart is created.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.501476 -0700 PDT m=+2.044948503 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.081094 -0700 PDT m=+2.441301674 by XDMTool
  */
 @SuppressWarnings("unused")
 public class ProductListOpens implements com.adobe.marketing.mobile.xdm.Property {

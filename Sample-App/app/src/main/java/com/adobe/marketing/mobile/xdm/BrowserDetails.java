@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code BrowserDetails}
  * The browser specific details such as browser name, version, javascript version, user agent string, and accept language.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.501884 -0700 PDT m=+2.045355514 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.078327 -0700 PDT m=+2.438534954 by XDMTool
  */
 @SuppressWarnings("unused")
 public class BrowserDetails implements com.adobe.marketing.mobile.xdm.Property {

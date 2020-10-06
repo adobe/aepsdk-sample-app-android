@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Checkouts}
  * An action during a checkout process of a product list, there can be more than one checkout event if there are multiple steps in a checkout process. If there are multiple steps the event time information and referenced page or experience is used to identify the step individual events represent in order.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.502752 -0700 PDT m=+2.046223558 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.080936 -0700 PDT m=+2.441144053 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Checkouts implements com.adobe.marketing.mobile.xdm.Property {

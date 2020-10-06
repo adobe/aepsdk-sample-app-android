@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code MobileSDKCommerceSchema}
  * 
  * <p/>
- * XDM Schema Java Object Generated 2020-10-05 14:47:08.490914 -0700 PDT m=+2.034386404 by XDMTool
+ * XDM Schema Java Object Generated 2020-10-06 12:25:38.077002 -0700 PDT m=+2.437209621 by XDMTool
  *
  * Title		:	Mobile SDK Commerce Schema
  * Version		:	1.1

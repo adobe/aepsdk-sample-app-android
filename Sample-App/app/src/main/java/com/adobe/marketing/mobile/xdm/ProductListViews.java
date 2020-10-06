@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code ProductListViews}
  * View or views of a product-list has occurred.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.504898 -0700 PDT m=+2.048369720 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.0782 -0700 PDT m=+2.438407807 by XDMTool
  */
 @SuppressWarnings("unused")
 public class ProductListViews implements com.adobe.marketing.mobile.xdm.Property {

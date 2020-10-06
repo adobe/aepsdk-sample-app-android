@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code IdentityMap}
  * 
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.498828 -0700 PDT m=+2.042300431 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.079811 -0700 PDT m=+2.440019387 by XDMTool
  */
 @SuppressWarnings("unused")
 public class IdentityMap implements com.adobe.marketing.mobile.xdm.Property {

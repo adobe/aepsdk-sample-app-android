@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Order}
  * The placed order for one or more products.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.504178 -0700 PDT m=+2.047649497 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.080165 -0700 PDT m=+2.440373383 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Order implements com.adobe.marketing.mobile.xdm.Property {

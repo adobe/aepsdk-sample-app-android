@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code PaymentsItem}
  * 
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.502854 -0700 PDT m=+2.046326052 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.080441 -0700 PDT m=+2.440648825 by XDMTool
  */
 @SuppressWarnings("unused")
 public class PaymentsItem implements com.adobe.marketing.mobile.xdm.Property {

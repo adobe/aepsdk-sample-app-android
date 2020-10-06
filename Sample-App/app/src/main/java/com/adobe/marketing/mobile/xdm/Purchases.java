@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Purchases}
  * An order has been accepted. Purchase is the only required action in a commerce conversion. Purchase must have a product list referenced.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.498716 -0700 PDT m=+2.042187795 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.082826 -0700 PDT m=+2.443033573 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Purchases implements com.adobe.marketing.mobile.xdm.Property {

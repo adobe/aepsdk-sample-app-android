@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Commerce}
  * Commerce specific data related to this event.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.500399 -0700 PDT m=+2.043870739 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.081808 -0700 PDT m=+2.442015495 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Commerce implements com.adobe.marketing.mobile.xdm.Property {

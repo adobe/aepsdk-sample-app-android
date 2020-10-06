@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -11,7 +10,7 @@
 package com.adobe.marketing.mobile.xdm;
 
 /**
- * XDM Java Enum Generated 2020-10-05 14:47:08.498596 -0700 PDT m=+2.042068142 by XDMTool
+ * XDM Java Enum Generated 2020-10-06 12:25:38.078045 -0700 PDT m=+2.438252545 by XDMTool
  */
 @SuppressWarnings("unused")
 public enum ConnectionTypeEnum {

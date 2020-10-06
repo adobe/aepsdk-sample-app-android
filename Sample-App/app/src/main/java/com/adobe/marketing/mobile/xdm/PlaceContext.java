@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,49 +17,28 @@ import java.util.List;
  * Class {@code PlaceContext}
  * The transient circumstances related to the observation. Examples include locale specific information such as weather, local time, traffic, day of the week, workday vs. holiday, and working hours.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.505714 -0700 PDT m=+2.049186239 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.081175 -0700 PDT m=+2.441383199 by XDMTool
  */
 @SuppressWarnings("unused")
 public class PlaceContext implements com.adobe.marketing.mobile.xdm.Property {
-	private List<ActivePOIsItem> activePOIs;
 	private Geo geo;
 	private String ianaTimezone;
-	private int localTimezoneOffset;
 	private java.util.Date localTime;
-	private POIinteraction pOIinteraction;
+	private int localTimezoneOffset;
 
 	public PlaceContext() {}
 
 	@Override
 	public Map<String, Object> serializeToXdm() {
 		Map<String, Object> map = new HashMap<>();
-		if (this.activePOIs != null) { map.put("activePOIs", com.adobe.marketing.mobile.xdm.Formatters.serializeFromList(this.activePOIs)); }
 		if (this.geo != null) { map.put("geo", this.geo.serializeToXdm()); }
 		if (this.ianaTimezone != null) { map.put("ianaTimezone", this.ianaTimezone); }
-		map.put("localTimezoneOffset", this.localTimezoneOffset);
 		if (this.localTime != null) { map.put("localTime", com.adobe.marketing.mobile.xdm.Formatters.dateToISO8601String(this.localTime)); }
-		if (this.pOIinteraction != null) { map.put("POIinteraction", this.pOIinteraction.serializeToXdm()); }
+		map.put("localTimezoneOffset", this.localTimezoneOffset);
 
 		return map;
 	}
 	
-	/**
-	 * Returns the POI detail property
-	 * Details of the points of interest (POIs) that cause the event.
-	 * @return list of {@link ActivePOIsItem} values or null if the list is not set
-	 */
-	public List<ActivePOIsItem> getActivePOIs() {
-		return this.activePOIs;
-	}
-
-	/**
-	 * Sets the POI detail property
-	 * Details of the points of interest (POIs) that cause the event.
-	 * @param newValue the new POI detail value
-	 */
-	public void setActivePOIs(final List<ActivePOIsItem> newValue) {
-		this.activePOIs = newValue;
-	} 
 	/**
 	 * Returns the Geo property
 	 * The geographic location where the experience was delivered.
@@ -96,23 +74,6 @@ public class PlaceContext implements com.adobe.marketing.mobile.xdm.Property {
 		this.ianaTimezone = newValue;
 	} 
 	/**
-	 * Returns the Local time zone offset property
-	 * The current, local time zone offset in minutes from UTC for the localTime in this object.  This will include the current DST offset if applicable.
-	 * @return int value
-	 */
-	public int getLocalTimezoneOffset() {
-		return this.localTimezoneOffset;
-	}
-
-	/**
-	 * Sets the Local time zone offset property
-	 * The current, local time zone offset in minutes from UTC for the localTime in this object.  This will include the current DST offset if applicable.
-	 * @param newValue the new Local time zone offset value
-	 */
-	public void setLocalTimezoneOffset(final int newValue) {
-		this.localTimezoneOffset = newValue;
-	} 
-	/**
 	 * Returns the Local time property
 	 * The local time using RFC3339 with a stated time zone offset such as "2001-07-04T12:08:56-07:00". An example formatting pattern is "yyyy-MM-dd'T'HH:mm:ssXXX".
 	 * @return {@link java.util.Date} value or null if the property is not set
@@ -130,20 +91,20 @@ public class PlaceContext implements com.adobe.marketing.mobile.xdm.Property {
 		this.localTime = newValue;
 	} 
 	/**
-	 * Returns the POI interaction property
-	 * The point of interest (POI) interaction details.
-	 * @return {@link POIinteraction} value or null if the property is not set
+	 * Returns the Local time zone offset property
+	 * The current, local time zone offset in minutes from UTC for the localTime in this object.  This will include the current DST offset if applicable.
+	 * @return int value
 	 */
-	public POIinteraction getPOIinteraction() {
-		return this.pOIinteraction;
+	public int getLocalTimezoneOffset() {
+		return this.localTimezoneOffset;
 	}
 
 	/**
-	 * Sets the POI interaction property
-	 * The point of interest (POI) interaction details.
-	 * @param newValue the new POI interaction value
+	 * Sets the Local time zone offset property
+	 * The current, local time zone offset in minutes from UTC for the localTime in this object.  This will include the current DST offset if applicable.
+	 * @param newValue the new Local time zone offset value
 	 */
-	public void setPOIinteraction(final POIinteraction newValue) {
-		this.pOIinteraction = newValue;
+	public void setLocalTimezoneOffset(final int newValue) {
+		this.localTimezoneOffset = newValue;
 	} 
 }

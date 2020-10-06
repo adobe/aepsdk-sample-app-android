@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code ProductListReopens}
  * A product list that was no longer accessible (abandoned) has been re-activated by the user. Example via a re-marketing activity.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.50169 -0700 PDT m=+2.045161918 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.080615 -0700 PDT m=+2.440822429 by XDMTool
  */
 @SuppressWarnings("unused")
 public class ProductListReopens implements com.adobe.marketing.mobile.xdm.Property {

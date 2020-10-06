@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code CartAbandons}
  * A product list has been identified as no longer accessible or purchasable by the user.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.507315 -0700 PDT m=+2.050787172 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.080859 -0700 PDT m=+2.441066682 by XDMTool
  */
 @SuppressWarnings("unused")
 public class CartAbandons implements com.adobe.marketing.mobile.xdm.Property {

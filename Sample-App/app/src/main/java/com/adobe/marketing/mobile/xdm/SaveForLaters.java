@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code SaveForLaters}
  * Product list is saved for future use, for example a product wish list.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.504397 -0700 PDT m=+2.047868644 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.080778 -0700 PDT m=+2.440986219 by XDMTool
  */
 @SuppressWarnings("unused")
 public class SaveForLaters implements com.adobe.marketing.mobile.xdm.Property {

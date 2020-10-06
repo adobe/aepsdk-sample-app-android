@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code InStorePurchase}
  * 'inStore' purchase is saved for analytics use.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.507417 -0700 PDT m=+2.050888840 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.080067 -0700 PDT m=+2.440275037 by XDMTool
  */
 @SuppressWarnings("unused")
 public class InStorePurchase implements com.adobe.marketing.mobile.xdm.Property {

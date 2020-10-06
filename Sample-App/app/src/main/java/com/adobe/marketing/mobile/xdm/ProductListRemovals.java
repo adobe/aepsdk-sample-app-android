@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code ProductListRemovals}
  * Removal or removals of a product entry from a product list, for example a product is removed from a shopping cart.
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.501585 -0700 PDT m=+2.045056550 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.082691 -0700 PDT m=+2.442898896 by XDMTool
  */
 @SuppressWarnings("unused")
 public class ProductListRemovals implements com.adobe.marketing.mobile.xdm.Property {

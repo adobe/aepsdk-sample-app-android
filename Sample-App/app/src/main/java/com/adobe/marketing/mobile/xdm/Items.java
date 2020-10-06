@@ -1,4 +1,3 @@
-
 /*
   Copyright 2020 Adobe
   All Rights Reserved.
@@ -18,7 +17,7 @@ import java.util.List;
  * Class {@code Items}
  * 
  *
- * XDM Property Java Object Generated 2020-10-05 14:47:08.502571 -0700 PDT m=+2.046043224 by XDMTool
+ * XDM Property Java Object Generated 2020-10-06 12:25:38.079882 -0700 PDT m=+2.440089981 by XDMTool
  */
 @SuppressWarnings("unused")
 public class Items implements com.adobe.marketing.mobile.xdm.Property {
