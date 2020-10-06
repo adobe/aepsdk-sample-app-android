@@ -35,7 +35,7 @@
                         android:id="@+id/lblStatusTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"
                         android:text="@string/commerce_example" />
@@ -48,19 +48,33 @@
                         >
                         <Button
                             android:id="@+id/button_add_to_cart"
-                            android:layout_width="wrap_content"
+                            android:layout_width="350dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:text="@string/add_to_cart" />
+                            android:text="@string/add_to_cart"
+                            android:drawableStart="@drawable/ic_shopping_cart"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:drawablePadding="5dp"
+                            android:paddingStart="115dp"
+                            android:paddingEnd="130dp"
+                            />
 
                         <Button
                             android:id="@+id/button_purchase"
-                            android:layout_width="wrap_content"
+                            android:layout_width="350dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:text="@string/purchase" />
+                            android:text="@string/purchase"
+                            android:drawableStart="@drawable/ic_shopping_basket"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:drawablePadding="5dp"
+                            android:paddingStart="115dp"
+                            android:paddingEnd="130dp"
+                            />
 
                     </LinearLayout>
 
