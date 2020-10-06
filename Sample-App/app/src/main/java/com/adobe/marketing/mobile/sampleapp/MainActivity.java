@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (data != null) {
 //            AndroidGriffonBridge.startSession(data.toString());
-            Log.d(LOG_TAG, "Connnected successfully to Griffon with the URI : " + data.toString());
+            Log.d(LOG_TAG, "Connected successfully to Griffon with the URI : " + data.toString());
         }
 
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.viewpager);
 
-        pagerAdapter = new PageAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        pagerAdapter = new PageAdapter(getSupportFragmentManager(), getApplicationContext(), tabLayout.getTabCount());
         viewPager.setAdapter(pagerAdapter);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){

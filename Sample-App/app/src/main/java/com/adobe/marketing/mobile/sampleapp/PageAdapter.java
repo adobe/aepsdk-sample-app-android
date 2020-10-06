@@ -8,6 +8,8 @@
  */
 package com.adobe.marketing.mobile.sampleapp;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -17,20 +19,23 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
     private int numoftabs;
 
-    // TODO: Places these tab titles in string resources. Access them like this: Resources.getSystem().getString(R.string.<string_name>)
-    private String[] tabTitles = new String[]{"Griffon", "Analytics", "Platform"};
+    private String[] tabTitles;
 
-    private Fragment[] tabFragments = new Fragment[]{new GriffonTab(), new AnalyticsTab(), new PlatformTab()};
+    private Fragment[] tabFragments = new Fragment[] {
+            new GriffonTab(),
+            new AnalyticsTab(),
+            new PlatformTab()
+    };
 
-    private GriffonTab griffonTab = null;
-    private AnalyticsTab analyticsTab = null;
-
-    public PageAdapter(FragmentManager fm, int numOfTabs) {
+    public PageAdapter(FragmentManager fm, final Context context, int numOfTabs) {
         super(fm);
         this.numoftabs = numOfTabs;
+        tabTitles = new String[] {
+                context.getString(R.string.tab_Griffon),
+                context.getString(R.string.tab_Analytics),
+                context.getString(R.string.tab_Platform)
+        };
     }
-
-
 
     @Override
     public Fragment getItem(int position) {
