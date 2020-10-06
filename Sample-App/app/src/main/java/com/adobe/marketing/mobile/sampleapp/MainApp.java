@@ -65,12 +65,6 @@ public class MainApp extends Application {
 
                         Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
 
-                        MobileCore.updateConfiguration(new HashMap<String, Object>(){{
-                            put("global.privacy", "optedin");
-                            put("experienceCloud.org", "FAF554945B90342F0A495E2C@AdobeOrg");
-                            put("experiencePlatform.configId", "d3d079e7-130e-4ec1-88d7-c328eb9815c4");
-                        }});
-
                     }
                 });
                  } catch (InvalidInitException e) {
