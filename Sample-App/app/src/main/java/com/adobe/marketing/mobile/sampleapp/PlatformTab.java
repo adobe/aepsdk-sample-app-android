@@ -63,6 +63,9 @@ public class PlatformTab extends Fragment implements NavigationAware {
         buttonAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sendAddToCartXdmEvent();
+
+                // Remove toast message once sendAddToCartXdmEvent is implemented
                 Resources res = getResources();
                 View view = getView().findViewById(R.id.layoutMain);
                 Snackbar.make(view, res.getString(R.string.add_to_cart_not_implemented_message), Snackbar.LENGTH_SHORT)
@@ -93,6 +96,10 @@ public class PlatformTab extends Fragment implements NavigationAware {
     @Override
     public void OnNavigateAway() {
 
+    }
+
+    private void sendAddToCartXdmEvent() {
+        // TODO to be implemented
     }
 
     private void sendPurchaseXdmEvent() {
