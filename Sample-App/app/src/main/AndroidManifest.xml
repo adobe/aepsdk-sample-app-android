@@ -51,7 +51,6 @@
             android:value="AIzaSyBJC-MlfUopWa_IMZM9-yc5HEwn331nMok" />
 
 
-        <activity android:name="com.adobe.griffon.FullScreenTakeoverActivity" />
         <activity android:name="com.adobe.marketing.mobile.FullscreenMessageActivity" />
 
         <receiver android:name="com.adobe.marketing.mobile.LocalNotificationHandler"/>

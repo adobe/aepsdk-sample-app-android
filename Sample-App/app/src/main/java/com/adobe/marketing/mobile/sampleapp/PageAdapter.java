@@ -22,7 +22,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     private String[] tabTitles;
 
     private Fragment[] tabFragments = new Fragment[] {
-            new GriffonTab(),
+            new AssuranceTab(),
             new AnalyticsTab(),
             new PlatformTab()
     };

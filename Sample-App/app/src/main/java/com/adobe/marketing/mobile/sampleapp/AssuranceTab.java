@@ -24,16 +24,16 @@ import com.adobe.marketing.mobile.Assurance;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GriffonTab extends Fragment implements NavigationAware {
+public class AssuranceTab extends Fragment implements NavigationAware {
 
     TextView lblEnterURL = null;
-    Button btnConnectToGriffonSession = null;
-    EditText txtGriffonSessionURL = null;
+    Button btnConnectToAssuranceSession = null;
+    EditText txtAssuranceSessionURL = null;
 
     boolean userIsViewingThisFragment = true;
     private static final String LOG_TAG = "Griffon Tab";
 
-    public GriffonTab() {
+    public AssuranceTab() {
         // Required empty public constructor
     }
 
@@ -44,22 +44,22 @@ public class GriffonTab extends Fragment implements NavigationAware {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_griffon_tab, container, false);
+        return inflater.inflate(R.layout.fragment_assurance_tab, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         //Create references to all our components
         lblEnterURL = getView().findViewById(R.id.lblEnterURL);
-        btnConnectToGriffonSession = getView().findViewById(R.id.btnConnectToGriffonSession);
-        txtGriffonSessionURL = getView().findViewById(R.id.txtGriffonSessionURL);
+        btnConnectToAssuranceSession = getView().findViewById(R.id.btnConnectToGriffonSession);
+        txtAssuranceSessionURL = getView().findViewById(R.id.txtGriffonSessionURL);
 
 
         //Setup button events
-        btnConnectToGriffonSession.setOnClickListener(new View.OnClickListener() {
+        btnConnectToAssuranceSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Assurance.startSession(txtGriffonSessionURL.getText().toString());
+                Assurance.startSession(txtAssuranceSessionURL.getText().toString());
             }
         });
 

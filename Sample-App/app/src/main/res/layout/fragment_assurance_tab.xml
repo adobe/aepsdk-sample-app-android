@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img2"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.adobe.marketing.mobile.sampleapp.GriffonTab">
+    tools:context="com.adobe.marketing.mobile.sampleapp.AssuranceTab">
 
     <!-- TODO: Update blank fragment layout -->
 
