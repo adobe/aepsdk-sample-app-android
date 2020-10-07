@@ -22,7 +22,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     private String[] tabTitles;
 
     private Fragment[] tabFragments = new Fragment[] {
-            new GriffonTab(),
+            new AssuranceTab(),
             new AnalyticsTab(),
             new PlatformTab()
     };
@@ -31,7 +31,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         super(fm);
         this.numoftabs = numOfTabs;
         tabTitles = new String[] {
-                context.getString(R.string.tab_Griffon),
+                context.getString(R.string.tab_Assurance),
                 context.getString(R.string.tab_Analytics),
                 context.getString(R.string.tab_Platform)
         };

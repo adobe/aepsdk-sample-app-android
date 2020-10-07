@@ -52,13 +52,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Get the URI from the data elements of the applications intent com.adobe.marketing.mobile.sampleapp.MainActivity
-        // And start the Griffon Bridge Session
         final Intent intent = getIntent();
         final Uri data = intent.getData();
 
         if (data != null) {
-//            AndroidGriffonBridge.startSession(data.toString());
-            Log.d(LOG_TAG, "Connected successfully to Griffon with the URI : " + data.toString());
+            Log.d(LOG_TAG, "Connected successfully to Assurance with the URI : " + data.toString());
         }
 
 

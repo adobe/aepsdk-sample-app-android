@@ -10,8 +10,8 @@ package com.adobe.marketing.mobile.sampleapp;
 
 import com.adobe.marketing.mobile.AdobeCallback;
 
+import com.adobe.marketing.mobile.Assurance;
 import com.adobe.marketing.mobile.ExperiencePlatform;
-import com.adobe.marketing.mobile.Griffon;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Identity;
 import com.adobe.marketing.mobile.Lifecycle;
@@ -55,7 +55,7 @@ public class MainApp extends Application {
             Lifecycle.registerExtension();
             Signal.registerExtension();
             ExperiencePlatform.registerExtension();
-            Griffon.registerExtension();
+            Assurance.registerExtension();
 
             MobileCore.configureWithAppID("your App id");
             MobileCore.start(new AdobeCallback () {

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/img2"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.adobe.marketing.mobile.sampleapp.GriffonTab">
+    tools:context="com.adobe.marketing.mobile.sampleapp.AssuranceTab">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -39,12 +39,12 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:text="Enter the Griffon Session URL:"
+                        android:text="Enter the Assurance Session URL:"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/txtGriffonSessionURL"
+                        android:id="@+id/txtAssuranceSessionURL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -60,11 +60,11 @@
 
 
                         <Button
-                            android:id="@+id/btnConnectToGriffonSession"
+                            android:id="@+id/btnConnectToAssuranceSession"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="@string/griffon_btnConnectToGriffonSession"
+                            android:text="@string/assurance_btnConnectToAssuranceSession"
                             android:textAlignment="center" />
 
                     </LinearLayout>
