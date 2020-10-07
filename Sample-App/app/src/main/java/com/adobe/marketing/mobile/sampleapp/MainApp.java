@@ -10,6 +10,7 @@ package com.adobe.marketing.mobile.sampleapp;
 
 import com.adobe.marketing.mobile.AdobeCallback;
 
+import com.adobe.marketing.mobile.ExperiencePlatform;
 import com.adobe.marketing.mobile.Griffon;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Identity;
@@ -24,6 +25,7 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
+import java.util.HashMap;
 
 
 public class MainApp extends Application {
@@ -52,6 +54,7 @@ public class MainApp extends Application {
             Identity.registerExtension();
             Lifecycle.registerExtension();
             Signal.registerExtension();
+            ExperiencePlatform.registerExtension();
             Griffon.registerExtension();
 
             MobileCore.configureWithAppID("your App id");
