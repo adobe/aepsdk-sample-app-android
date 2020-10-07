@@ -44,7 +44,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/txtGriffonSessionURL"
+                        android:id="@+id/txtAssuranceSessionURL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -60,11 +60,11 @@
 
 
                         <Button
-                            android:id="@+id/btnConnectToGriffonSession"
+                            android:id="@+id/btnConnectToAssuranceSession"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="@string/griffon_btnConnectToGriffonSession"
+                            android:text="@string/griffon_btnConnectToAssuranceSession"
                             android:textAlignment="center" />
 
                     </LinearLayout>

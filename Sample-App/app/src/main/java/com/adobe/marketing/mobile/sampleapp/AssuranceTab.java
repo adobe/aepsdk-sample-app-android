@@ -31,7 +31,7 @@ public class AssuranceTab extends Fragment implements NavigationAware {
     EditText txtAssuranceSessionURL = null;
 
     boolean userIsViewingThisFragment = true;
-    private static final String LOG_TAG = "Griffon Tab";
+    private static final String LOG_TAG = "Assurance Tab";
 
     public AssuranceTab() {
         // Required empty public constructor
@@ -51,8 +51,8 @@ public class AssuranceTab extends Fragment implements NavigationAware {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         //Create references to all our components
         lblEnterURL = getView().findViewById(R.id.lblEnterURL);
-        btnConnectToAssuranceSession = getView().findViewById(R.id.btnConnectToGriffonSession);
-        txtAssuranceSessionURL = getView().findViewById(R.id.txtGriffonSessionURL);
+        btnConnectToAssuranceSession = getView().findViewById(R.id.btnConnectToAssuranceSession);
+        txtAssuranceSessionURL = getView().findViewById(R.id.txtAssuranceSessionURL);
 
 
         //Setup button events

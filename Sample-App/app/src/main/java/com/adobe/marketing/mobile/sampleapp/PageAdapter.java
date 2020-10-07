@@ -31,7 +31,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
         super(fm);
         this.numoftabs = numOfTabs;
         tabTitles = new String[] {
-                context.getString(R.string.tab_Griffon),
+                context.getString(R.string.tab_Assurance),
                 context.getString(R.string.tab_Analytics),
                 context.getString(R.string.tab_Platform)
         };
