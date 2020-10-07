@@ -39,7 +39,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:text="Enter the Griffon Session URL:"
+                        android:text="Enter the Assurance Session URL:"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 

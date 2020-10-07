@@ -2,7 +2,7 @@
     <string name="app_name">AEP Mobile SDK Sample App</string>
     <string name="titleText">AEP Mobile SDK Sample App</string>
 
-    <string name="tab_Griffon">Griffon</string>
+    <string name="tab_Griffon">Assurance</string>
     <string name="tab_Analytics">Analytics</string>
 
     <string name="analytics_btnEmitActionEvent">Send trackAction Event</string>

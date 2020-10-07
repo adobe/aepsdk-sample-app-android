@@ -32,8 +32,7 @@ dependencies {
     implementation 'com.adobe.marketing.mobile:userprofile:1.1.0'
     implementation 'com.adobe.marketing.mobile:analytics:1.2.5'
     implementation 'com.adobe.marketing.mobile:sdk-core:1.5.7'
-    implementation 'com.adobe.marketing.mobile:griffon:1.2.1'
-//    implementation 'com.adobe.marketing.mobile:assurance:1.0.0-SNAPSHOT'
+    implementation 'com.adobe.marketing.mobile:assurance:1.0.0'
 
 
 

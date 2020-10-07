@@ -17,7 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.adobe.marketing.mobile.Griffon;
+
+import com.adobe.marketing.mobile.Assurance;
 
 
 /**
@@ -58,7 +59,7 @@ public class GriffonTab extends Fragment implements NavigationAware {
         btnConnectToGriffonSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Griffon.startSession(txtGriffonSessionURL.getText().toString());
+                Assurance.startSession(txtGriffonSessionURL.getText().toString());
             }
         });
 
