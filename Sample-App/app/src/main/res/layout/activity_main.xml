@@ -25,7 +25,7 @@
             app:tabTextAppearance="@style/MineCustomTabText">
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/griffon"
+                android:id="@+id/assurance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_Assurance" />

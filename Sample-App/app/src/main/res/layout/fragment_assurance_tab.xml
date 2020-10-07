@@ -64,7 +64,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="right"
-                            android:text="@string/griffon_btnConnectToAssuranceSession"
+                            android:text="@string/assurance_btnConnectToAssuranceSession"
                             android:textAlignment="center" />
 
                     </LinearLayout>

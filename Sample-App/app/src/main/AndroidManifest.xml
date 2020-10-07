@@ -19,8 +19,8 @@
         android:name="com.adobe.marketing.mobile.sampleapp.MainApp"
         android:allowBackup="true"
         tools:replace="android:icon,android:roundIcon"
-        android:icon="@drawable/griffon"
-        android:roundIcon="@drawable/griffon"
+        android:icon="@drawable/assurance"
+        android:roundIcon="@drawable/assurance"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
