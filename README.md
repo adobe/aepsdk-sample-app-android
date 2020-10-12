@@ -4,10 +4,11 @@
 
 This repository contains the Android sample app for the AEP SDK. 
 
-## Requirements
+## Prerequisites
 
-- Android Studio 3.+
-- JDK 8.0 or newer
+- Android Studio 3.+ with an Android emulator running 7.0+
+- JDK 8.+
+- Gradle 4.4+
 
 ## Installation
 
@@ -22,3 +23,4 @@ Contributions are welcomed! Read the [Contributing Guide](./.github/CONTRIBUTING
 ## Licensing
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
+
