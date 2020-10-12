@@ -31,6 +31,7 @@ import java.util.HashMap;
 public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
+    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
 
     private static Context context;
     public static Context getAppContext(){
@@ -57,7 +58,7 @@ public class MainApp extends Application {
             ExperiencePlatform.registerExtension();
             Assurance.registerExtension();
 
-            MobileCore.configureWithAppID("your App id");
+            MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
             MobileCore.start(new AdobeCallback () {
 
                     @Override

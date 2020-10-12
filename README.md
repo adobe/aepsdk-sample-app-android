@@ -6,13 +6,14 @@ This repository contains the Android sample app for the AEP SDK.
 
 ## Requirements
 
-- Android Studio 
+- Android Studio 3.+
 - JDK 8.0 or newer
 
 ## Installation
 
-- Import the Sample App (Gradle) project in the Android Studio
-- Run Android `app` on the emulator or on real device
+- Open Android Studio and select `Open an existing project`  from the main screen or click `File -> Open...` .
+- Import the Sample-App/settings.gradle file into Android Studio.
+- Run Android `app` on the emulator or on real device.
 
 ## Contributing
 
