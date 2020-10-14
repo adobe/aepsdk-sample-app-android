@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adobe.marketing.mobile.AdobeCallback;
+import com.adobe.marketing.mobile.AdobeCallbackWithError;
+import com.adobe.marketing.mobile.AdobeError;
 import com.adobe.marketing.mobile.Analytics;
+import com.adobe.marketing.mobile.Identity;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.MobilePrivacyStatus;
+import com.adobe.marketing.mobile.VisitorID;
 import com.adobe.marketing.mobile.sampleapp.R;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Timer;
@@ -43,23 +49,30 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
     TextView lblTrackingIdentifier = null;
     TextView lblVisitor = null;
     TextView lblMinBatchSize = null;
-    RadioButton rdoOptIn = null;
-    RadioButton rdoOptOut = null;
-    RadioButton rdoOptUnknown = null;
     Button btnEmitStateEvent = null;
     Button btnEmitActionEvent = null;
     Button btnClearQueuedHits = null;
     Button btnSendQueuedHits = null;
-    EditText txtVisitorIdentifier = null;
-    EditText txtBatchSize = null;
-    Button btnSaveFreeTextEntry = null;
-
+    RadioButton rdoOptIn = null;
+    RadioButton rdoOptOut = null;
+    RadioButton rdoOptUnknown = null;
+    Button btnGetPrivacy = null;
+    TextView txtCurrentPrivacy = null;
+    Button btnCollectPII = null;
+    Button btnUpdateConfig = null;
+    Button btnSetAdvertisingId = null;
+    Button btnSetPushId = null;
+    Button btnGetECID = null;
+    Button btnGetUrlVar = null;
+    Button btnSyncId = null;
+    Button btnGetSdkId = null;
+    Button btnAppendUrl = null;
     String trackingIdentifier = "";
     String visitorIdentifier = "";
     String batchSize = "";
 
     boolean userIsViewingThisFragment = true;
-    private static final String LOG_TAG = "Ananlyts Tab";
+    private static final String LOG_TAG = "Core Tab";
 
     public AnalyticsTab() {
         // Required empty public constructor
@@ -102,10 +115,17 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
         btnEmitActionEvent = getView().findViewById(R.id.btn_emitActionEvent);
         btnClearQueuedHits = getView().findViewById(R.id.btn_clearQueuedHits);
         btnSendQueuedHits = getView().findViewById(R.id.btn_sendQueuedHits);
-        txtVisitorIdentifier = getView().findViewById(R.id.txtVisitorIdentifier);
-        txtBatchSize = getView().findViewById(R.id.txtBatchSize);
-        btnSaveFreeTextEntry = getView().findViewById(R.id.btnSaveFreeTextEntry);
-
+        btnGetPrivacy = getView().findViewById(R.id.btn_getPrivacy);
+        txtCurrentPrivacy = getView().findViewById(R.id.text_currentPrivacy);
+        btnCollectPII = getView().findViewById(R.id.btn_collectPII);
+        btnUpdateConfig = getView().findViewById(R.id.btn_updateConfig);
+        btnSetAdvertisingId = getView().findViewById(R.id.btn_setAdvertisingId);
+        btnSetPushId = getView().findViewById(R.id.btn_setPushId);
+        btnGetECID = getView().findViewById(R.id.btn_getECID);
+        btnGetUrlVar = getView().findViewById(R.id.btn_getUrlVar);
+        btnSyncId = getView().findViewById(R.id.btn_syncId);
+        btnGetSdkId = getView().findViewById(R.id.btn_getSdkId);
+        btnAppendUrl = getView().findViewById(R.id.btn_appendUrl);
 
         //Setup button events
         btnSendQueuedHits.setOnClickListener(new View.OnClickListener(){
@@ -115,6 +135,128 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
 
                 showToast("Sent queued hits");
                 delayedRefresh(500);
+            }
+        });
+
+        btnCollectPII.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                MobileCore.collectPii(Collections.singletonMap("name","Adobe Experience Platform"));
+            }
+        });
+
+        btnUpdateConfig.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                MobileCore.updateConfiguration(Collections.<String, Object>singletonMap("analytics.batchLimit",3));
+            }
+        });
+
+        btnSetAdvertisingId.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                MobileCore.setAdvertisingIdentifier("advertisingIdentifier");
+            }
+        });
+
+        btnSetPushId.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                MobileCore.setPushIdentifier("9516258b6230afdd93cf0cd07b8dd845");
+            }
+        });
+
+        btnGetECID.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Identity.getExperienceCloudId(new AdobeCallbackWithError<String>() {
+                    @Override
+                    public void fail(AdobeError adobeError) {
+
+                    }
+
+                    @Override
+                    public void call(String s) {
+                        Log.i(LOG_TAG,"ECID : " + s);
+                    }
+                });
+            }
+        });
+
+        btnGetUrlVar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Identity.getUrlVariables(new AdobeCallbackWithError<String>() {
+                    @Override
+                    public void fail(AdobeError adobeError) {
+
+                    }
+
+                    @Override
+                    public void call(String s) {
+                        Log.i(LOG_TAG,"URL Variables : " + s);
+                    }
+                });
+            }
+        });
+
+        btnGetSdkId.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                MobileCore.getSdkIdentities(new AdobeCallbackWithError<String>() {
+                    @Override
+                    public void fail(AdobeError adobeError) {
+
+                    }
+
+                    @Override
+                    public void call(String s) {
+                        Log.i(LOG_TAG,"SDK Identities : " + s);
+                    }
+                });
+            }
+        });
+
+        btnSyncId.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Identity.syncIdentifier("idType1","1234567", VisitorID.AuthenticationState.AUTHENTICATED);
+            }
+        });
+
+        btnAppendUrl.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Identity.appendVisitorInfoForURL("https://example.com", new AdobeCallbackWithError<String>() {
+                    @Override
+                    public void fail(AdobeError adobeError) {
+
+                    }
+
+                    @Override
+                    public void call(String s) {
+                        Log.i(LOG_TAG,"URL : " + s);
+                    }
+                });
+            }
+        });
+
+
+
+        btnGetPrivacy.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                MobileCore.getPrivacyStatus(new AdobeCallback<MobilePrivacyStatus>() {
+                    @Override
+                    public void call(final MobilePrivacyStatus mobilePrivacyStatus) {
+                        getActivity().runOnUiThread(new Runnable(){
+                            @Override
+                            public void run(){
+                                txtCurrentPrivacy.setText("Current Privacy: "+ mobilePrivacyStatus.getValue());
+                            }
+                        });
+                    }
+                });
             }
         });
 
@@ -180,53 +322,6 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
             }
         });
 
-        btnSaveFreeTextEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                txtVisitorIdentifier.clearFocus();
-                txtBatchSize.clearFocus();
-
-                if(txtVisitorIdentifier.getText().toString().length() > 0) {
-                    Analytics.setVisitorIdentifier(txtVisitorIdentifier.getText().toString());
-                    visitorIdentifier = txtVisitorIdentifier.getText().toString();
-                    txtVisitorIdentifier.getText().clear();
-                    refreshIdentifiers();
-                    showToast("Identifier set to "+visitorIdentifier);
-
-                    Analytics.getTrackingIdentifier(new AdobeCallback<String>() {
-                        @Override
-                        public void call(String s) {
-                            trackingIdentifier = s;
-                            if(s == null){
-                                trackingIdentifier = "<none>";
-                            }
-                            refreshIdentifiers();
-                        }
-                    });
-                    Analytics.getVisitorIdentifier(new AdobeCallback<String>() {
-                        @Override
-                        public void call(String s) {
-                            visitorIdentifier = s;
-                            if(s == null){
-                                visitorIdentifier = "<none>";
-                            }
-                            refreshIdentifiers();
-                        }
-                    });
-                }
-
-                if(txtBatchSize.getText().toString().length() > 0){
-                    updateBatchLimit(Integer.parseInt(txtBatchSize.getText().toString()));
-                    showToast("Batch limit set to "+txtBatchSize.getText().toString());
-                    txtBatchSize.getText().clear();
-                }
-
-
-                delayedRefresh(500);
-
-            }
-        });
 
 
         updateBatchLimit(10);
