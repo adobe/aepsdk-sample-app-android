@@ -31,7 +31,7 @@ import java.util.HashMap;
 public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
-    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "launch-EN8fc4e9cda45e4514b075f0cf5e249742-development";
+    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
 
     private static Context context;
     public static Context getAppContext(){
