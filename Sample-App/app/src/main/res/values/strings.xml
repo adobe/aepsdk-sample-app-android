@@ -4,6 +4,7 @@
 
     <string name="tab_Assurance">Assurance</string>
     <string name="tab_Analytics">Analytics</string>
+    <string name="tab_Core">Core</string>
 
     <string name="analytics_btnEmitActionEvent">Send trackAction Event</string>
     <string name="analytics_btnEmitStateEvent">Send trackState Event</string>
