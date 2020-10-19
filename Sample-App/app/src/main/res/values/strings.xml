@@ -12,7 +12,7 @@
     <string name="analytics_btnClearQueue">Clear Queue</string>
 
     <string name="assurance_btnConnectToAssuranceSession">Connect</string>
-    <string name="tab_Platform">AEP</string>
+    <string name="tab_Edge">Edge</string>
     <string name="commerce_example">XDM Commerce Example</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="purchase">Purchase</string>
