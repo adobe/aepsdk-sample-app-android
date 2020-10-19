@@ -37,10 +37,10 @@
                 android:text="@string/tab_Analytics" />
 
             <com.google.android.material.tabs.TabItem
-                android:id="@+id/platform"
+                android:id="@+id/edge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_Platform" />
+                android:text="@string/tab_Edge" />
 
         </com.google.android.material.tabs.TabLayout>
 

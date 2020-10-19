@@ -20,9 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.adobe.marketing.mobile.ExperiencePlatform;
-import com.adobe.marketing.mobile.ExperiencePlatformCallback;
-import com.adobe.marketing.mobile.ExperiencePlatformEvent;
+import com.adobe.marketing.mobile.Edge;
+import com.adobe.marketing.mobile.EdgeCallback;
+import com.adobe.marketing.mobile.ExperienceEvent;
 import com.adobe.marketing.mobile.xdm.Commerce;
 import com.adobe.marketing.mobile.xdm.MobileSDKCommerceSchema;
 import com.adobe.marketing.mobile.xdm.Order;
@@ -39,9 +39,9 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class PlatformTab extends Fragment implements NavigationAware {
+public class EdgeTag extends Fragment implements NavigationAware {
 
-    public PlatformTab() {
+    public EdgeTag() {
         // Required empty public constructor
     }
 
@@ -54,7 +54,7 @@ public class PlatformTab extends Fragment implements NavigationAware {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_platform_tab, container, false);
+        return inflater.inflate(R.layout.fragment_edge_tab, container, false);
     }
 
     @Override
@@ -77,7 +77,7 @@ public class PlatformTab extends Fragment implements NavigationAware {
         buttonPurchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Send a sample Commerce Purchase Experience Event to the AEP Experience Platform extension
+                // Send a sample Commerce Purchase Experience Event to the AEP Edge extension
                 sendPurchaseXdmEvent();
 
                 Resources res = getResources();
@@ -156,14 +156,14 @@ public class PlatformTab extends Fragment implements NavigationAware {
         xdmData.setCommerce(commerce);
         xdmData.setProductListItems(purchasedItems);
 
-        // Create an Experience Event with the built schema and send it using the Platform extension
-        ExperiencePlatformEvent event = new ExperiencePlatformEvent.Builder()
+        // Create an Experience Event with the built schema and send it using the AEP Edge extension
+        ExperienceEvent event = new ExperienceEvent.Builder()
                 .setXdmSchema(xdmData)
                 .build();
-        ExperiencePlatform.sendEvent(event, new ExperiencePlatformCallback() {
+        Edge.sendEvent(event, new EdgeCallback() {
             @Override
             public void onResponse(Map<String, Object> data) {
-                Log.d("Send Purchase XDM Event", String.format("Received Data Platform response for event 'commerce.purchases': %s", data));
+                Log.d("Send Purchase XDM Event", String.format("Received response for event 'commerce.purchases': %s", data));
             }
         });
     }
