@@ -24,7 +24,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     private Fragment[] tabFragments = new Fragment[] {
             new AssuranceTab(),
             new AnalyticsTab(),
-            new EdgeTag()
+            new EdgeTab()
     };
 
     public PageAdapter(FragmentManager fm, final Context context, int numOfTabs) {

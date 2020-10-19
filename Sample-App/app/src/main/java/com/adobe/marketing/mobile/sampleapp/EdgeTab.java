@@ -39,9 +39,9 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class EdgeTag extends Fragment implements NavigationAware {
+public class EdgeTab extends Fragment implements NavigationAware {
 
-    public EdgeTag() {
+    public EdgeTab() {
         // Required empty public constructor
     }
 
