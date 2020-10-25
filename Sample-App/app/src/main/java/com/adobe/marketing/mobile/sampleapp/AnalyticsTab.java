@@ -45,14 +45,8 @@ import java.util.TimerTask;
  */
 public class AnalyticsTab extends Fragment implements NavigationAware {
 
-    TextView lblQueueSize = null;
-    TextView lblTrackingIdentifier = null;
-    TextView lblVisitor = null;
-    TextView lblMinBatchSize = null;
     Button btnEmitStateEvent = null;
     Button btnEmitActionEvent = null;
-    Button btnClearQueuedHits = null;
-    Button btnSendQueuedHits = null;
     RadioButton rdoOptIn = null;
     RadioButton rdoOptOut = null;
     RadioButton rdoOptUnknown = null;
@@ -67,9 +61,6 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
     Button btnSyncId = null;
     Button btnGetSdkId = null;
     Button btnAppendUrl = null;
-    String trackingIdentifier = "";
-    String visitorIdentifier = "";
-    String batchSize = "";
 
     boolean userIsViewingThisFragment = true;
     private static final String LOG_TAG = "Core Tab";
@@ -104,17 +95,12 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         //Create references to all our components
-        lblQueueSize = getView().findViewById(R.id.lblQueueSize);
-        lblMinBatchSize = getView().findViewById(R.id.lblMinBatchSize);
-        lblTrackingIdentifier = getView().findViewById(R.id.lblTrackingIdentifier);
-        lblVisitor = getView().findViewById(R.id.lblVisitor);
+
         rdoOptIn = getView().findViewById(R.id.rdoOptIn);
         rdoOptOut = getView().findViewById(R.id.rdoOptOut);
         rdoOptUnknown = getView().findViewById(R.id.rdoOptUnknown);
         btnEmitStateEvent = getView().findViewById(R.id.btn_emitStateEvent);
         btnEmitActionEvent = getView().findViewById(R.id.btn_emitActionEvent);
-        btnClearQueuedHits = getView().findViewById(R.id.btn_clearQueuedHits);
-        btnSendQueuedHits = getView().findViewById(R.id.btn_sendQueuedHits);
         btnGetPrivacy = getView().findViewById(R.id.btn_getPrivacy);
         txtCurrentPrivacy = getView().findViewById(R.id.text_currentPrivacy);
         btnCollectPII = getView().findViewById(R.id.btn_collectPII);
@@ -127,16 +113,6 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
         btnGetSdkId = getView().findViewById(R.id.btn_getSdkId);
         btnAppendUrl = getView().findViewById(R.id.btn_appendUrl);
 
-        //Setup button events
-        btnSendQueuedHits.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Analytics.sendQueuedHits();
-
-                showToast("Sent queued hits");
-                delayedRefresh(500);
-            }
-        });
 
         btnCollectPII.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -260,16 +236,6 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
             }
         });
 
-        btnClearQueuedHits.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Analytics.clearQueue();
-
-                showToast("Cleared queue");
-                delayedRefresh(500);
-            }
-        });
-
         btnEmitActionEvent.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -281,7 +247,6 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
 
                 showToast("Analytics action \""+eventName+"\" triggered");
 
-                delayedRefresh(500);
             }
         });
 
@@ -296,7 +261,6 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
 
                 showToast("Analytics state \""+eventName+"\" triggered");
 
-                delayedRefresh(500);
             }
         });
 
@@ -304,149 +268,33 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
             @Override
             public void onClick(View v) {
                 MobileCore.setPrivacyStatus(MobilePrivacyStatus.OPT_IN);
-                delayedRefresh();
             }
         });
         rdoOptOut.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 MobileCore.setPrivacyStatus(MobilePrivacyStatus.OPT_OUT);
-                delayedRefresh();
             }
         });
         rdoOptUnknown.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 MobileCore.setPrivacyStatus(MobilePrivacyStatus.UNKNOWN);
-                delayedRefresh();
             }
         });
 
 
-
-        updateBatchLimit(10);
-
-
-        //Setup refresh timer
-        Timer timer = new Timer("Background polling timer for analytics status");
-        timer.scheduleAtFixedRate(new TimerTask(){
-            @Override
-            public void run() {
-                refresh();
-            }
-        }, 0, 10000);
     }
 
-    public void updateBatchLimit(int limitNumber){
-        //Set batch limit
-        HashMap<String, Object> data = new HashMap<String, Object>();
-        data.put("analytics.batchLimit", limitNumber);
-        MobileCore.updateConfiguration(data);
-        batchSize = Integer.toString(limitNumber);
 
-        refresh();
-    }
-
-    public void delayedRefresh(){
-        delayedRefresh(1000);
-    }
-    public void delayedRefresh(int delay){ //Used to refresh after a delay of 1 second - useful for showing immediate results after the user taps a button.
-        //Setup refresh timer
-        Timer timer = new Timer("Background polling timer for analytics status");
-        timer.schedule(new TimerTask(){
-            @Override
-            public void run() {
-                refresh();
-            }
-        }, delay);
-    }
 
 
     private boolean isFirstRefresh = true;
-    public void refresh(){
-        if(!userIsViewingThisFragment){ //No need to refresh if the user isn't viewing the fragment. This will also prevent unneeded Adobe SDK events from being triggered.
-            return;
-        }
-        if(isFirstRefresh){ //Only refresh the identifiers automatically once. After this, refresh them only when changed (see event for btnSaveFreeTextEntry).
-            Analytics.getTrackingIdentifier(new AdobeCallback<String>() {
-                @Override
-                public void call(String s) {
-                    trackingIdentifier = s;
-                    if(s == null){
-                        trackingIdentifier = "<none>";
-                    }
-                    refreshIdentifiers();
-                }
-            });
-            Analytics.getVisitorIdentifier(new AdobeCallback<String>() {
-                @Override
-                public void call(String s) {
-                    visitorIdentifier = s;
-                    if(s == null){
-                        visitorIdentifier = "<none>";
-                    }
-                    refreshIdentifiers();
-                }
-            });
-        }
-        isFirstRefresh = false;
 
-        Analytics.getQueueSize(new AdobeCallback<Long>() {
-            @Override
-            public void call(final Long queueSize) {
-                getActivity().runOnUiThread(new Runnable(){
-                    @Override
-                    public void run(){
-                        lblQueueSize.setText("Event queue length: "+queueSize);
-                    }
-                });
-            }
-        });
-
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                lblMinBatchSize.setText("Min Batch Size: " + batchSize);
-            }
-        });
-
-
-        //Refresh opting radio buttons
-        MobileCore.getPrivacyStatus(new AdobeCallback<MobilePrivacyStatus>() {
-            @Override
-            public void call(MobilePrivacyStatus mobilePrivacyStatus) {
-                if(mobilePrivacyStatus != null){
-                    if(mobilePrivacyStatus.equals(MobilePrivacyStatus.OPT_IN)){
-                        rdoOptIn.toggle();
-                    }
-                    else if(mobilePrivacyStatus.equals(MobilePrivacyStatus.OPT_OUT)){
-                        rdoOptOut.toggle();
-                    }
-                    else{
-                        rdoOptUnknown.toggle();
-                    }
-                }
-                else{
-                    rdoOptUnknown.toggle();
-                }
-            }
-        });
-    }
-
-    public void refreshIdentifiers(){
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                lblVisitor.setText("Visitor identifier: "+visitorIdentifier);
-                lblTrackingIdentifier.setText("Tracking identifier: "+trackingIdentifier);
-            }
-        });
-    }
 
     @Override
     public void OnNavigateTo() {
         userIsViewingThisFragment = true;
-        delayedRefresh(500);
     }
 
     @Override
