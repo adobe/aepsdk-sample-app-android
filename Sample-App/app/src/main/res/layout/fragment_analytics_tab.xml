@@ -27,56 +27,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/lblStatusTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:textStyle="bold"
-                    android:text="Status" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="10dp"
-                    >
-                    <TextView
-                        android:id="@+id/lblQueueSize"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Queue Size: 0" />
-
-                    <TextView
-                        android:id="@+id/lblMinBatchSize"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Min Batch Size: 0" />
-
-                    <TextView
-                        android:id="@+id/lblTrackingIdentifier"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tracking identifier: " />
-
-                    <TextView
-                        android:id="@+id/lblVisitor"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Visitor: " />
-
-                </LinearLayout>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            android:layout_marginBottom="20dp"/>
 
 
 
@@ -94,42 +45,11 @@
                         android:id="@+id/lblEventingTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
-                        android:text="Manual Event Triggers" />
+                        android:text="Trigger Analytics Events"
+                        android:textStyle="bold" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="horizontal">
-
-
-                        <Button
-                            android:id="@+id/btn_sendQueuedHits"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/analytics_btnSendQueue" />
-
-                        <Button
-                            android:id="@+id/btn_clearQueuedHits"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/analytics_btnClearQueue" />
-
-                    </LinearLayout>
-
-
-                    <View
-                        android:id="@+id/divider"
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="?android:attr/listDivider" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
