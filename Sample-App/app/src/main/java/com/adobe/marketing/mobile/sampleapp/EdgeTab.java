@@ -20,15 +20,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.EdgeCallback;
 import com.adobe.marketing.mobile.ExperienceEvent;
+import com.adobe.marketing.mobile.Identity;
+import com.adobe.marketing.mobile.MobileCore;
+import com.adobe.marketing.mobile.xdm.Acopprod3;
 import com.adobe.marketing.mobile.xdm.Commerce;
 import com.adobe.marketing.mobile.xdm.MobileSDKCommerceSchema;
 import com.adobe.marketing.mobile.xdm.Order;
 import com.adobe.marketing.mobile.xdm.PaymentsItem;
 import com.adobe.marketing.mobile.xdm.ProductListItemsItem;
+import com.adobe.marketing.mobile.xdm.ProductReviews;
 import com.adobe.marketing.mobile.xdm.Purchases;
+import com.adobe.marketing.mobile.xdm.RatingEnum;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -84,6 +90,24 @@ public class EdgeTab extends Fragment implements NavigationAware {
                 View view = getView().findViewById(R.id.layoutMain);
                 Snackbar.make(view, res.getString(R.string.purchase_complete_message), Snackbar.LENGTH_SHORT)
                         .show();
+            }
+        });
+
+        Button buttonReview = view.findViewById(R.id.button_review);
+        buttonReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Identity.getExperienceCloudId(new AdobeCallback<String>() {
+                    @Override
+                    public void call(String s) {
+                        sendProductReviewXdmEvent(s);
+
+                        Resources res = getResources();
+                        View view = getView().findViewById(R.id.layoutMain);
+                        Snackbar.make(view, res.getString(R.string.review_complete_message), Snackbar.LENGTH_SHORT)
+                                .show();
+                    }
+                });
             }
         });
     }
@@ -155,6 +179,31 @@ public class EdgeTab extends Fragment implements NavigationAware {
         xdmData.setEventType("commerce.purchases");
         xdmData.setCommerce(commerce);
         xdmData.setProductListItems(purchasedItems);
+
+        // Create an Experience Event with the built schema and send it using the AEP Edge extension
+        ExperienceEvent event = new ExperienceEvent.Builder()
+                .setXdmSchema(xdmData)
+                .build();
+        Edge.sendEvent(event, new EdgeCallback() {
+            @Override
+            public void onResponse(Map<String, Object> data) {
+                Log.d("Send Purchase XDM Event", String.format("Received response for event 'commerce.purchases': %s", data));
+            }
+        });
+    }
+
+    private void sendProductReviewXdmEvent(final String id) {
+
+        Acopprod3 review = new Acopprod3();
+        review.setProductId("SHOES123");
+        //review.setReviewerId(id);
+        review.setSummary("This was awesome!");
+        review.setReviewText("First off, I don't normally write reviews, but after wearing these shoes I was completely blown away. My back pain is completely gone and I can now walk with my grandchildren all the way to the top of Kilimanjaro. They are comfortable for all day wear and don't give my feet the funky odor most shoes give me. These shoes are a great buy!");
+        review.setRating(RatingEnum.FANTASTIC);
+
+        ProductReviews xdmData = new ProductReviews();
+        xdmData.setAcopprod3(review);
+        xdmData.setEventType("product.review");
 
         // Create an Experience Event with the built schema and send it using the AEP Edge extension
         ExperienceEvent event = new ExperienceEvent.Builder()
