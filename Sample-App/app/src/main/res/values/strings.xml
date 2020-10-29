@@ -19,8 +19,11 @@
     <string name="add_to_cart_not_implemented_message">Add to Cart is not yet implemented.</string>
     <string name="purchase_complete_message">Thank you for your purchase!</string>
     <string name="submit_review">Submit Review</string>
-    <string name="revew_example">XDM Product Review Example</string>
+    <string name="review_example">XDM Product Review Example</string>
     <string name="review_complete_message">Your product review was submitted.</string>
+    <string name="email_label">Reviewer email</string>
+    <string name="write_review_here">Write something here.</string>
+    <string name="label_select_product">Select Product:</string>
 
 
 </resources>

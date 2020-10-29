@@ -98,7 +98,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
                         android:textStyle="bold"
-                        android:text="@string/revew_example" />
+                        android:text="@string/review_example" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -106,6 +106,56 @@
                         android:orientation="vertical"
                         android:layout_margin="10dp"
                         >
+
+
+                        <EditText
+                            android:id="@+id/reviewer_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:inputType="textEmailAddress"
+                            android:hint="@string/email_label"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="2"
+                                android:text="@string/label_select_product"/>
+
+                            <Spinner
+                                android:id="@+id/products_spinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                style="@style/Widget.AppCompat.Spinner.DropDown"/>
+
+                        </LinearLayout>
+
+                        <RatingBar
+                            android:id="@+id/review_ratingbar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:numStars="5"
+                            android:stepSize="1" />
+
+                        <EditText
+                            android:id="@+id/text_review_text"
+                            android:inputType="textMultiLine"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:hint="@string/write_review_here"/>
 
                         <Button
                             android:id="@+id/button_review"

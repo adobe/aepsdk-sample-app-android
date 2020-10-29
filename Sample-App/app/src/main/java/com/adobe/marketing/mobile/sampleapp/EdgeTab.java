@@ -18,7 +18,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.Spinner;
 
 import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Edge;
@@ -40,6 +44,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,19 +102,38 @@ public class EdgeTab extends Fragment implements NavigationAware {
         buttonReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Identity.getExperienceCloudId(new AdobeCallback<String>() {
-                    @Override
-                    public void call(String s) {
-                        sendProductReviewXdmEvent(s);
+                EditText reviewerEmailEditText = getView().findViewById(R.id.reviewer_email);
+                Spinner productsSpinner = getView().findViewById(R.id.products_spinner);
+                RatingBar ratingBar = getView().findViewById(R.id.review_ratingbar);
+                EditText productReviewEditText = getView().findViewById(R.id.text_review_text);
 
-                        Resources res = getResources();
-                        View view = getView().findViewById(R.id.layoutMain);
-                        Snackbar.make(view, res.getString(R.string.review_complete_message), Snackbar.LENGTH_SHORT)
-                                .show();
-                    }
-                });
+                String reviewerId = reviewerEmailEditText.getText().toString();
+                String productSku = (String)productsSpinner.getSelectedItem();
+                int rating = (int)ratingBar.getRating();
+                String productReview = productReviewEditText.getText().toString();
+
+
+                sendProductReviewXdmEvent(reviewerId, productSku, rating, productReview);
+
+                Resources res = getResources();
+                View view = getView().findViewById(R.id.layoutMain);
+                Snackbar.make(view, res.getString(R.string.review_complete_message), Snackbar.LENGTH_SHORT)
+                        .show();
+
             }
         });
+
+        // Setup product list spinner
+        ArrayList<String> arrayList = new ArrayList<String>() {{
+            add("SHOES123");
+            add("SHOES456");
+            add("HAT567");
+            add("HAT089");
+        }};
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(Objects.requireNonNull(getActivity()), android.R.layout.simple_spinner_item, arrayList);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner = view.findViewById(R.id.products_spinner);
+        spinner.setAdapter(arrayAdapter);
     }
 
     @Override
@@ -192,14 +216,13 @@ public class EdgeTab extends Fragment implements NavigationAware {
         });
     }
 
-    private void sendProductReviewXdmEvent(final String id) {
+    private void sendProductReviewXdmEvent(final String reviewerId, final String productId, final int rating, final String text) {
 
         Acopprod3 review = new Acopprod3();
-        review.setProductId("SHOES123");
-        //review.setReviewerId(id);
-        review.setSummary("This was awesome!");
-        review.setReviewText("First off, I don't normally write reviews, but after wearing these shoes I was completely blown away. My back pain is completely gone and I can now walk with my grandchildren all the way to the top of Kilimanjaro. They are comfortable for all day wear and don't give my feet the funky odor most shoes give me. These shoes are a great buy!");
-        review.setRating(RatingEnum.FANTASTIC);
+        review.setProductId(productId);
+        review.setReviewerId(reviewerId);
+        review.setReviewText(text);
+        review.setRating(RatingEnum.values()[rating-1]);
 
         ProductReviews xdmData = new ProductReviews();
         xdmData.setAcopprod3(review);
@@ -207,7 +230,7 @@ public class EdgeTab extends Fragment implements NavigationAware {
 
         // Create an Experience Event with the built schema and send it using the AEP Edge extension
         ExperienceEvent event = new ExperienceEvent.Builder()
-                .setXdmSchema(xdmData)
+                .setXdmSchema(xdmData.serializeToXdm(), MainApp.DATASET_ID)
                 .build();
         Edge.sendEvent(event, new EdgeCallback() {
             @Override
