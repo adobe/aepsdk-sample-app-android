@@ -11,7 +11,6 @@ package com.adobe.marketing.mobile.sampleapp;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -28,26 +27,19 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.EdgeCallback;
 import com.adobe.marketing.mobile.ExperienceEvent;
-import com.adobe.marketing.mobile.Identity;
-import com.adobe.marketing.mobile.MobileCore;
-import com.adobe.marketing.mobile.xdm.Acopprod3;
 import com.adobe.marketing.mobile.xdm.Commerce;
 import com.adobe.marketing.mobile.xdm.MobileSDKCommerceSchema;
 import com.adobe.marketing.mobile.xdm.Order;
 import com.adobe.marketing.mobile.xdm.PaymentsItem;
 import com.adobe.marketing.mobile.xdm.ProductListAdds;
 import com.adobe.marketing.mobile.xdm.ProductListItemsItem;
-import com.adobe.marketing.mobile.xdm.ProductReviews;
 import com.adobe.marketing.mobile.xdm.Purchases;
-import com.adobe.marketing.mobile.xdm.RatingEnum;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
