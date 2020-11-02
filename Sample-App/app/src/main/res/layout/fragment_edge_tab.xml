@@ -32,6 +32,46 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/lblProductSelector"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:text="@string/label_select_product" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="10dp"
+                        >
+
+                            <Spinner
+                                android:id="@+id/products_spinner"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_weight="1"
+                                style="@style/Widget.AppCompat.Spinner.DropDown"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
                         android:id="@+id/lblStatusTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -74,6 +114,80 @@
                             android:drawablePadding="5dp"
                             android:paddingStart="115dp"
                             android:paddingEnd="130dp"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/lblReviewTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:text="@string/review_example" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="10dp"
+                        >
+
+
+                        <EditText
+                            android:id="@+id/reviewer_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:inputType="textEmailAddress"
+                            android:hint="@string/email_label"/>
+
+                        <RatingBar
+                            android:id="@+id/review_ratingbar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:numStars="5"
+                            android:stepSize="1" />
+
+                        <EditText
+                            android:id="@+id/text_review_text"
+                            android:inputType="textMultiLine"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:hint="@string/write_review_here"/>
+
+                        <Button
+                            android:id="@+id/button_review"
+                            android:layout_width="350dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1"
+                            android:text="@string/submit_review"
+                            android:drawableStart="@drawable/ic_review"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:drawablePadding="5dp"
+                            android:paddingStart="105dp"
+                            android:paddingEnd="120dp"
                             />
 
                     </LinearLayout>
