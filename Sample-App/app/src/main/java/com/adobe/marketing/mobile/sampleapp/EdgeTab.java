@@ -50,6 +50,11 @@ import java.util.Objects;
  * create an instance of this fragment.
  */
 public class EdgeTab extends Fragment implements NavigationAware {
+    // set this property to forward the product reviews to your dataset
+    private static final String PRODUCT_REVIEW_DATASET_ID = "";
+
+    // set this property to your org as shown in your custom product reviews schema
+    private static final String TENANT_ID = "";
 
     private final ProductItem[] products = new ProductItem[] {
         new ProductItem("SHOES123", "Red canvas shoes", 34.76, "USD"),
@@ -245,7 +250,43 @@ public class EdgeTab extends Fragment implements NavigationAware {
     }
 
     private void sendProductReviewXdmEvent(final ProductItem product, final String reviewerId, final int rating, final String text) {
-        // TODO - Assignment 3
+        Map<String, Object> xdmData = new HashMap<String, Object>();
+
+        // 1. Add Email to the IdentityMap.
+        // Note: this app does not implement a logging system, so authenticatedState ambiguous is used
+        // in this case. The other authenticatedState values are: authenticated, loggedOut
+        Map<String, Object> identityMap = new HashMap<String, Object>();
+        identityMap.put("Email", new ArrayList<Object>() {{
+            add(new HashMap<String, Object>() {{
+                put("id", reviewerId);
+                put("authenticatedState", "ambiguous");
+            }});
+        }});
+        xdmData.put("identityMap", identityMap);
+
+        // 2. Add product review details in the custom mixin
+        // Note: set the TENANT_ID as specified in the Product Reviews Schema in Adobe Experience Platform
+        xdmData.put(TENANT_ID, new HashMap<String, Object>() {{
+            put("productSku", product.sku);
+            put("rating", rating);
+            put("reviewText", text);
+            put("reviewerId", reviewerId);
+        }});
+
+        // 3. Send the XDM data using the Edge extension, by specifying Product Reviews Dataset identifiers as
+        // shown in Adobe Experience Platform
+        // Note: the Dataset identifier specified at Event level overrides the Experience Event Dataset specified in the
+        // Edge configuration in Adobe Launch
+        xdmData.put("eventType", "product.review");
+        ExperienceEvent event = new ExperienceEvent.Builder()
+                .setXdmSchema(xdmData, PRODUCT_REVIEW_DATASET_ID)
+                .build();
+        Edge.sendEvent(event, new EdgeCallback() {
+            @Override
+            public void onResponse(Map<String, Object> data) {
+                Log.d("Send XDM Event", String.format("Received response for event 'product.review': %s", data));
+            }
+        });
     }
 
     private static class ProductItem {
