@@ -29,6 +29,7 @@ import android.widget.TextView;
 
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.EdgeCallback;
+import com.adobe.marketing.mobile.EdgeEventHandle;
 import com.adobe.marketing.mobile.ExperienceEvent;
 import com.adobe.marketing.mobile.xdm.Commerce;
 import com.adobe.marketing.mobile.xdm.MobileSDKCommerceSchema;
@@ -43,7 +44,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -134,7 +134,7 @@ public class EdgeTab extends Fragment implements NavigationAware {
 
         // Setup product list spinner
         Spinner spinner = view.findViewById(R.id.products_spinner);
-        spinner.setAdapter(new SpinnerAdapter(Objects.requireNonNull(getActivity()), android.R.layout.simple_spinner_item, products));
+        spinner.setAdapter(new SpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, products));
     }
 
     @Override
@@ -182,8 +182,8 @@ public class EdgeTab extends Fragment implements NavigationAware {
                 .build();
         Edge.sendEvent(event, new EdgeCallback() {
             @Override
-            public void onResponse(Map<String, Object> data) {
-                Log.d("Send XDM Event", String.format("Received response for event 'commerce.productListAdds': %s", data));
+            public void onComplete(List<EdgeEventHandle> list) {
+                Log.d("Send XDM Event", String.format("Received response for event 'commerce.productListAdds': %s", list));
             }
         });
     }
@@ -243,8 +243,8 @@ public class EdgeTab extends Fragment implements NavigationAware {
                 .build();
         Edge.sendEvent(event, new EdgeCallback() {
             @Override
-            public void onResponse(Map<String, Object> data) {
-                Log.d("Send XDM Event", String.format("Received response for event 'commerce.purchases': %s", data));
+            public void onComplete(List<EdgeEventHandle> list) {
+                Log.d("Send XDM Event", String.format("Received response for event 'commerce.purchases': %s", list));
             }
         });
     }
@@ -283,8 +283,8 @@ public class EdgeTab extends Fragment implements NavigationAware {
                 .build();
         Edge.sendEvent(event, new EdgeCallback() {
             @Override
-            public void onResponse(Map<String, Object> data) {
-                Log.d("Send XDM Event", String.format("Received response for event 'product.review': %s", data));
+            public void onComplete(List<EdgeEventHandle> list) {
+                Log.d("Send XDM Event", String.format("Received response for event 'product.review': %s", list));
             }
         });
     }
