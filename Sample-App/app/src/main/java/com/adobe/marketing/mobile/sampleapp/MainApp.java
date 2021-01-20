@@ -47,7 +47,7 @@ public class MainApp extends Application {
         MobileCore.setLargeIconResourceID(R.mipmap.ic_launcher_round);
 
         try{
-//            Analytics.registerExtension();
+            Analytics.registerExtension();
             UserProfile.registerExtension();
             Identity.registerExtension();
             Lifecycle.registerExtension();
