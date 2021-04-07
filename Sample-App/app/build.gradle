@@ -26,11 +26,14 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.android.material:material:1.2.1'
     implementation 'com.google.android.gms:play-services-location:17.1.0'
+    implementation 'com.google.code.gson:gson:2.3.1'
 
 
     implementation 'com.adobe.marketing.mobile:userprofile:1.1.0'
     implementation 'com.adobe.marketing.mobile:sdk-core:1.5.7'
     implementation 'com.adobe.marketing.mobile:assurance:1.0.1'
     implementation 'com.adobe.marketing.mobile:edge:1.+'
+    implementation 'com.adobe.marketing.mobile:edgeconsent:1.+'
+    implementation 'com.adobe.marketing.mobile:edgeidentity:1.0.0-SNAPSHOT'
     implementation 'com.adobe.marketing.mobile:analyticsedge:1.+'
 }

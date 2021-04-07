@@ -16,8 +16,8 @@
             android:id="@+id/layoutMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:orientation="vertical">
 
@@ -37,23 +37,22 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
-                        android:text="@string/label_select_product" />
+                        android:text="@string/label_select_product"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
-                        >
+                        android:orientation="vertical">
 
-                            <Spinner
-                                android:id="@+id/products_spinner"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_weight="1"
-                                style="@style/Widget.AppCompat.Spinner.DropDown"/>
+                        <Spinner
+                            android:id="@+id/products_spinner"
+                            style="@style/Widget.AppCompat.Spinner.DropDown"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_weight="1" />
 
 
                     </LinearLayout>
@@ -77,29 +76,28 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
-                        android:text="@string/commerce_example" />
+                        android:text="@string/commerce_example"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
-                        >
+                        android:orientation="vertical">
+
                         <Button
                             android:id="@+id/button_add_to_cart"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:text="@string/add_to_cart"
                             android:drawableStart="@drawable/ic_shopping_cart"
-                            android:gravity="center"
-                            android:singleLine="true"
                             android:drawablePadding="5dp"
+                            android:gravity="center"
                             android:paddingStart="115dp"
                             android:paddingEnd="130dp"
-                            />
+                            android:singleLine="true"
+                            android:text="@string/add_to_cart" />
 
                         <Button
                             android:id="@+id/button_purchase"
@@ -107,14 +105,13 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:text="@string/purchase"
                             android:drawableStart="@drawable/ic_shopping_basket"
-                            android:gravity="center"
-                            android:singleLine="true"
                             android:drawablePadding="5dp"
+                            android:gravity="center"
                             android:paddingStart="115dp"
                             android:paddingEnd="130dp"
-                            />
+                            android:singleLine="true"
+                            android:text="@string/purchase" />
 
                     </LinearLayout>
 
@@ -137,15 +134,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
-                        android:text="@string/review_example" />
+                        android:text="@string/review_example"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_margin="10dp"
-                        >
+                        android:orientation="vertical">
 
 
                         <EditText
@@ -154,8 +150,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:inputType="textEmailAddress"
-                            android:hint="@string/email_label"/>
+                            android:hint="@string/email_label"
+                            android:inputType="textEmailAddress" />
 
                         <RatingBar
                             android:id="@+id/review_ratingbar"
@@ -168,12 +164,12 @@
 
                         <EditText
                             android:id="@+id/text_review_text"
-                            android:inputType="textMultiLine"
                             android:layout_width="350dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:hint="@string/write_review_here"/>
+                            android:hint="@string/write_review_here"
+                            android:inputType="textMultiLine" />
 
                         <Button
                             android:id="@+id/button_review"
@@ -181,16 +177,94 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_weight="1"
-                            android:text="@string/submit_review"
                             android:drawableStart="@drawable/ic_review"
-                            android:gravity="center"
-                            android:singleLine="true"
                             android:drawablePadding="5dp"
+                            android:gravity="center"
                             android:paddingStart="105dp"
                             android:paddingEnd="120dp"
-                            />
+                            android:singleLine="true"
+                            android:text="@string/submit_review" />
 
                     </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_edgeIdentity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edge Identity APIs"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_updateIdentityMap"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edgeIdentity_updateIdentities" />
+
+                    <Button
+                        android:id="@+id/btn_removeIdentityMap"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edgeIdentity_removeIdentities" />
+
+                    <Button
+                        android:id="@+id/btn_getIdentityMap"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edgeIdentity_getIdentities" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_edgeConsent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edge Consent APIs"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_collectConsentY"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edgeConsent_collectConsentY" />
+
+                    <Button
+                        android:id="@+id/btn_collectConsentN"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edgeConsent_collectConsentN" />
+
+                    <Button
+                        android:id="@+id/btn_getConsents"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edgeConsent_getConsents" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

@@ -13,13 +13,13 @@ import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Assurance;
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.MobileCore;
-import com.adobe.marketing.mobile.Identity;
 import com.adobe.marketing.mobile.Lifecycle;
 import com.adobe.marketing.mobile.Analytics;
 import com.adobe.marketing.mobile.Signal;
 import com.adobe.marketing.mobile.UserProfile;
 import com.adobe.marketing.mobile.InvalidInitException;
 import com.adobe.marketing.mobile.LoggingMode;
+import com.adobe.marketing.mobile.edge.consent.Consent;
 
 import android.app.Application;
 import android.content.Context;
@@ -49,7 +49,9 @@ public class MainApp extends Application {
         try{
             Analytics.registerExtension();
             UserProfile.registerExtension();
-            Identity.registerExtension();
+            Consent.registerExtension();
+            com.adobe.marketing.mobile.Identity.registerExtension();
+            com.adobe.marketing.mobile.edge.identity.Identity.registerExtension();
             Lifecycle.registerExtension();
             Signal.registerExtension();
             Edge.registerExtension();

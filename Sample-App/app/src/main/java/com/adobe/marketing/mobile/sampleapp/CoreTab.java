@@ -8,7 +8,6 @@
  */
 package com.adobe.marketing.mobile.sampleapp;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -18,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,24 +24,19 @@ import android.widget.Toast;
 import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.AdobeCallbackWithError;
 import com.adobe.marketing.mobile.AdobeError;
-import com.adobe.marketing.mobile.Analytics;
 import com.adobe.marketing.mobile.Identity;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.MobilePrivacyStatus;
 import com.adobe.marketing.mobile.VisitorID;
-import com.adobe.marketing.mobile.sampleapp.R;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AnalyticsTab extends Fragment implements NavigationAware {
+public class CoreTab extends Fragment implements NavigationAware {
 
     Button btnEmitStateEvent = null;
     Button btnEmitActionEvent = null;
@@ -65,7 +58,7 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
     boolean userIsViewingThisFragment = true;
     private static final String LOG_TAG = "Core Tab";
 
-    public AnalyticsTab() {
+    public CoreTab() {
         // Required empty public constructor
     }
 
@@ -83,13 +76,12 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
         });
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_analytics_tab, container, false);
+        return inflater.inflate(R.layout.fragment_core_tab, container, false);
     }
 
     @Override
@@ -285,12 +277,6 @@ public class AnalyticsTab extends Fragment implements NavigationAware {
 
 
     }
-
-
-
-
-    private boolean isFirstRefresh = true;
-
 
     @Override
     public void OnNavigateTo() {

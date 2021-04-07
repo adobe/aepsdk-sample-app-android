@@ -27,10 +27,16 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.EdgeCallback;
 import com.adobe.marketing.mobile.EdgeEventHandle;
 import com.adobe.marketing.mobile.ExperienceEvent;
+import com.adobe.marketing.mobile.edge.consent.Consent;
+import com.adobe.marketing.mobile.edge.identity.AuthenticatedState;
+import com.adobe.marketing.mobile.edge.identity.Identity;
+import com.adobe.marketing.mobile.edge.identity.IdentityItem;
+import com.adobe.marketing.mobile.edge.identity.IdentityMap;
 import com.adobe.marketing.mobile.xdm.Commerce;
 import com.adobe.marketing.mobile.xdm.MobileSDKCommerceSchema;
 import com.adobe.marketing.mobile.xdm.Order;
@@ -39,6 +45,8 @@ import com.adobe.marketing.mobile.xdm.ProductListAdds;
 import com.adobe.marketing.mobile.xdm.ProductListItemsItem;
 import com.adobe.marketing.mobile.xdm.Purchases;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,6 +63,7 @@ public class EdgeTab extends Fragment implements NavigationAware {
 
     // set this property to your org as shown in your custom product reviews schema
     private static final String TENANT_ID = "";
+    private static final String LOG_TAG = "EdgeTab";
 
     private final ProductItem[] products = new ProductItem[] {
         new ProductItem("SHOES123", "Red canvas shoes", 34.76, "USD"),
@@ -78,7 +87,6 @@ public class EdgeTab extends Fragment implements NavigationAware {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edge_tab, container, false);
     }
-
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         Button buttonAddToCart = view.findViewById(R.id.button_add_to_cart);
@@ -135,6 +143,78 @@ public class EdgeTab extends Fragment implements NavigationAware {
         // Setup product list spinner
         Spinner spinner = view.findViewById(R.id.products_spinner);
         spinner.setAdapter(new SpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, products));
+
+
+        // EdgeIdentity API's
+        Button btnUpdateIdentityMap = getView().findViewById(R.id.btn_updateIdentityMap);
+        Button btnRemoveIdentityMap = getView().findViewById(R.id.btn_removeIdentityMap);
+        Button btnGetIdentityMap = getView().findViewById(R.id.btn_getIdentityMap);
+
+        btnUpdateIdentityMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IdentityMap map = new IdentityMap();
+                map.addItem(new IdentityItem("primary@email.com", AuthenticatedState.AUTHENTICATED, false), "Email");
+                map.addItem(new IdentityItem("secondary@email.com"), "Email");
+                map.addItem(new IdentityItem("uniqueUserID", AuthenticatedState.AUTHENTICATED, true), "UserId");
+                Identity.updateIdentities(map);
+            }
+        });
+
+        btnRemoveIdentityMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Identity.removeIdentity(new IdentityItem("secondary@email.com"), "Email");
+            }
+        });
+
+        btnGetIdentityMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Identity.getIdentities(new AdobeCallback<IdentityMap>() {
+                    @Override
+                    public void call(final IdentityMap map) {
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        String json = gson.toJson(map);
+                        Log.i(LOG_TAG, String.format("Received Identities from API = %s", json));
+                    }
+                });
+            }
+        });
+
+
+        // EdgeConsent API's
+        Button btnCollectConsentY = getView().findViewById(R.id.btn_collectConsentY);
+        Button btnCollectConsentN = getView().findViewById(R.id.btn_collectConsentN);
+        Button btnGetConsents = getView().findViewById(R.id.btn_getConsents);
+
+        btnCollectConsentY.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                collectConsentUpdate("y");
+            }
+        });
+
+        btnCollectConsentN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                collectConsentUpdate("n");
+            }
+        });
+
+        btnGetConsents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Consent.getConsents(new AdobeCallback<Map<String, Object>>() {
+                    @Override
+                    public void call(Map<String, Object> map) {
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        String json = gson.toJson(map);
+                        Log.i(LOG_TAG, String.format("Received Consent from API = %s", json));
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -334,5 +414,25 @@ public class EdgeTab extends Fragment implements NavigationAware {
             label.setText(products[position].name);
             return label;
         }
+    }
+
+    private void collectConsentUpdate(final String value) {
+        if (value == null || value.isEmpty()) {
+            return;
+        }
+
+        Consent.update(new HashMap<String, Object>() {
+            {
+                put("consents", new HashMap<String, Object>() {
+                    {
+                        put("collect", new HashMap<String, Object>() {
+                            {
+                                put("val", value);
+                            }
+                        });
+                    }
+                });
+            }
+        });
     }
 }
