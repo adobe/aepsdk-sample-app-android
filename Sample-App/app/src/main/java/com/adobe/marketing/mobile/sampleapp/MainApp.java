@@ -31,12 +31,13 @@ public class MainApp extends Application {
     private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
 
     private static Context context;
-    public static Context getAppContext(){
+
+    public static Context getAppContext() {
         return MainApp.context;
     }
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         MainApp.context = getApplicationContext();
 
@@ -45,7 +46,7 @@ public class MainApp extends Application {
         MobileCore.setSmallIconResourceID(R.mipmap.ic_launcher_round);
         MobileCore.setLargeIconResourceID(R.mipmap.ic_launcher_round);
 
-        try{
+        try {
             Analytics.registerExtension();
             UserProfile.registerExtension();
             Consent.registerExtension();
@@ -57,7 +58,7 @@ public class MainApp extends Application {
             Assurance.registerExtension();
 
             MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
-            MobileCore.start(new AdobeCallback () {
+            MobileCore.start(new AdobeCallback() {
 
                 @Override
                 public void call(Object o) {

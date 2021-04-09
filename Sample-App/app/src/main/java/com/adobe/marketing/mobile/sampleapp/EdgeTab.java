@@ -57,11 +57,11 @@ public class EdgeTab extends Fragment implements NavigationAware {
     private static final String TENANT_ID = "";
     private static final String LOG_TAG = "EdgeTab";
 
-    private final ProductItem[] products = new ProductItem[] {
-        new ProductItem("SHOES123", "Red canvas shoes", 34.76, "USD"),
-        new ProductItem("SHOES456", "Brown leather shoes", 52.81, "USD"),
-        new ProductItem("HAT567", "Wool Hat", 25.15, "USD"),
-        new ProductItem("HAT089", "Straw Hat", 11.85, "USD")
+    private final ProductItem[] products = new ProductItem[]{
+            new ProductItem("SHOES123", "Red canvas shoes", 34.76, "USD"),
+            new ProductItem("SHOES456", "Brown leather shoes", 52.81, "USD"),
+            new ProductItem("HAT567", "Wool Hat", 25.15, "USD"),
+            new ProductItem("HAT089", "Straw Hat", 11.85, "USD")
     };
 
     @Override
@@ -75,9 +75,10 @@ public class EdgeTab extends Fragment implements NavigationAware {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edge_tab, container, false);
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        final TextView tv_version  = getView().findViewById(R.id.tv_edge_version);
+        final TextView tv_version = getView().findViewById(R.id.tv_edge_version);
         view.post(new Runnable() {
             @Override
             public void run() {
@@ -124,8 +125,8 @@ public class EdgeTab extends Fragment implements NavigationAware {
                 EditText productReviewEditText = getView().findViewById(R.id.text_review_text);
 
                 String reviewerId = reviewerEmailEditText.getText().toString();
-                ProductItem product = (ProductItem)productsSpinner.getSelectedItem();
-                int rating = (int)ratingBar.getRating();
+                ProductItem product = (ProductItem) productsSpinner.getSelectedItem();
+                int rating = (int) ratingBar.getRating();
                 String productReview = productReviewEditText.getText().toString();
 
                 sendProductReviewXdmEvent(product, reviewerId, rating, productReview);

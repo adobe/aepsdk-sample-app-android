@@ -45,10 +45,11 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edgeidentity_tab, container, false);
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Card view to display registered Edge Identity extension version
-        final TextView tv_version  = getView().findViewById(R.id.tv_edgeidentity_version);
+        final TextView tv_version = getView().findViewById(R.id.tv_edgeidentity_version);
         view.post(new Runnable() {
             @Override
             public void run() {

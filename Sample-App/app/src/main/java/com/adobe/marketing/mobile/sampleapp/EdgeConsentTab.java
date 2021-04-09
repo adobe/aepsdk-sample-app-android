@@ -45,10 +45,11 @@ public class EdgeConsentTab extends Fragment implements NavigationAware {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_edgeconsent_tab, container, false);
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Card view to display registered Consent extension version
-        final TextView tv_version  = getView().findViewById(R.id.tv_edgeConsent_version);
+        final TextView tv_version = getView().findViewById(R.id.tv_edgeConsent_version);
         view.post(new Runnable() {
             @Override
             public void run() {
@@ -136,8 +137,6 @@ public class EdgeConsentTab extends Fragment implements NavigationAware {
             }
         });
     }
-
-
 
 
 }

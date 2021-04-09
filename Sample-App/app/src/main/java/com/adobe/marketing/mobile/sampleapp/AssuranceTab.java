@@ -10,7 +10,9 @@ package com.adobe.marketing.mobile.sampleapp;
 
 
 import android.os.Bundle;
+
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +38,7 @@ public class AssuranceTab extends Fragment implements NavigationAware {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        final TextView tv_version  = getView().findViewById(R.id.tv_assurance_version);
+        final TextView tv_version = getView().findViewById(R.id.tv_assurance_version);
         view.post(new Runnable() {
             @Override
             public void run() {
@@ -58,7 +60,6 @@ public class AssuranceTab extends Fragment implements NavigationAware {
                 Assurance.startSession(txtAssuranceSessionURL.getText().toString());
             }
         });
-
     }
 
     @Override
