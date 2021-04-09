@@ -15,24 +15,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.adobe.marketing.mobile.AdobeCallback;
-import com.adobe.marketing.mobile.edge.identity.AuthenticatedState;
-import com.adobe.marketing.mobile.edge.identity.Identity;
-import com.adobe.marketing.mobile.edge.identity.IdentityItem;
-import com.adobe.marketing.mobile.edge.identity.IdentityMap;
+import com.adobe.marketing.mobile.edge.consent.Consent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
 public class EdgeConsentTab extends Fragment implements NavigationAware {
-    private static final String LOG_TAG = "EdgeIdentityTab";
-
+    private static final String LOG_TAG = "EdgeConsentTab";
 
     public EdgeConsentTab() {
         // Required empty public constructor
@@ -47,47 +47,48 @@ public class EdgeConsentTab extends Fragment implements NavigationAware {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edge_tab, container, false);
+        return inflater.inflate(R.layout.fragment_edgeconsent_tab, container, false);
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // EdgeIdentity API's
-        Button btnUpdateIdentityMap = getView().findViewById(R.id.btn_updateIdentityMap);
-        Button btnRemoveIdentityMap = getView().findViewById(R.id.btn_removeIdentityMap);
-        Button btnGetIdentityMap = getView().findViewById(R.id.btn_getIdentityMap);
-
-        btnUpdateIdentityMap.setOnClickListener(new View.OnClickListener() {
+        // Card view to display registered Consent extension version
+        final TextView tv_version  = getView().findViewById(R.id.tv_edgeConsent_version);
+        view.post(new Runnable() {
             @Override
-            public void onClick(View v) {
-                IdentityMap map = new IdentityMap();
-                map.addItem(new IdentityItem("primary@email.com", AuthenticatedState.AUTHENTICATED, false), "Email");
-                map.addItem(new IdentityItem("secondary@email.com"), "Email");
-                map.addItem(new IdentityItem("uniqueUserID", AuthenticatedState.AUTHENTICATED, true), "UserId");
-                Identity.updateIdentities(map);
+            public void run() {
+                if (tv_version != null) {
+                    tv_version.setText("Edge Consent Extension version: " + Consent.extensionVersion());
+                }
             }
         });
 
-        btnRemoveIdentityMap.setOnClickListener(new View.OnClickListener() {
+        // EdgeConsent API's
+        Button btnCollectConsentY = getView().findViewById(R.id.btn_collectConsentY);
+        Button btnCollectConsentN = getView().findViewById(R.id.btn_collectConsentN);
+        Button btnGetConsents = getView().findViewById(R.id.btn_getConsents);
+
+        btnCollectConsentY.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Identity.removeIdentity(new IdentityItem("secondary@email.com"), "Email");
+                collectConsentUpdate("y");
+                getConsent();
             }
         });
 
-        btnGetIdentityMap.setOnClickListener(new View.OnClickListener() {
+        btnCollectConsentN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Identity.getIdentities(new AdobeCallback<IdentityMap>() {
-                    @Override
-                    public void call(final IdentityMap map) {
-                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                        String json = gson.toJson(map);
-                        Log.i(LOG_TAG, String.format("Received Identities from API = %s", json));
-                    }
-                });
+                collectConsentUpdate("n");
+                getConsent();
             }
         });
 
+        btnGetConsents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                getConsent();
+            }
+        });
     }
 
     @Override
@@ -99,6 +100,52 @@ public class EdgeConsentTab extends Fragment implements NavigationAware {
     public void OnNavigateAway() {
 
     }
+
+    private void collectConsentUpdate(final String value) {
+        if (value == null || value.isEmpty()) {
+            return;
+        }
+
+        Consent.update(new HashMap<String, Object>() {
+            {
+                put("consents", new HashMap<String, Object>() {
+                    {
+                        put("collect", new HashMap<String, Object>() {
+                            {
+                                put("val", value);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    private void getConsent() {
+        Consent.getConsents(new AdobeCallback<Map<String, Object>>() {
+            @Override
+            public void call(Map<String, Object> map) {
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                String json = gson.toJson(map);
+                Log.i(LOG_TAG, String.format("Received Consent from API = %s", json));
+                updateTextView(json);
+            }
+        });
+    }
+
+    private void updateTextView(final String jsonString) {
+        final TextView textViewGetData = getView().findViewById(R.id.tv_edgeConsent_data);
+        getView().post(new Runnable() {
+            @Override
+            public void run() {
+                if (textViewGetData != null) {
+                    textViewGetData.setText(jsonString);
+                }
+            }
+        });
+    }
+
+
 
 
 }

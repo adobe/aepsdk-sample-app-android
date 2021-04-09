@@ -33,29 +33,52 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_edgeIdentity"
+                        android:id="@+id/tv_edgeConsent_version"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_edgeConsent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Edge Identity APIs"
+                        android:text="Edge Consent APIs"
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/btn_updateIdentityMap"
+                        android:id="@+id/btn_collectConsentY"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeIdentity_updateIdentities" />
+                        android:text="@string/btn_edgeConsent_collectConsentY" />
 
                     <Button
-                        android:id="@+id/btn_removeIdentityMap"
+                        android:id="@+id/btn_collectConsentN"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeIdentity_removeIdentities" />
+                        android:text="@string/btn_edgeConsent_collectConsentN" />
 
                     <Button
-                        android:id="@+id/btn_getIdentityMap"
+                        android:id="@+id/btn_getConsents"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeIdentity_getIdentities" />
+                        android:text="@string/btn_edgeConsent_getConsents" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -88,7 +111,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/btnResetIdentities">
 
                         <TextView
-                            android:id="@+id/tvGetData"
+                            android:id="@+id/tv_edgeConsent_data"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/tv_edgeIdentity_no_data"

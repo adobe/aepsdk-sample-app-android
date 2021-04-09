@@ -29,166 +29,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/lblProductSelector"
-                        android:layout_width="match_parent"
+                        android:id="@+id/tv_edgeidentity_version"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/label_select_product"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical">
-
-                        <Spinner
-                            android:id="@+id/products_spinner"
-                            style="@style/Widget.AppCompat.Spinner.DropDown"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1" />
-
-
-                    </LinearLayout>
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14sp" />
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/lblStatusTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/commerce_example"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical">
-
-                        <Button
-                            android:id="@+id/button_add_to_cart"
-                            android:layout_width="350dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:drawableStart="@drawable/ic_shopping_cart"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:paddingStart="115dp"
-                            android:paddingEnd="130dp"
-                            android:singleLine="true"
-                            android:text="@string/add_to_cart" />
-
-                        <Button
-                            android:id="@+id/button_purchase"
-                            android:layout_width="350dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:drawableStart="@drawable/ic_shopping_basket"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:paddingStart="115dp"
-                            android:paddingEnd="130dp"
-                            android:singleLine="true"
-                            android:text="@string/purchase" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/lblReviewTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/review_example"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:orientation="vertical">
-
-
-                        <EditText
-                            android:id="@+id/reviewer_email"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:hint="@string/email_label"
-                            android:inputType="textEmailAddress" />
-
-                        <RatingBar
-                            android:id="@+id/review_ratingbar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:numStars="5"
-                            android:stepSize="1" />
-
-                        <EditText
-                            android:id="@+id/text_review_text"
-                            android:layout_width="350dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:hint="@string/write_review_here"
-                            android:inputType="textMultiLine" />
-
-                        <Button
-                            android:id="@+id/button_review"
-                            android:layout_width="350dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:drawableStart="@drawable/ic_review"
-                            android:drawablePadding="5dp"
-                            android:gravity="center"
-                            android:paddingStart="105dp"
-                            android:paddingEnd="120dp"
-                            android:singleLine="true"
-                            android:text="@string/submit_review" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -222,6 +75,12 @@
                         android:text="@string/btn_edgeIdentity_removeIdentities" />
 
                     <Button
+                        android:id="@+id/btn_getECID"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edgeIdentity_getECID" />
+
+                    <Button
                         android:id="@+id/btn_getIdentityMap"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
@@ -241,31 +100,32 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_edgeConsent"
+                    <ScrollView
+                        android:id="@+id/scrollerId1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Edge Consent APIs"
-                        android:textStyle="bold" />
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:fillViewport="true"
+                        android:scrollbars="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnResetIdentities">
 
-                    <Button
-                        android:id="@+id/btn_collectConsentY"
-                        android:layout_width="210dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeConsent_collectConsentY" />
-
-                    <Button
-                        android:id="@+id/btn_collectConsentN"
-                        android:layout_width="210dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeConsent_collectConsentN" />
-
-                    <Button
-                        android:id="@+id/btn_getConsents"
-                        android:layout_width="210dp"
-                        android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeConsent_getConsents" />
-
+                        <TextView
+                            android:id="@+id/tv_edgeIdentity_data"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_edgeIdentity_no_data"
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+                    </ScrollView>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
