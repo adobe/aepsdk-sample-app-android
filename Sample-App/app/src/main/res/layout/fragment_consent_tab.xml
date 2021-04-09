@@ -33,13 +33,13 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_edgeConsent_version"
+                        android:id="@+id/tv_Consent_version"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textAlignment="viewStart"
                         android:textAllCaps="false"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp" />
+                        android:textColor="@color/common_google_signin_btn_text_light"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -66,19 +66,19 @@
                         android:id="@+id/btn_collectConsentY"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeConsent_collectConsentY" />
+                        android:text="@string/btn_consent_collectConsentY" />
 
                     <Button
                         android:id="@+id/btn_collectConsentN"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeConsent_collectConsentN" />
+                        android:text="@string/btn_consent_collectConsentN" />
 
                     <Button
                         android:id="@+id/btn_getConsents"
                         android:layout_width="210dp"
                         android:layout_height="wrap_content"
-                        android:text="@string/btn_edgeConsent_getConsents" />
+                        android:text="@string/btn_consent_getConsents" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -111,7 +111,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/btnResetIdentities">
 
                         <TextView
-                            android:id="@+id/tv_edgeConsent_data"
+                            android:id="@+id/tv_Consent_data"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/tv_edgeIdentity_no_data"

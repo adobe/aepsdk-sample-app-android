@@ -1,5 +1,5 @@
 /*
-  Copyright 2020 Adobe
+  Copyright 2021 Adobe
   All Rights Reserved.
 
   NOTICE: Adobe permits you to use, modify, and distribute this file in
@@ -31,8 +31,8 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class EdgeConsentTab extends Fragment implements NavigationAware {
-    private static final String LOG_TAG = "EdgeConsentTab";
+public class ConsentTab extends Fragment implements NavigationAware {
+    private static final String LOG_TAG = "ConsentTab";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,18 +43,18 @@ public class EdgeConsentTab extends Fragment implements NavigationAware {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edgeconsent_tab, container, false);
+        return inflater.inflate(R.layout.fragment_consent_tab, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Card view to display registered Consent extension version
-        final TextView tv_version = getView().findViewById(R.id.tv_edgeConsent_version);
+        final TextView tv_version = getView().findViewById(R.id.tv_Consent_version);
         view.post(new Runnable() {
             @Override
             public void run() {
                 if (tv_version != null) {
-                    tv_version.setText("Edge Consent Extension version: " + Consent.extensionVersion());
+                    tv_version.setText("Consent v" + Consent.extensionVersion());
                 }
             }
         });
@@ -127,7 +127,7 @@ public class EdgeConsentTab extends Fragment implements NavigationAware {
     }
 
     private void updateTextView(final String jsonString) {
-        final TextView textViewGetData = getView().findViewById(R.id.tv_edgeConsent_data);
+        final TextView textViewGetData = getView().findViewById(R.id.tv_Consent_data);
         getView().post(new Runnable() {
             @Override
             public void run() {
