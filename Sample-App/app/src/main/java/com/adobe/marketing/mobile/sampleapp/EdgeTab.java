@@ -64,10 +64,6 @@ public class EdgeTab extends Fragment implements NavigationAware {
         new ProductItem("HAT089", "Straw Hat", 11.85, "USD")
     };
 
-    public EdgeTab() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

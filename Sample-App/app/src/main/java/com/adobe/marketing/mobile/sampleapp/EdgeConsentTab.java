@@ -34,10 +34,6 @@ import java.util.Map;
 public class EdgeConsentTab extends Fragment implements NavigationAware {
     private static final String LOG_TAG = "EdgeConsentTab";
 
-    public EdgeConsentTab() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

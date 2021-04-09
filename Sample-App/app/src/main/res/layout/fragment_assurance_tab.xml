@@ -71,7 +71,8 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="text"
-                        android:text="aepsdksampleapp://adobe?adb_validation_sessionid=b75cec63-de92-419b-98b8-8af7810cd648" />
+                        android:text="aepsdksampleapp://adobe?adb_validation_sessionid=b75cec63-de92-419b-98b8-8af7810cd648"
+                        android:textSize="14sp" />
 
                     <LinearLayout
                         android:layout_width="fill_parent"
@@ -84,7 +85,7 @@
                         <Button
                             android:id="@+id/btnConnectToAssuranceSession"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:gravity="right"
                             android:text="@string/assurance_btnConnectToAssuranceSession"
                             android:textAlignment="center" />

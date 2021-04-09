@@ -34,10 +34,6 @@ import com.google.gson.GsonBuilder;
 public class EdgeIdentityTab extends Fragment implements NavigationAware {
     private static final String LOG_TAG = "EdgeIdentityTab";
 
-    public EdgeIdentityTab() {
-        // Required empty public constructor
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

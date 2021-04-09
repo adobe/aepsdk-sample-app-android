@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,29 +39,8 @@ import java.util.Map;
  */
 public class CoreTab extends Fragment implements NavigationAware {
 
-    Button btnEmitStateEvent = null;
-    Button btnEmitActionEvent = null;
-    RadioButton rdoOptIn = null;
-    RadioButton rdoOptOut = null;
-    RadioButton rdoOptUnknown = null;
-    Button btnGetPrivacy = null;
-    TextView txtCurrentPrivacy = null;
-    Button btnCollectPII = null;
-    Button btnUpdateConfig = null;
-    Button btnSetAdvertisingId = null;
-    Button btnSetPushId = null;
-    Button btnGetECID = null;
-    Button btnGetUrlVar = null;
-    Button btnSyncId = null;
-    Button btnGetSdkId = null;
-    Button btnAppendUrl = null;
-
     boolean userIsViewingThisFragment = true;
     private static final String LOG_TAG = "Core Tab";
-
-    public CoreTab() {
-        // Required empty public constructor
-    }
 
     Toast toast = null;
     public void showToast(final String message) {
@@ -87,23 +67,22 @@ public class CoreTab extends Fragment implements NavigationAware {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         //Create references to all our components
-
-        rdoOptIn = getView().findViewById(R.id.rdoOptIn);
-        rdoOptOut = getView().findViewById(R.id.rdoOptOut);
-        rdoOptUnknown = getView().findViewById(R.id.rdoOptUnknown);
-        btnEmitStateEvent = getView().findViewById(R.id.btn_emitStateEvent);
-        btnEmitActionEvent = getView().findViewById(R.id.btn_emitActionEvent);
-        btnGetPrivacy = getView().findViewById(R.id.btn_getPrivacy);
-        txtCurrentPrivacy = getView().findViewById(R.id.text_currentPrivacy);
-        btnCollectPII = getView().findViewById(R.id.btn_collectPII);
-        btnUpdateConfig = getView().findViewById(R.id.btn_updateConfig);
-        btnSetAdvertisingId = getView().findViewById(R.id.btn_setAdvertisingId);
-        btnSetPushId = getView().findViewById(R.id.btn_setPushId);
-        btnGetECID = getView().findViewById(R.id.btn_getECID);
-        btnGetUrlVar = getView().findViewById(R.id.btn_getUrlVar);
-        btnSyncId = getView().findViewById(R.id.btn_syncId);
-        btnGetSdkId = getView().findViewById(R.id.btn_getSdkId);
-        btnAppendUrl = getView().findViewById(R.id.btn_appendUrl);
+        Button rdoOptIn = getView().findViewById(R.id.rdoOptIn);
+        Button rdoOptOut = getView().findViewById(R.id.rdoOptOut);
+        Button rdoOptUnknown = getView().findViewById(R.id.rdoOptUnknown);
+        Button btnEmitStateEvent = getView().findViewById(R.id.btn_emitStateEvent);
+        Button btnEmitActionEvent = getView().findViewById(R.id.btn_emitActionEvent);
+        Button btnGetPrivacy = getView().findViewById(R.id.btn_getPrivacy);
+        Button btnCollectPII = getView().findViewById(R.id.btn_collectPII);
+        Button btnUpdateConfig = getView().findViewById(R.id.btn_updateConfig);
+        Button btnSetAdvertisingId = getView().findViewById(R.id.btn_setAdvertisingId);
+        Button btnSetPushId = getView().findViewById(R.id.btn_setPushId);
+        Button btnGetECID = getView().findViewById(R.id.btn_getECID);
+        Button btnGetUrlVar = getView().findViewById(R.id.btn_getUrlVar);
+        Button btnSyncId = getView().findViewById(R.id.btn_syncId);
+        Button btnGetSdkId = getView().findViewById(R.id.btn_getSdkId);
+        Button btnAppendUrl = getView().findViewById(R.id.btn_appendUrl);
+        final TextView txtCurrentPrivacy = getView().findViewById(R.id.text_currentPrivacy);
 
 
         btnCollectPII.setOnClickListener(new View.OnClickListener(){
@@ -274,8 +253,6 @@ public class CoreTab extends Fragment implements NavigationAware {
                 MobileCore.setPrivacyStatus(MobilePrivacyStatus.UNKNOWN);
             }
         });
-
-
     }
 
     @Override

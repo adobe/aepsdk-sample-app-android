@@ -19,26 +19,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.adobe.marketing.mobile.Assurance;
-import com.adobe.marketing.mobile.Edge;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class AssuranceTab extends Fragment implements NavigationAware {
 
-    TextView lblEnterURL = null;
-    Button btnConnectToAssuranceSession = null;
-    EditText txtAssuranceSessionURL = null;
-
     boolean userIsViewingThisFragment = true;
-    private static final String LOG_TAG = "Assurance Tab";
-
-    public AssuranceTab() {
-        // Required empty public constructor
-    }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,12 +47,11 @@ public class AssuranceTab extends Fragment implements NavigationAware {
         });
 
         //Create references to all our components
-        lblEnterURL = getView().findViewById(R.id.lblEnterURL);
-        btnConnectToAssuranceSession = getView().findViewById(R.id.btnConnectToAssuranceSession);
-        txtAssuranceSessionURL = getView().findViewById(R.id.txtAssuranceSessionURL);
+        final Button btnConnectToAssuranceSession = getView().findViewById(R.id.btnConnectToAssuranceSession);
+        final EditText txtAssuranceSessionURL = getView().findViewById(R.id.txtAssuranceSessionURL);
 
 
-        //Setup button events
+        // start session
         btnConnectToAssuranceSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
