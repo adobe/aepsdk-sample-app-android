@@ -46,7 +46,7 @@
                 android:id="@+id/consent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tab_EdgeConsent" />
+                android:text="@string/tab_Consent" />
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/assurance"

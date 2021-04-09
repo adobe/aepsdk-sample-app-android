@@ -1,5 +1,5 @@
 /*
-  Copyright 2020 Adobe
+  Copyright 2021 Adobe
   All Rights Reserved.
 
   NOTICE: Adobe permits you to use, modify, and distribute this file in
@@ -54,7 +54,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             @Override
             public void run() {
                 if (tv_version != null) {
-                    tv_version.setText("Edge Identity Extension version: " + Identity.extensionVersion());
+                    tv_version.setText("Edge Identity v" + Identity.extensionVersion());
                 }
             }
         });

@@ -7,7 +7,7 @@
     <string name="tab_Core">Core</string>
     <string name="tab_Edge">Edge</string>
     <string name="tab_EdgeIdentity">Edge Identity</string>
-    <string name="tab_EdgeConsent">Consent</string>
+    <string name="tab_Consent">Consent</string>
 
     <string name="analytics_btnEmitActionEvent">Send trackAction Event</string>
     <string name="analytics_btnEmitStateEvent">Send trackState Event</string>
@@ -27,9 +27,9 @@
     <string name="write_review_here">Write something here.</string>
     <string name="label_select_product">Please Select a Product</string>
 
-    <string name="btn_edgeConsent_collectConsentY">Collect Consent Y</string>
-    <string name="btn_edgeConsent_collectConsentN">Collect Consent N</string>
-    <string name="btn_edgeConsent_getConsents">Get Consents</string>
+    <string name="btn_consent_collectConsentY">Collect Consent Y</string>
+    <string name="btn_consent_collectConsentN">Collect Consent N</string>
+    <string name="btn_consent_getConsents">Get Consents</string>
 
     <string name="btn_edgeIdentity_updateIdentities">Update Identities</string>
     <string name="btn_edgeIdentity_removeIdentities">Remove Identities</string>

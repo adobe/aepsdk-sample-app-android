@@ -25,7 +25,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
             new CoreTab(),
             new EdgeTab(),
             new EdgeIdentityTab(),
-            new EdgeConsentTab(),
+            new ConsentTab(),
             new AssuranceTab()
     };
 
@@ -36,7 +36,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
                 context.getString(R.string.tab_Core),
                 context.getString(R.string.tab_Edge),
                 context.getString(R.string.tab_EdgeIdentity),
-                context.getString(R.string.tab_EdgeConsent),
+                context.getString(R.string.tab_Consent),
                 context.getString(R.string.tab_Assurance)
         };
     }

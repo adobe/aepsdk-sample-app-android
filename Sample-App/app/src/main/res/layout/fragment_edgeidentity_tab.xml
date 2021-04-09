@@ -38,8 +38,8 @@
                         android:layout_height="wrap_content"
                         android:textAlignment="viewStart"
                         android:textAllCaps="false"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14sp" />
+                        android:textColor="@color/common_google_signin_btn_text_light"
+                        android:textSize="11sp" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

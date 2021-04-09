@@ -83,7 +83,7 @@ public class EdgeTab extends Fragment implements NavigationAware {
             @Override
             public void run() {
                 if (tv_version != null) {
-                    tv_version.setText("Edge Extension version: " + Edge.extensionVersion());
+                    tv_version.setText("Edge v" + Edge.extensionVersion());
                 }
             }
         });

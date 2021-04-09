@@ -16,7 +16,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     Button btnCore;
     Button btnEdge;
     Button btnEdgeIdentity;
-    Button btnEdgeConsent;
+    Button btnConsent;
     Button btnAssurance;
 
     @Override
@@ -36,13 +36,13 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnEdge = findViewById(R.id.btn_edge);
         btnAssurance = findViewById(R.id.btn_assurance);
         btnEdgeIdentity = findViewById(R.id.btn_edgeidentity);
-        btnEdgeConsent = findViewById(R.id.btn_edgeconsent);
+        btnConsent = findViewById(R.id.btn_consent);
 
         btnCore.setOnClickListener(this);
         btnEdge.setOnClickListener(this);
         btnAssurance.setOnClickListener(this);
         btnEdgeIdentity.setOnClickListener(this);
-        btnEdgeConsent.setOnClickListener(this);
+        btnConsent.setOnClickListener(this);
     }
 
     private void openMainActivity(int tab) {
@@ -60,7 +60,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btn_edgeidentity: openMainActivity(2);
                 break;
-            case R.id.btn_edgeconsent: openMainActivity(3);
+            case R.id.btn_consent: openMainActivity(3);
                 break;
             case R.id.btn_assurance: openMainActivity(4);
                 break;

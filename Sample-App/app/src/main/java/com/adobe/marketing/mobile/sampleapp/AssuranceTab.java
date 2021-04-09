@@ -8,7 +8,6 @@
  */
 package com.adobe.marketing.mobile.sampleapp;
 
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -43,7 +42,7 @@ public class AssuranceTab extends Fragment implements NavigationAware {
             @Override
             public void run() {
                 if (tv_version != null) {
-                    tv_version.setText("Assurance Extension version: " + Assurance.extensionVersion());
+                    tv_version.setText("Assurance v" + Assurance.extensionVersion());
                 }
             }
         });
