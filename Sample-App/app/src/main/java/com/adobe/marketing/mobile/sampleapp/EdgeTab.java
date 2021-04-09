@@ -55,17 +55,14 @@ public class EdgeTab extends Fragment implements NavigationAware {
 
     // set this property to your org as shown in your custom product reviews schema
     private static final String TENANT_ID = "";
+    private static final String LOG_TAG = "EdgeTab";
 
-    private final ProductItem[] products = new ProductItem[] {
-        new ProductItem("SHOES123", "Red canvas shoes", 34.76, "USD"),
-        new ProductItem("SHOES456", "Brown leather shoes", 52.81, "USD"),
-        new ProductItem("HAT567", "Wool Hat", 25.15, "USD"),
-        new ProductItem("HAT089", "Straw Hat", 11.85, "USD")
+    private final ProductItem[] products = new ProductItem[]{
+            new ProductItem("SHOES123", "Red canvas shoes", 34.76, "USD"),
+            new ProductItem("SHOES456", "Brown leather shoes", 52.81, "USD"),
+            new ProductItem("HAT567", "Wool Hat", 25.15, "USD"),
+            new ProductItem("HAT089", "Straw Hat", 11.85, "USD")
     };
-
-    public EdgeTab() {
-        // Required empty public constructor
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,6 +78,16 @@ public class EdgeTab extends Fragment implements NavigationAware {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
+        final TextView tv_version = getView().findViewById(R.id.tv_edge_version);
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                if (tv_version != null) {
+                    tv_version.setText("Edge v" + Edge.extensionVersion());
+                }
+            }
+        });
+
         Button buttonAddToCart = view.findViewById(R.id.button_add_to_cart);
         buttonAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,8 +125,8 @@ public class EdgeTab extends Fragment implements NavigationAware {
                 EditText productReviewEditText = getView().findViewById(R.id.text_review_text);
 
                 String reviewerId = reviewerEmailEditText.getText().toString();
-                ProductItem product = (ProductItem)productsSpinner.getSelectedItem();
-                int rating = (int)ratingBar.getRating();
+                ProductItem product = (ProductItem) productsSpinner.getSelectedItem();
+                int rating = (int) ratingBar.getRating();
                 String productReview = productReviewEditText.getText().toString();
 
                 sendProductReviewXdmEvent(product, reviewerId, rating, productReview);
@@ -135,6 +142,7 @@ public class EdgeTab extends Fragment implements NavigationAware {
         // Setup product list spinner
         Spinner spinner = view.findViewById(R.id.products_spinner);
         spinner.setAdapter(new SpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, products));
+
     }
 
     @Override

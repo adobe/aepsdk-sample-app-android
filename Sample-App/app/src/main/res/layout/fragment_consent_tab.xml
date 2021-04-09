@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img2"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".EdgeTab">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/layoutMain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_Consent_version"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/common_google_signin_btn_text_light"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_edgeConsent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Edge Consent APIs"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_collectConsentY"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_consent_collectConsentY" />
+
+                    <Button
+                        android:id="@+id/btn_collectConsentN"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_consent_collectConsentN" />
+
+                    <Button
+                        android:id="@+id/btn_getConsents"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_consent_getConsents" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <ScrollView
+                        android:id="@+id/scrollerId1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:fillViewport="true"
+                        android:scrollbars="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/btnResetIdentities">
+
+                        <TextView
+                            android:id="@+id/tv_Consent_data"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tv_edgeIdentity_no_data"
+                            android:textAlignment="viewStart"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="14sp" />
+                    </ScrollView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -15,6 +15,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btnCore;
     Button btnEdge;
+    Button btnEdgeIdentity;
+    Button btnConsent;
     Button btnAssurance;
 
     @Override
@@ -33,10 +35,14 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnCore = findViewById(R.id.btn_core);
         btnEdge = findViewById(R.id.btn_edge);
         btnAssurance = findViewById(R.id.btn_assurance);
+        btnEdgeIdentity = findViewById(R.id.btn_edgeidentity);
+        btnConsent = findViewById(R.id.btn_consent);
 
         btnCore.setOnClickListener(this);
         btnEdge.setOnClickListener(this);
         btnAssurance.setOnClickListener(this);
+        btnEdgeIdentity.setOnClickListener(this);
+        btnConsent.setOnClickListener(this);
     }
 
     private void openMainActivity(int tab) {
@@ -48,11 +54,15 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_core: openMainActivity(1);
+            case R.id.btn_core: openMainActivity(0);
                 break;
-            case R.id.btn_edge: openMainActivity(2);
+            case R.id.btn_edge: openMainActivity(1);
                 break;
-            case R.id.btn_assurance: openMainActivity(0);
+            case R.id.btn_edgeidentity: openMainActivity(2);
+                break;
+            case R.id.btn_consent: openMainActivity(3);
+                break;
+            case R.id.btn_assurance: openMainActivity(4);
                 break;
             default:
                 break;

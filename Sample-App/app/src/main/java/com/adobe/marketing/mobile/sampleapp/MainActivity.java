@@ -20,18 +20,16 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
-import 	com.google.android.material.tabs.*;
-import  androidx.viewpager.widget.ViewPager;
+import com.google.android.material.tabs.*;
 
+import androidx.viewpager.widget.ViewPager;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "MainActivity";
-
+    public PageAdapter pagerAdapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    public PageAdapter pagerAdapter;
-
 
     @Override
     public void onPause() {
@@ -62,42 +60,36 @@ public class MainActivity extends AppCompatActivity {
 
         //Set up the tab system
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        viewPager = findViewById(R.id.viewpager);
-
         pagerAdapter = new PageAdapter(getSupportFragmentManager(), getApplicationContext(), tabLayout.getTabCount());
+
+        viewPager = findViewById(R.id.viewpager);
         viewPager.setAdapter(pagerAdapter);
-
         viewPager.setCurrentItem(tab, true);
-
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) { }
 
             private int previousPosition = 0;
 
             @Override
             public void onPageSelected(int position) {
 
-                if(pagerAdapter.GetFragmentArray()[previousPosition] instanceof NavigationAware){
-                    NavigationAware tab = (NavigationAware)pagerAdapter.GetFragmentArray()[previousPosition];
+                if (pagerAdapter.GetFragmentArray()[previousPosition] instanceof NavigationAware) {
+                    NavigationAware tab = (NavigationAware) pagerAdapter.GetFragmentArray()[previousPosition];
                     tab.OnNavigateAway();
                 }
 
                 previousPosition = position;
 
-                if(pagerAdapter.GetFragmentArray()[position] instanceof NavigationAware){
-                    NavigationAware tab = (NavigationAware)pagerAdapter.GetFragmentArray()[position];
+                if (pagerAdapter.GetFragmentArray()[position] instanceof NavigationAware) {
+                    NavigationAware tab = (NavigationAware) pagerAdapter.GetFragmentArray()[position];
                     tab.OnNavigateTo();
                 }
             }
 
             @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
+            public void onPageScrollStateChanged(int state) { }
         });
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -106,24 +98,15 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 Map<String, String> additionalContextData = new HashMap<String, String>();
                 MobileCore.trackState(tab.getText().toString(), null);
-
-
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabUnselected(TabLayout.Tab tab) { }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onTabReselected(TabLayout.Tab tab) { }
         });
 
-
-
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
     }
 }

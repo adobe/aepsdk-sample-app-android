@@ -21,14 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            app:tabTextColor="@android:color/black"
-            app:tabTextAppearance="@style/MineCustomTabText">
-
-            <com.google.android.material.tabs.TabItem
-                android:id="@+id/assurance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tab_Assurance" />
+            app:tabTextAppearance="@style/MineCustomTabText"
+            app:tabTextColor="@color/colorHalfwhite">
 
             <com.google.android.material.tabs.TabItem
                 android:id="@+id/analytics"
@@ -41,6 +35,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_Edge" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/edgeidentity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_EdgeIdentity" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/consent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_Consent" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/assurance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_Assurance" />
 
         </com.google.android.material.tabs.TabLayout>
 

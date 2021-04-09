@@ -22,18 +22,22 @@ public class PageAdapter extends FragmentStatePagerAdapter {
     private String[] tabTitles;
 
     private Fragment[] tabFragments = new Fragment[] {
-            new AssuranceTab(),
-            new AnalyticsTab(),
-            new EdgeTab()
+            new CoreTab(),
+            new EdgeTab(),
+            new EdgeIdentityTab(),
+            new ConsentTab(),
+            new AssuranceTab()
     };
 
     public PageAdapter(FragmentManager fm, final Context context, int numOfTabs) {
         super(fm);
         this.numoftabs = numOfTabs;
         tabTitles = new String[] {
-                context.getString(R.string.tab_Assurance),
                 context.getString(R.string.tab_Core),
-                context.getString(R.string.tab_Edge)
+                context.getString(R.string.tab_Edge),
+                context.getString(R.string.tab_EdgeIdentity),
+                context.getString(R.string.tab_Consent),
+                context.getString(R.string.tab_Assurance)
         };
     }
 

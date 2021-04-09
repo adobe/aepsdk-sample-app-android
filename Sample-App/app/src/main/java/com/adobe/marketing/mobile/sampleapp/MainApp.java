@@ -13,13 +13,13 @@ import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Assurance;
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.MobileCore;
-import com.adobe.marketing.mobile.Identity;
 import com.adobe.marketing.mobile.Lifecycle;
 import com.adobe.marketing.mobile.Analytics;
 import com.adobe.marketing.mobile.Signal;
 import com.adobe.marketing.mobile.UserProfile;
 import com.adobe.marketing.mobile.InvalidInitException;
 import com.adobe.marketing.mobile.LoggingMode;
+import com.adobe.marketing.mobile.edge.consent.Consent;
 
 import android.app.Application;
 import android.content.Context;
@@ -31,14 +31,14 @@ public class MainApp extends Application {
     private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
 
     private static Context context;
-    public static Context getAppContext(){
+
+    public static Context getAppContext() {
         return MainApp.context;
     }
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
-
         MainApp.context = getApplicationContext();
 
         MobileCore.setApplication(this);
@@ -46,27 +46,28 @@ public class MainApp extends Application {
         MobileCore.setSmallIconResourceID(R.mipmap.ic_launcher_round);
         MobileCore.setLargeIconResourceID(R.mipmap.ic_launcher_round);
 
-        try{
+        try {
             Analytics.registerExtension();
             UserProfile.registerExtension();
-            Identity.registerExtension();
+            Consent.registerExtension();
+            com.adobe.marketing.mobile.Identity.registerExtension();
+            com.adobe.marketing.mobile.edge.identity.Identity.registerExtension();
             Lifecycle.registerExtension();
             Signal.registerExtension();
             Edge.registerExtension();
             Assurance.registerExtension();
 
             MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
-            MobileCore.start(new AdobeCallback () {
+            MobileCore.start(new AdobeCallback() {
 
-                    @Override
-                    public void call(Object o) {
+                @Override
+                public void call(Object o) {
+                    Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
 
-                        Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
-
-                    }
-                });
-                 } catch (InvalidInitException e) {
-                    e.printStackTrace();
-            }
+                }
+            });
+        } catch (InvalidInitException e) {
+            e.printStackTrace();
+        }
     }
 }
