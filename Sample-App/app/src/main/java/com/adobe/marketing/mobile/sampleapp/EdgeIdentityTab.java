@@ -12,10 +12,6 @@ package com.adobe.marketing.mobile.sampleapp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +23,19 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.EdgeCallback;
 import com.adobe.marketing.mobile.EdgeEventHandle;
 import com.adobe.marketing.mobile.ExperienceEvent;
+import com.adobe.marketing.mobile.edge.consent.Consent;
+import com.adobe.marketing.mobile.edge.identity.AuthenticatedState;
+import com.adobe.marketing.mobile.edge.identity.Identity;
+import com.adobe.marketing.mobile.edge.identity.IdentityItem;
+import com.adobe.marketing.mobile.edge.identity.IdentityMap;
 import com.adobe.marketing.mobile.xdm.Commerce;
 import com.adobe.marketing.mobile.xdm.MobileSDKCommerceSchema;
 import com.adobe.marketing.mobile.xdm.Order;
@@ -39,6 +44,8 @@ import com.adobe.marketing.mobile.xdm.ProductListAdds;
 import com.adobe.marketing.mobile.xdm.ProductListItemsItem;
 import com.adobe.marketing.mobile.xdm.Purchases;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +56,7 @@ import java.util.Map;
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class EdgeTab extends Fragment implements NavigationAware {
+public class EdgeIdentityTab extends Fragment implements NavigationAware {
     // set this property to forward the product reviews to your dataset
     private static final String PRODUCT_REVIEW_DATASET_ID = "";
 
@@ -64,7 +71,7 @@ public class EdgeTab extends Fragment implements NavigationAware {
         new ProductItem("HAT089", "Straw Hat", 11.85, "USD")
     };
 
-    public EdgeTab() {
+    public EdgeIdentityTab() {
         // Required empty public constructor
     }
 
@@ -81,16 +88,6 @@ public class EdgeTab extends Fragment implements NavigationAware {
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        final TextView tv_version  = getView().findViewById(R.id.tv_edge_version);
-        view.post(new Runnable() {
-            @Override
-            public void run() {
-                if (tv_version != null) {
-                    tv_version.setText("Edge Extension version: " + Edge.extensionVersion());
-                }
-            }
-        });
-
         Button buttonAddToCart = view.findViewById(R.id.button_add_to_cart);
         buttonAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +143,77 @@ public class EdgeTab extends Fragment implements NavigationAware {
         Spinner spinner = view.findViewById(R.id.products_spinner);
         spinner.setAdapter(new SpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, products));
 
+
+        // EdgeIdentity API's
+        Button btnUpdateIdentityMap = getView().findViewById(R.id.btn_updateIdentityMap);
+        Button btnRemoveIdentityMap = getView().findViewById(R.id.btn_removeIdentityMap);
+        Button btnGetIdentityMap = getView().findViewById(R.id.btn_getIdentityMap);
+
+        btnUpdateIdentityMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IdentityMap map = new IdentityMap();
+                map.addItem(new IdentityItem("primary@email.com", AuthenticatedState.AUTHENTICATED, false), "Email");
+                map.addItem(new IdentityItem("secondary@email.com"), "Email");
+                map.addItem(new IdentityItem("uniqueUserID", AuthenticatedState.AUTHENTICATED, true), "UserId");
+                Identity.updateIdentities(map);
+            }
+        });
+
+        btnRemoveIdentityMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Identity.removeIdentity(new IdentityItem("secondary@email.com"), "Email");
+            }
+        });
+
+        btnGetIdentityMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Identity.getIdentities(new AdobeCallback<IdentityMap>() {
+                    @Override
+                    public void call(final IdentityMap map) {
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        String json = gson.toJson(map);
+                        Log.i(LOG_TAG, String.format("Received Identities from API = %s", json));
+                    }
+                });
+            }
+        });
+
+
+        // EdgeConsent API's
+        Button btnCollectConsentY = getView().findViewById(R.id.btn_collectConsentY);
+        Button btnCollectConsentN = getView().findViewById(R.id.btn_collectConsentN);
+        Button btnGetConsents = getView().findViewById(R.id.btn_getConsents);
+
+        btnCollectConsentY.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                collectConsentUpdate("y");
+            }
+        });
+
+        btnCollectConsentN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                collectConsentUpdate("n");
+            }
+        });
+
+        btnGetConsents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Consent.getConsents(new AdobeCallback<Map<String, Object>>() {
+                    @Override
+                    public void call(Map<String, Object> map) {
+                        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                        String json = gson.toJson(map);
+                        Log.i(LOG_TAG, String.format("Received Consent from API = %s", json));
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -346,4 +414,22 @@ public class EdgeTab extends Fragment implements NavigationAware {
             return label;
         }
     }
-}
+
+    private void collectConsentUpdate(final String value) {
+        if (value == null || value.isEmpty()) {
+            return;
+        }
+
+        Consent.update(new HashMap<String, Object>() {
+            {
+                put("consents", new HashMap<String, Object>() {
+                    {
+                        put("collect", new HashMap<String, Object>() {
+                            {
+                                put("val", value);
+                            }
+                        });
+                    }
+                });
+            }
+    

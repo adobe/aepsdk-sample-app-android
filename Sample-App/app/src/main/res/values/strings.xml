@@ -5,6 +5,9 @@
     <string name="tab_Assurance">Assurance</string>
     <string name="tab_Analytics">Analytics</string>
     <string name="tab_Core">Core</string>
+    <string name="tab_Edge">Edge</string>
+    <string name="tab_EdgeIdentity">Edge Identity</string>
+    <string name="tab_EdgeConsent">Consent</string>
 
     <string name="analytics_btnEmitActionEvent">Send trackAction Event</string>
     <string name="analytics_btnEmitStateEvent">Send trackState Event</string>
@@ -12,7 +15,6 @@
     <string name="analytics_btnClearQueue">Clear Queue</string>
 
     <string name="assurance_btnConnectToAssuranceSession">Connect</string>
-    <string name="tab_Edge">Edge</string>
     <string name="commerce_example">XDM Commerce Example</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="purchase">Purchase</string>
@@ -32,5 +34,18 @@
     <string name="btn_edgeIdentity_updateIdentities">Update Identities</string>
     <string name="btn_edgeIdentity_removeIdentities">Remove Identities</string>
     <string name="btn_edgeIdentity_getIdentities">Get Identities</string>
+    <string name="btn_edgeIdentity_getECID">Get ECID</string>
+    <string name="tv_edgeIdentity_no_data">Click button to refresh</string>
+
+
+    <string name="home_tv_extensions">Extensions</string>
+    <string name="home_btn_core">Core</string>
+    <string name="home_btn_edge">Edge</string>
+    <string name="home_btn_edgeidentity">Edge Identity</string>
+    <string name="home_tv_core">CORE</string>
+    <string name="home_btn_assurance">Assurance</string>
+    <string name="home_btn_consent">Consent</string>
+    <string name="home_tv_validation">VALIDATION</string>
+    <string name="home_tv_edge">EDGE</string>
 
 </resources>

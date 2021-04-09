@@ -6,30 +6,117 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
 
-    <Button
-        android:id="@+id/btn_core"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Core"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <TextView
+        android:id="@+id/tv_header"
+        android:layout_width="377dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="13dp"
+        android:text="@string/home_tv_extensions"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/btn_core"
+        android:layout_width="373dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="21dp"
+        android:text="@string/home_btn_core"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_core" />
+
+    <Button
         android:id="@+id/btn_edge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edge"
-        app:layout_constraintStart_toStartOf="@+id/btn_core"
-        app:layout_constraintTop_toBottomOf="@+id/btn_core" />
+        android:layout_width="374dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="21dp"
+        android:text="@string/home_btn_edge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edge" />
+
+    <Button
+        android:id="@+id/btn_edgeidentity"
+        android:layout_width="374dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="21dp"
+        android:text="@string/home_btn_edgeidentity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edge" />
+
+    <Button
+        android:id="@+id/btn_edgeconsent"
+        android:layout_width="374dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="21dp"
+        android:text="@string/home_btn_consent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_edge" />
 
     <Button
         android:id="@+id/btn_assurance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Assurance"
-        app:layout_constraintEnd_toEndOf="@+id/btn_edge"
-        app:layout_constraintStart_toStartOf="@+id/btn_edge"
-        app:layout_constraintTop_toBottomOf="@+id/btn_edge" />
+        android:layout_width="381dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="21dp"
+        android:text="@string/home_btn_assurance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_validation" />
+
+    <TextView
+        android:id="@+id/tv_core"
+        android:layout_width="377dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="13dp"
+        android:text="@string/home_tv_core"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_header" />
+
+    <TextView
+        android:id="@+id/tv_edge"
+        android:layout_width="377dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="13dp"
+        android:text="@string/home_tv_edge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_core" />
+
+    <TextView
+        android:id="@+id/tv_validation"
+        android:layout_width="377dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="13dp"
+        android:text="@string/home_tv_validation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_edgeconsent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
