@@ -25,9 +25,6 @@ import android.app.Application;
 import android.content.Context;
 import android.util.Log;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
@@ -41,7 +38,6 @@ public class MainApp extends Application {
     @Override
     public void onCreate(){
         super.onCreate();
-
         MainApp.context = getApplicationContext();
 
         MobileCore.setApplication(this);
@@ -63,14 +59,14 @@ public class MainApp extends Application {
             MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
             MobileCore.start(new AdobeCallback () {
 
-                    @Override
-                    public void call(Object o) {
-                        Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
+                @Override
+                public void call(Object o) {
+                    Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
 
-                    }
-                });
-                 } catch (InvalidInitException e) {
-                    e.printStackTrace();
-            }
+                }
+            });
+        } catch (InvalidInitException e) {
+            e.printStackTrace();
+        }
     }
 }
