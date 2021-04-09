@@ -31,7 +31,7 @@ import java.util.Map;
 public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
-    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "3805cb8645dd/b854d6a34ab5/launch-bdc2d5a05f2a-development";
+    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
 
     private static Context context;
     public static Context getAppContext(){
@@ -65,10 +65,6 @@ public class MainApp extends Application {
 
                     @Override
                     public void call(Object o) {
-                        Map<String, Object> config = new HashMap<>();
-                        config.put("edge.configId", "d3d079e7-130e-4ec1-88d7-c328eb9815c4");
-
-                        MobileCore.updateConfiguration(config);
                         Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
 
                     }

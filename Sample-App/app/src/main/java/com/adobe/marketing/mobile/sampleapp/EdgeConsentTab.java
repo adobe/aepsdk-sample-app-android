@@ -88,14 +88,10 @@ public class EdgeConsentTab extends Fragment implements NavigationAware {
     }
 
     @Override
-    public void OnNavigateTo() {
-
-    }
+    public void OnNavigateTo() { }
 
     @Override
-    public void OnNavigateAway() {
-
-    }
+    public void OnNavigateAway() { }
 
     private void collectConsentUpdate(final String value) {
         if (value == null || value.isEmpty()) {

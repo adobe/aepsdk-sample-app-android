@@ -107,14 +107,10 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
     }
 
     @Override
-    public void OnNavigateTo() {
-
-    }
+    public void OnNavigateTo() { }
 
     @Override
-    public void OnNavigateAway() {
-
-    }
+    public void OnNavigateAway() { }
 
     private void getIdentities() {
         Identity.getIdentities(new AdobeCallback<IdentityMap>() {
