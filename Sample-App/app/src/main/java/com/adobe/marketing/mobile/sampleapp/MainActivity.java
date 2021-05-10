@@ -10,6 +10,7 @@ package com.adobe.marketing.mobile.sampleapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.adobe.marketing.mobile.Messaging;
 import com.adobe.marketing.mobile.MobileCore;
 
 import java.util.Map;
@@ -53,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
         final Intent intent = getIntent();
         final Uri data = intent.getData();
         int tab = intent.getIntExtra(AppConstants.INTENT_TAB_KEY, AppConstants.TAB_CORE);
+
+        // Messaging track notification click
+        final boolean isAppOpenFromPushInteraction = intent.getBooleanExtra(AppConstants.INTENT_FROM_PUSH, false);
+        if (isAppOpenFromPushInteraction) {
+            // tracking application opened with no custom action
+            Messaging.handleNotificationResponse(intent, true, null);
+        }
 
         if (data != null) {
             Log.d(LOG_TAG, "Connected successfully to Assurance with the URI : " + data.toString());

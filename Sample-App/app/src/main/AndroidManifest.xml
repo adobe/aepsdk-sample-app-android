@@ -32,9 +32,11 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
                     android:host="adobe"
                     android:scheme="aepsdksampleapp" />
@@ -44,13 +46,25 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
         <activity android:name=".MainActivity" />
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBJC-MlfUopWa_IMZM9-yc5HEwn331nMok" />
+
         <activity android:name="com.adobe.marketing.mobile.FullscreenMessageActivity" />
+        <receiver android:name="com.adobe.marketing.mobile.LocalNotificationHandler" />
+
+        <!--    Messaging    -->
+        <service
+            android:name=".MyFirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <receiver android:name="com.adobe.marketing.mobile.LocalNotificationHandler" />
 
     </application>

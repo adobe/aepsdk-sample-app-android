@@ -26,7 +26,8 @@ public class PageAdapter extends FragmentStatePagerAdapter {
             new EdgeTab(),
             new EdgeIdentityTab(),
             new ConsentTab(),
-            new AssuranceTab()
+            new AssuranceTab(),
+            new MessageTab()
     };
 
     public PageAdapter(FragmentManager fm, final Context context, int numOfTabs) {
@@ -37,7 +38,8 @@ public class PageAdapter extends FragmentStatePagerAdapter {
                 context.getString(R.string.tab_Edge),
                 context.getString(R.string.tab_EdgeIdentity),
                 context.getString(R.string.tab_Consent),
-                context.getString(R.string.tab_Assurance)
+                context.getString(R.string.tab_Assurance),
+                context.getString(R.string.tab_Messaging)
         };
     }
 
