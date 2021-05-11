@@ -16,6 +16,9 @@ This repository contains the Android sample app for the AEP SDK.
 - Import the Sample-App/settings.gradle file into Android Studio.
 - Run Android `app` on the emulator or on real device.
 
+## Documentation
+Follow the [documentation](Documentation/README.md) for using the messaging features.
+
 ## Contributing
 
 Contributions are welcomed! Read the [Contributing Guide](./.github/CONTRIBUTING.md) for more information.
