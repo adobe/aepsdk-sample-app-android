@@ -34,13 +34,7 @@ import androidx.annotation.NonNull;
 public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
-    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "3149c49c3910/6a68c2e19c81/launch-4b2394565377-development";
-
-    // messaging
-    // Update this dataset with an experience event dataset id.
-    static final String EMAIL_UPDATE_DATASET = "609eb4fa52702b194880d383";
-
-
+    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
     private static Context context;
 
     public static Context getAppContext() {

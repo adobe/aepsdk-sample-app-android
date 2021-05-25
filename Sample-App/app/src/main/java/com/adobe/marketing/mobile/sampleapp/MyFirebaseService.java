@@ -91,7 +91,7 @@ public class MyFirebaseService extends FirebaseMessagingService {
         String url = payload.getImageUrl();
         if (url!= null && !url.isEmpty()) {
             Future<Bitmap> bitmapTarget = Glide.with(this).asBitmap().load(url).submit();
-            Bitmap image = null;
+            Bitmap image;
             try {
                 image = bitmapTarget.get();
                 notificationBuilder.setLargeIcon(image).setStyle(new NotificationCompat.BigPictureStyle().bigPicture(image).bigLargeIcon(null));
