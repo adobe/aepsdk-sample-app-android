@@ -26,72 +26,16 @@
                     android:padding="20dp">
 
                     <TextView
-                        android:id="@+id/tv_lbl_profileLabel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Provide the email id"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
-
-
-                    <EditText
-                        android:id="@+id/et_emailId"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textSize="18sp"
-                        android:textIsSelectable="true"
-                        android:text=""
-                        app:layout_constraintTop_toBottomOf="@+id/tv_lbl_profileLabel" />
-
-                    <Button
-                        android:id="@+id/btn_sendEmail"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textSize="18sp"
-                        android:textIsSelectable="true"
-                        android:text="Sync Email Id"
-                        app:layout_constraintTop_toBottomOf="@+id/et_emailId" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="20dp">
-
-                    <TextView
                         android:id="@+id/tv_lbl_ecidLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="This profile's ecid is"
+                        android:text=""
+                        android:textIsSelectable="true"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        />
-
-                    <TextView
-                        android:id="@+id/tv_ecIDText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:textSize="18sp"
-                        android:textIsSelectable="true"
-                        android:text=""
-                        app:layout_constraintTop_toBottomOf="@+id/tv_lbl_ecidLabel" />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

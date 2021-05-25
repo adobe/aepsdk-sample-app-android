@@ -28,10 +28,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MessageTab extends Fragment implements NavigationAware {
+public class MessageTab extends Fragment {
     TextView tvECID;
-    EditText etEmail;
-    Button btnSyncEmail;
 
     private static final String LOG_TAG = "Assurance Tab";
 
@@ -49,44 +47,7 @@ public class MessageTab extends Fragment implements NavigationAware {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        tvECID = view.findViewById(R.id.tv_ecIDText);
-        etEmail = view.findViewById(R.id.et_emailId);
-        btnSyncEmail = (Button) view.findViewById(R.id.btn_sendEmail);
-
-        btnSyncEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Identity.getExperienceCloudId(new AdobeCallback<String>() {
-                    @Override
-                    public void call(final String ecid) {
-                        Map<String, Object> xdm = new HashMap<>();
-                        Map<String, Object> identity = new LinkedHashMap<>();
-
-                        ArrayList<Map<String, String>> ecidList = new ArrayList<>();
-                        Map<String, String> ecidID = new HashMap<>();
-                        ecidID.put("id", ecid);
-                        ecidList.add(ecidID);
-                        identity.put("ECID", ecidList);
-
-                        ArrayList<Map<String, String>> emailList = new ArrayList<>();
-                        Map<String, String> emailID = new HashMap<>();
-                        emailID.put("id", etEmail.getText().toString());
-                        emailList.add(emailID);
-                        identity.put("Email", emailList);
-
-                        xdm.put("identityMap", identity);
-
-                        ExperienceEvent event = new ExperienceEvent.Builder().setData(null).setXdmSchema(xdm, MainApp.EMAIL_UPDATE_DATASET).build();
-                        Edge.sendEvent(event, new EdgeCallback() {
-                            @Override
-                            public void onComplete(List<EdgeEventHandle> list) {
-                                Log.d(LOG_TAG, "onComplete");
-                            }
-                        });
-                    }
-                });
-            }
-        });
+        tvECID = view.findViewById(R.id.tv_lbl_ecidLabel);
     }
 
     @Override
@@ -102,16 +63,11 @@ public class MessageTab extends Fragment implements NavigationAware {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        tvECID.setText(ecid);
+                        String text = String.format("Messaging SDK setup is complete with ECID - %s. \n\nFor more details please take a look at the documentation in the github repository.", ecid);
+                        tvECID.setText(text);
                     }
                 });
             }
         });
     }
-
-    @Override
-    public void OnNavigateTo() { }
-
-    @Override
-    public void OnNavigateAway() { }
 }
