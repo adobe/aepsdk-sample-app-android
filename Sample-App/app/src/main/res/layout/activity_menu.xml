@@ -1,122 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tv_header"
-        android:layout_width="377dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="13dp"
-        android:text="@string/home_tv_extensions"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="21dp"
+        tools:context=".MenuActivity">
 
-    <Button
-        android:id="@+id/btn_core"
-        android:layout_width="373dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="21dp"
-        android:text="@string/home_btn_core"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_core" />
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/home_tv_extensions"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_edge"
-        android:layout_width="374dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="21dp"
-        android:text="@string/home_btn_edge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_edge" />
+        <TextView
+            android:id="@+id/tv_core"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/home_tv_core"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header" />
 
-    <Button
-        android:id="@+id/btn_edgeidentity"
-        android:layout_width="374dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="21dp"
-        android:text="@string/home_btn_edgeidentity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_edge" />
+        <Button
+            android:id="@+id/btn_core"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/home_btn_core"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_core" />
 
-    <Button
-        android:id="@+id/btn_consent"
-        android:layout_width="374dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="21dp"
-        android:text="@string/home_btn_consent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_edge" />
+        <TextView
+            android:id="@+id/tv_edge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/home_tv_edge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_core" />
 
-    <Button
-        android:id="@+id/btn_assurance"
-        android:layout_width="381dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="21dp"
-        android:text="@string/home_btn_assurance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_validation" />
+        <Button
+            android:id="@+id/btn_edge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/home_btn_edge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_edge" />
 
-    <TextView
-        android:id="@+id/tv_core"
-        android:layout_width="377dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="13dp"
-        android:text="@string/home_tv_core"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_header" />
+        <Button
+            android:id="@+id/btn_edgeidentity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/home_btn_edgeidentity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edge" />
 
-    <TextView
-        android:id="@+id/tv_edge"
-        android:layout_width="377dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="13dp"
-        android:text="@string/home_tv_edge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_core" />
+        <Button
+            android:id="@+id/btn_consent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/home_btn_consent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_edgeidentity" />
 
-    <TextView
-        android:id="@+id/tv_validation"
-        android:layout_width="377dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="13dp"
-        android:text="@string/home_tv_validation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_consent" />
+        <TextView
+            android:id="@+id/tv_validation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/home_tv_validation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_consent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_assurance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/home_btn_assurance"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_validation" />
+
+        <TextView
+            android:id="@+id/tv_messaging"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/home_tv_messaging"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_assurance" />
+
+        <Button
+            android:id="@+id/btn_messaging"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/home_btn_messaging"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_messaging" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
