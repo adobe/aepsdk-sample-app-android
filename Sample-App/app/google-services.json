@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "920052374347",
+    "project_id": "aepsampleapp-b1dad",
+    "storage_bucket": "aepsampleapp-b1dad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:920052374347:android:bd05333f829bbc8b0f26ce",
+        "android_client_info": {
+          "package_name": "com.adobe.marketing.mobile.sampleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "920052374347-5j33fr2pvk41i5998553t0gip5ejb3m1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB013K72IljCH9X4i4haYFCd0XnO0MdBGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "920052374347-5j33fr2pvk41i5998553t0gip5ejb3m1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
