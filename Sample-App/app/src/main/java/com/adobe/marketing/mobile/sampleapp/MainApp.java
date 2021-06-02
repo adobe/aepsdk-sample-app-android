@@ -76,19 +76,23 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
 
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(LOG_TAG, "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
+        try {
+            FirebaseMessaging.getInstance().getToken()
+                    .addOnCompleteListener(new OnCompleteListener<String>() {
+                        @Override
+                        public void onComplete(@NonNull Task<String> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w(LOG_TAG, "Fetching FCM registration token failed", task.getException());
+                                return;
+                            }
 
-                        // Get new FCM registration token
-                        String token = task.getResult();
-                        MobileCore.setPushIdentifier(token);
-                    }
-                });
+                            // Get new FCM registration token
+                            String token = task.getResult();
+                            MobileCore.setPushIdentifier(token);
+                        }
+                    });
+        } catch (IllegalArgumentException e) {
+            Log.e(LOG_TAG, "IllegalArgumentException - Check if google-services.json is added and is correctly configured. \nError message: " + e.getLocalizedMessage());
+        }
     }
 }
