@@ -92,7 +92,7 @@ public class MainApp extends Application {
                         }
                     });
         } catch (IllegalArgumentException e) {
-            Log.e(LOG_TAG, "Error while fetching token. Check if google-services.json is added");
+            Log.e(LOG_TAG, "IllegalArgumentException - Check if google-services.json is added and is correctly configured. \nError message: " + e.getLocalizedMessage());
         }
     }
 }
