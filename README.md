@@ -17,6 +17,11 @@ This repository contains the Android sample app for the AEP SDK.
 - Run Android `app` on the emulator or on real device.
 
 ## Documentation
+### Launch Edge Extensions Prerequisites
+App needs to be configured with the following edge extensions in Launch before it can be used: 
+[Edge](https://aep-sdks.gitbook.io/docs/foundation-extensions/experience-platform-extension), [Edge Identity](https://aep-sdks.gitbook.io/docs/foundation-extensions/identity-for-edge-network), [Consent](https://aep-sdks.gitbook.io/docs/foundation-extensions/consent-for-edge-network), [Messaging](https://aep-sdks.gitbook.io/docs/beta/adobe-journey-optimizer#configure-extension-in-launch)
+
+### Messaging
 Follow the [documentation](Documentation/README.md) for using the messaging features.
 
 ## Contributing
