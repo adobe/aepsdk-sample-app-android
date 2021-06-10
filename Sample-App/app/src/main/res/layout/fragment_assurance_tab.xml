@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="text"
-                        android:text="aepsdksampleapp://adobe?adb_validation_sessionid=b75cec63-de92-419b-98b8-8af7810cd648"
+                        android:text=""
                         android:textSize="14sp" />
 
                     <LinearLayout

@@ -15,7 +15,6 @@ import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.Messaging;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Lifecycle;
-import com.adobe.marketing.mobile.Analytics;
 import com.adobe.marketing.mobile.Signal;
 import com.adobe.marketing.mobile.UserProfile;
 import com.adobe.marketing.mobile.InvalidInitException;
@@ -50,9 +49,9 @@ public class MainApp extends Application {
         MobileCore.setLogLevel(LoggingMode.VERBOSE);
         MobileCore.setSmallIconResourceID(R.mipmap.ic_launcher_round);
         MobileCore.setLargeIconResourceID(R.mipmap.ic_launcher_round);
+        MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
 
         try {
-            Analytics.registerExtension();
             UserProfile.registerExtension();
             Consent.registerExtension();
             com.adobe.marketing.mobile.Identity.registerExtension();
@@ -63,7 +62,6 @@ public class MainApp extends Application {
             Assurance.registerExtension();
             Messaging.registerExtension();
 
-            MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
             MobileCore.start(new AdobeCallback() {
 
                 @Override
