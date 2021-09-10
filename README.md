@@ -24,6 +24,9 @@ App needs to be configured with the following edge extensions in Launch before i
 - [Consent](https://aep-sdks.gitbook.io/docs/foundation-extensions/consent-for-edge-network)
 - [Messaging](https://aep-sdks.gitbook.io/docs/beta/adobe-journey-optimizer#configure-extension-in-launch)
 
+### Lifecycle for Edge Network 
+Follow the [documentation](https://aep-sdks.gitbook.io/docs/foundation-extensions/lifecycle-for-edge-network) to forward Lifecycle extension metrics to the Adobe Experience Platform.
+
 ### Messaging
 Follow the [documentation](Documentation/README.md) for using the messaging features.
 

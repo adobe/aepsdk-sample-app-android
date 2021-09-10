@@ -31,9 +31,9 @@ dependencies {
 
 
     implementation 'com.adobe.marketing.mobile:userprofile:1.1.0'
-    implementation 'com.adobe.marketing.mobile:sdk-core:1.8.2'
+    implementation 'com.adobe.marketing.mobile:sdk-core:1.9.0'
     implementation 'com.adobe.marketing.mobile:assurance:1.0.2'
-    implementation 'com.adobe.marketing.mobile:edge:1.1.0'
+    implementation 'com.adobe.marketing.mobile:edge:1.1.2'
     implementation 'com.adobe.marketing.mobile:edgeconsent:1.0.0'
     implementation 'com.adobe.marketing.mobile:edgeidentity:1.0.0'
     implementation 'com.adobe.marketing.mobile:messaging:1.0.0'
