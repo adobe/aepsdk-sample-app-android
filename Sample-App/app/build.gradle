@@ -30,13 +30,14 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.3.1'
 
 
-    implementation 'com.adobe.marketing.mobile:userprofile:1.1.0'
-    implementation 'com.adobe.marketing.mobile:sdk-core:1.9.0'
-    implementation 'com.adobe.marketing.mobile:assurance:1.0.2'
-    implementation 'com.adobe.marketing.mobile:edge:1.1.2'
-    implementation 'com.adobe.marketing.mobile:edgeconsent:1.0.0'
-    implementation 'com.adobe.marketing.mobile:edgeidentity:1.0.0'
-    implementation 'com.adobe.marketing.mobile:messaging:1.0.0'
+    implementation 'com.adobe.marketing.mobile:userprofile:1.+'
+    implementation 'com.adobe.marketing.mobile:sdk-core:1.+'
+    implementation 'com.adobe.marketing.mobile:assurance:1.+'
+    implementation 'com.adobe.marketing.mobile:analytics:1.+'
+    implementation 'com.adobe.marketing.mobile:edge:1.+'
+    implementation 'com.adobe.marketing.mobile:edgeconsent:1.+'
+    implementation 'com.adobe.marketing.mobile:edgeidentity:1.+'
+    implementation 'com.adobe.marketing.mobile:messaging:1.+'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-messaging'
