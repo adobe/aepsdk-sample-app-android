@@ -32,12 +32,24 @@
     <string name="btn_consent_collectConsentN">Collect Consent N</string>
     <string name="btn_consent_getConsents">Get Consents</string>
 
+    <!-- Edge Identity View -->
     <string name="btn_edgeIdentity_updateIdentities">Update Identities</string>
     <string name="btn_edgeIdentity_removeIdentities">Remove Identities</string>
     <string name="btn_edgeIdentity_getIdentities">Get Identities</string>
     <string name="btn_edgeIdentity_getECID">Get ECID</string>
     <string name="tv_edgeIdentity_no_data">Click button to refresh</string>
+    <!-- Advertising Identifier -->
+    <!-- Buttons -->
+    <string name="btn_edge_identity_get_gaid">Update Ad ID With Current GAID</string>
+    <string name="btn_edge_identity_set_ad_id">Set Ad ID</string>
+    <string name="btn_edge_identity_set_ad_id_null">Set Ad ID as Null</string>
+    <string name="btn_edge_identity_set_ad_id_all_zeros">Set Ad ID as All-Zeros</string>
+    <string name="btn_edge_identity_set_ad_id_empty_string">Set Ad ID as Empty String</string>
 
+    <!-- Labels -->
+    <string name="label_edge_identity_enter_ad_id">Enter Ad ID</string>
+    <string name="label_edge_identity_gaid_placeholder">GAID will show here</string>
+    <string name="label_edge_identity_ad_tracking_enabled">Ad tracking enabled status will show here</string>
 
     <string name="home_tv_extensions">Extensions</string>
     <string name="home_btn_core">Core</string>

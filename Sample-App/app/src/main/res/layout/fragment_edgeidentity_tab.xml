@@ -129,6 +129,96 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_edge_identity_get_gaid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edge_identity_get_gaid" />
+
+                    <TextView
+                        android:id="@+id/label_edge_identity_gaid_placeholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_edge_identity_gaid_placeholder" />
+
+                    <TextView
+                        android:id="@+id/label_edge_identity_ad_tracking_enabled"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_edge_identity_ad_tracking_enabled" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_edge_identity_set_ad_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/btn_edge_identity_set_ad_id" />
+
+                        <EditText
+                            android:id="@+id/text_ad_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:hint="@string/label_edge_identity_enter_ad_id"
+                            android:importantForAutofill="no"
+                            android:inputType="text"
+                            android:minHeight="48dp"
+                            android:textColorHint="#757575" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_edge_identity_set_ad_id_null"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/btn_edge_identity_set_ad_id_null"
+                            android:textColor="#000000" />
+
+                        <Button
+                            android:id="@+id/btn_edge_identity_set_ad_id_all_zeros"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/btn_edge_identity_set_ad_id_all_zeros"
+                            android:textColor="#000000" />
+
+                        <Button
+                            android:id="@+id/btn_edge_identity_set_ad_id_empty_string"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/btn_edge_identity_set_ad_id_empty_string"
+                            android:textColor="#000000" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

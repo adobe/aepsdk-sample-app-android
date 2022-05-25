@@ -10,22 +10,33 @@
 package com.adobe.marketing.mobile.sampleapp;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.adobe.marketing.mobile.AdobeCallback;
+import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.edge.identity.AuthenticatedState;
 import com.adobe.marketing.mobile.edge.identity.Identity;
 import com.adobe.marketing.mobile.edge.identity.IdentityItem;
 import com.adobe.marketing.mobile.edge.identity.IdentityMap;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +44,7 @@ import com.google.gson.GsonBuilder;
  */
 public class EdgeIdentityTab extends Fragment implements NavigationAware {
     private static final String LOG_TAG = "EdgeIdentityTab";
+    private static final String ZERO_ADVERTISING_ID = "00000000-0000-0000-0000-000000000000";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +117,80 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
                 });
             }
         });
+
+        // Edge Identity Advertising Identifier
+        Button btnUpdateAdId = getView().findViewById(R.id.btn_edge_identity_get_gaid);
+        Button btnSetAdId = getView().findViewById(R.id.btn_edge_identity_set_ad_id);
+        Button btnSetAdIdNull = getView().findViewById(R.id.btn_edge_identity_set_ad_id_null);
+        Button btnSetAdIdAllZeros = getView().findViewById(R.id.btn_edge_identity_set_ad_id_all_zeros);
+        Button btnSetAdIdEmptyString = getView().findViewById(R.id.btn_edge_identity_set_ad_id_empty_string);
+
+        btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                getAdvertisingIdClientInfo(new AdobeCallback<AdvertisingIdClient.Info>() {
+                    @Override
+                    public void call(AdvertisingIdClient.Info info) {
+                        Handler handler = new Handler(Looper.getMainLooper());
+
+                        String adIdText = "Unable to get valid AdvertisingIdClient.Info";
+                        String trackingAuthorizationText = "See console for error logs";
+
+                        if (info != null) {
+                            if (info.isLimitAdTrackingEnabled()) {
+                                adIdText = "";
+                                trackingAuthorizationText = "Ad tracking disabled";
+                            } else {
+                                adIdText = info.getId();
+                                trackingAuthorizationText = "Ad tracking enabled";
+                            }
+                            // Update ad ID through MobileCore only when a valid Info instance is available
+                            // to fetch the latest state
+                            MobileCore.setAdvertisingIdentifier(adIdText);
+                        }
+
+                        String finalAdId = adIdText;
+                        String finalTrackingAuthorizationText = trackingAuthorizationText;
+                        handler.post(() -> {
+                            TextView gaidTextView = getView().findViewById(R.id.label_edge_identity_gaid_placeholder);
+                            gaidTextView.setText(finalAdId);
+                            TextView adTrackingTextView = getView().findViewById(R.id.label_edge_identity_ad_tracking_enabled);
+                            adTrackingTextView.setText(finalTrackingAuthorizationText);
+                        });
+                    }
+                });
+            }
+        });
+
+        btnSetAdId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                EditText adIdText = getView().findViewById(R.id.text_ad_id);
+                String adId = adIdText.getText().toString();
+                MobileCore.setAdvertisingIdentifier(adId);
+            }
+        });
+
+        btnSetAdIdNull.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                MobileCore.setAdvertisingIdentifier(null);
+            }
+        });
+
+        btnSetAdIdAllZeros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                MobileCore.setAdvertisingIdentifier(ZERO_ADVERTISING_ID);
+            }
+        });
+
+        btnSetAdIdEmptyString.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                MobileCore.setAdvertisingIdentifier("");
+            }
+        });
     }
 
     @Override
@@ -136,4 +222,85 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             }
         });
     }
+
+    /**
+     * Async method that retrieves the ad ID from the {@link AdvertisingIdClient} (using Google's gms.ads SDK).
+     * Sanitizes ad ID value to the empty string ({@code ""}) if ad tracking is disabled, or an exception is encountered.
+     *
+     * @param callback receives the ad ID {@code String} if a valid value can be retrieved, {@code ""} otherwise.
+     */
+    private void getAdvertisingIdentifier(final AdobeCallback<String> callback) {
+        if (callback == null) {
+            Log.e(LOG_TAG, "Unexpected null callback, provide a callback to retrieve current GAID.");
+            return;
+        }
+        getAdvertisingIdClientInfo(new AdobeCallback<AdvertisingIdClient.Info>() {
+            @Override
+            public void call(AdvertisingIdClient.Info info) {
+                if (info == null) {
+                    callback.call("");
+                    return;
+                }
+                if (info.isLimitAdTrackingEnabled()) {
+                    callback.call("");
+                } else {
+                    callback.call(info.getId());
+                }
+            }
+        });
+    }
+
+    /**
+     * Async method that retrieves the ad ID from the {@link AdvertisingIdClient} (using Google's gms.ads SDK).
+     * Sanitizes ad ID value to the empty string ({@code ""}) if ad tracking is disabled, or an exception is encountered.
+     *
+     * @param callback receives the ad ID {@code String} if a valid value can be retrieved, {@code ""} otherwise.
+     */
+    private void getIsLimitAdTrackingEnabled(final AdobeCallback<Boolean> callback) {
+        if (callback == null) {
+            Log.e(LOG_TAG, "Unexpected null callback, provide a callback to retrieve isLimitAdTrackingEnabled.");
+            return;
+        }
+        getAdvertisingIdClientInfo(new AdobeCallback<AdvertisingIdClient.Info>() {
+            @Override
+            public void call(AdvertisingIdClient.Info info) {
+                if (info == null) {
+                    return;
+                }
+                callback.call(info.isLimitAdTrackingEnabled());
+            }
+        });
+    }
+
+    /**
+     * Async method that retrieves the {@link AdvertisingIdClient.Info} (using Google's gms.ads SDK).
+     * Callers <strong>MUST</strong> verify that the result of the callback is not null before using any of its properties.
+     *
+     * @param callback receives the {@link AdvertisingIdClient.Info} if a valid value can be retrieved, {@code null} otherwise.
+     */
+    private void getAdvertisingIdClientInfo(final AdobeCallback<AdvertisingIdClient.Info> callback) {
+        if (callback == null) {
+            Log.e(LOG_TAG, "Unexpected null callback, provide a callback to retrieve AdvertisingIdClientInfo.");
+            return;
+        }
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        executor.execute(() -> {
+            try {
+                AdvertisingIdClient.Info idInfo = AdvertisingIdClient.getAdvertisingIdInfo(getContext());
+                callback.call(idInfo);
+                return;
+            } catch (GooglePlayServicesNotAvailableException e) {
+                Log.d(LOG_TAG, "GooglePlayServicesNotAvailableException while retrieving the advertising identifier ${e.localizedMessage}");
+            } catch (GooglePlayServicesRepairableException e) {
+                Log.d(LOG_TAG, "GooglePlayServicesRepairableException while retrieving the advertising identifier ${e.localizedMessage}");
+            } catch (IOException e) {
+                Log.d(LOG_TAG, "IOException while retrieving the advertising identifier ${e.localizedMessage}");
+            }
+            callback.call(null);
+        });
+    }
 }
+
+
+

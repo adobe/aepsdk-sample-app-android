@@ -2,12 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.adobe.marketing.mobile.sampleapp"
         minSdkVersion 19
-        targetSdkVersion 29
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -45,4 +44,8 @@ dependencies {
     // Image loading
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    // GAID Advertising Tracking
+    implementation("com.google.android.gms:play-services-ads-lite:20.6.0")
+    implementation("com.google.guava:guava:31.1-android")
 }
