@@ -34,7 +34,8 @@ import androidx.multidex.MultiDex;
 public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
-    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
+    // TODO: Set up the preferred Environment File ID from your mobile property configured in Data Collection UI
+    private static final String ENVIRONMENT_FILE_ID = "";
     private static Context context;
 
     public static Context getAppContext() {
@@ -50,7 +51,7 @@ public class MainApp extends Application {
         MobileCore.setLogLevel(LoggingMode.VERBOSE);
         MobileCore.setSmallIconResourceID(R.mipmap.ic_launcher_round);
         MobileCore.setLargeIconResourceID(R.mipmap.ic_launcher_round);
-        MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
+        MobileCore.configureWithAppID(ENVIRONMENT_FILE_ID);
 
         try {
             UserProfile.registerExtension();
