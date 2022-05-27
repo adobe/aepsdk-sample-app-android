@@ -147,11 +147,14 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
 
                         String finalAdId = adIdText;
                         String finalTrackingAuthorizationText = trackingAuthorizationText;
-                        handler.post(() -> {
-                            TextView gaidTextView = getView().findViewById(R.id.label_edge_identity_gaid_placeholder);
-                            gaidTextView.setText(finalAdId);
-                            TextView adTrackingTextView = getView().findViewById(R.id.label_edge_identity_ad_tracking_enabled);
-                            adTrackingTextView.setText(finalTrackingAuthorizationText);
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView gaidTextView = getView().findViewById(R.id.label_edge_identity_gaid_placeholder);
+                                gaidTextView.setText(finalAdId);
+                                TextView adTrackingTextView = getView().findViewById(R.id.label_edge_identity_ad_tracking_enabled);
+                                adTrackingTextView.setText(finalTrackingAuthorizationText);
+                            }
                         });
                     }
                 });
@@ -201,20 +204,22 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             return;
         }
         ExecutorService executor = Executors.newSingleThreadExecutor();
-
-        executor.execute(() -> {
-            try {
-                AdvertisingIdClient.Info idInfo = AdvertisingIdClient.getAdvertisingIdInfo(getContext());
-                callback.call(idInfo);
-                return;
-            } catch (GooglePlayServicesNotAvailableException e) {
-                Log.w(LOG_TAG, "GooglePlayServicesNotAvailableException while retrieving the advertising identifier ${e.localizedMessage}");
-            } catch (GooglePlayServicesRepairableException e) {
-                Log.w(LOG_TAG, "GooglePlayServicesRepairableException while retrieving the advertising identifier ${e.localizedMessage}");
-            } catch (IOException e) {
-                Log.w(LOG_TAG, "IOException while retrieving the advertising identifier ${e.localizedMessage}");
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    AdvertisingIdClient.Info idInfo = AdvertisingIdClient.getAdvertisingIdInfo(getContext());
+                    callback.call(idInfo);
+                    return;
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    Log.w(LOG_TAG, "GooglePlayServicesNotAvailableException while retrieving the advertising identifier ${e.localizedMessage}");
+                } catch (GooglePlayServicesRepairableException e) {
+                    Log.w(LOG_TAG, "GooglePlayServicesRepairableException while retrieving the advertising identifier ${e.localizedMessage}");
+                } catch (IOException e) {
+                    Log.w(LOG_TAG, "IOException while retrieving the advertising identifier ${e.localizedMessage}");
+                }
+                callback.call(null);
             }
-            callback.call(null);
         });
     }
 }
