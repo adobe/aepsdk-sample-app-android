@@ -242,11 +242,11 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
                 callback.call(idInfo);
                 return;
             } catch (GooglePlayServicesNotAvailableException e) {
-                Log.d(LOG_TAG, "GooglePlayServicesNotAvailableException while retrieving the advertising identifier ${e.localizedMessage}");
+                Log.w(LOG_TAG, "GooglePlayServicesNotAvailableException while retrieving the advertising identifier ${e.localizedMessage}");
             } catch (GooglePlayServicesRepairableException e) {
-                Log.d(LOG_TAG, "GooglePlayServicesRepairableException while retrieving the advertising identifier ${e.localizedMessage}");
+                Log.w(LOG_TAG, "GooglePlayServicesRepairableException while retrieving the advertising identifier ${e.localizedMessage}");
             } catch (IOException e) {
-                Log.d(LOG_TAG, "IOException while retrieving the advertising identifier ${e.localizedMessage}");
+                Log.w(LOG_TAG, "IOException while retrieving the advertising identifier ${e.localizedMessage}");
             }
             callback.call(null);
         });
