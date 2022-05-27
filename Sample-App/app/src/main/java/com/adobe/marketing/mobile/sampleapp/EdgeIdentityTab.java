@@ -145,8 +145,8 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
                             MobileCore.setAdvertisingIdentifier(adIdText);
                         }
 
-                        String finalAdId = adIdText;
-                        String finalTrackingAuthorizationText = trackingAuthorizationText;
+                        final String finalAdId = adIdText;
+                        final String finalTrackingAuthorizationText = trackingAuthorizationText;
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
