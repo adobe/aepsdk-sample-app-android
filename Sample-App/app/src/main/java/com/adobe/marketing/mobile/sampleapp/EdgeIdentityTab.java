@@ -224,55 +224,6 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
     }
 
     /**
-     * Async method that retrieves the ad ID from the {@link AdvertisingIdClient} (using Google's gms.ads SDK).
-     * Sanitizes ad ID value to the empty string ({@code ""}) if ad tracking is disabled, or an exception is encountered.
-     *
-     * @param callback receives the ad ID {@code String} if a valid value can be retrieved, {@code ""} otherwise.
-     */
-    private void getAdvertisingIdentifier(final AdobeCallback<String> callback) {
-        if (callback == null) {
-            Log.e(LOG_TAG, "Unexpected null callback, provide a callback to retrieve current GAID.");
-            return;
-        }
-        getAdvertisingIdClientInfo(new AdobeCallback<AdvertisingIdClient.Info>() {
-            @Override
-            public void call(AdvertisingIdClient.Info info) {
-                if (info == null) {
-                    callback.call("");
-                    return;
-                }
-                if (info.isLimitAdTrackingEnabled()) {
-                    callback.call("");
-                } else {
-                    callback.call(info.getId());
-                }
-            }
-        });
-    }
-
-    /**
-     * Async method that retrieves the ad ID from the {@link AdvertisingIdClient} (using Google's gms.ads SDK).
-     * Sanitizes ad ID value to the empty string ({@code ""}) if ad tracking is disabled, or an exception is encountered.
-     *
-     * @param callback receives the ad ID {@code String} if a valid value can be retrieved, {@code ""} otherwise.
-     */
-    private void getIsLimitAdTrackingEnabled(final AdobeCallback<Boolean> callback) {
-        if (callback == null) {
-            Log.e(LOG_TAG, "Unexpected null callback, provide a callback to retrieve isLimitAdTrackingEnabled.");
-            return;
-        }
-        getAdvertisingIdClientInfo(new AdobeCallback<AdvertisingIdClient.Info>() {
-            @Override
-            public void call(AdvertisingIdClient.Info info) {
-                if (info == null) {
-                    return;
-                }
-                callback.call(info.isLimitAdTrackingEnabled());
-            }
-        });
-    }
-
-    /**
      * Async method that retrieves the {@link AdvertisingIdClient.Info} (using Google's gms.ads SDK).
      * Callers <strong>MUST</strong> verify that the result of the callback is not null before using any of its properties.
      *
@@ -280,7 +231,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
      */
     private void getAdvertisingIdClientInfo(final AdobeCallback<AdvertisingIdClient.Info> callback) {
         if (callback == null) {
-            Log.e(LOG_TAG, "Unexpected null callback, provide a callback to retrieve AdvertisingIdClientInfo.");
+            Log.d(LOG_TAG, "Unexpected null callback, provide a callback to retrieve AdvertisingIdClientInfo.");
             return;
         }
         ExecutorService executor = Executors.newSingleThreadExecutor();
