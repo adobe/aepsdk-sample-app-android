@@ -29,6 +29,7 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.multidex.MultiDex;
 
 public class MainApp extends Application {
 
@@ -92,5 +93,11 @@ public class MainApp extends Application {
         } catch (IllegalArgumentException e) {
             Log.e(LOG_TAG, "IllegalArgumentException - Check if google-services.json is added and is correctly configured. \nError message: " + e.getLocalizedMessage());
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }
