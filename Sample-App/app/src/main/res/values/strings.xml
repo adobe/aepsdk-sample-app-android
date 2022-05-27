@@ -41,13 +41,8 @@
     <!-- Advertising Identifier -->
     <!-- Buttons -->
     <string name="btn_edge_identity_get_gaid">Update Ad ID With Current GAID</string>
-    <string name="btn_edge_identity_set_ad_id">Set Ad ID</string>
-    <string name="btn_edge_identity_set_ad_id_null">Set Ad ID as Null</string>
-    <string name="btn_edge_identity_set_ad_id_all_zeros">Set Ad ID as All-Zeros</string>
-    <string name="btn_edge_identity_set_ad_id_empty_string">Set Ad ID as Empty String</string>
 
     <!-- Labels -->
-    <string name="label_edge_identity_enter_ad_id">Enter Ad ID</string>
     <string name="label_edge_identity_gaid_placeholder">GAID will show here</string>
     <string name="label_edge_identity_ad_tracking_enabled">Ad tracking enabled status will show here</string>
 

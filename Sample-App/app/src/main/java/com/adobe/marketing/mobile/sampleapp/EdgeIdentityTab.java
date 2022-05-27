@@ -120,10 +120,6 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
 
         // Edge Identity Advertising Identifier
         Button btnUpdateAdId = getView().findViewById(R.id.btn_edge_identity_get_gaid);
-        Button btnSetAdId = getView().findViewById(R.id.btn_edge_identity_set_ad_id);
-        Button btnSetAdIdNull = getView().findViewById(R.id.btn_edge_identity_set_ad_id_null);
-        Button btnSetAdIdAllZeros = getView().findViewById(R.id.btn_edge_identity_set_ad_id_all_zeros);
-        Button btnSetAdIdEmptyString = getView().findViewById(R.id.btn_edge_identity_set_ad_id_empty_string);
 
         btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,36 +155,6 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
                         });
                     }
                 });
-            }
-        });
-
-        btnSetAdId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                EditText adIdText = getView().findViewById(R.id.text_ad_id);
-                String adId = adIdText.getText().toString();
-                MobileCore.setAdvertisingIdentifier(adId);
-            }
-        });
-
-        btnSetAdIdNull.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                MobileCore.setAdvertisingIdentifier(null);
-            }
-        });
-
-        btnSetAdIdAllZeros.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                MobileCore.setAdvertisingIdentifier(ZERO_ADVERTISING_ID);
-            }
-        });
-
-        btnSetAdIdEmptyString.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                MobileCore.setAdvertisingIdentifier("");
             }
         });
     }
