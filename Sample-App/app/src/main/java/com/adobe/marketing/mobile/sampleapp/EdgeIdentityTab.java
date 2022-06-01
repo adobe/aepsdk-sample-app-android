@@ -10,33 +10,36 @@
 package com.adobe.marketing.mobile.sampleapp;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
 import com.adobe.marketing.mobile.AdobeCallback;
-import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.edge.identity.AuthenticatedState;
 import com.adobe.marketing.mobile.edge.identity.Identity;
 import com.adobe.marketing.mobile.edge.identity.IdentityItem;
 import com.adobe.marketing.mobile.edge.identity.IdentityMap;
-import com.google.android.gms.ads.identifier.AdvertisingIdClient;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+// For complete instructions on how to enable ad ID features, please see ./Documentation/README.md
+/* Ad ID implementation (pt. 1/3)
+import android.os.Handler;
+import android.os.Looper;
+import com.adobe.marketing.mobile.MobileCore;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+/* Ad ID implementation (pt. 1/3) */
 
 /**
  * A simple {@link Fragment} subclass.
@@ -119,6 +122,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
         });
 
         // Edge Identity Advertising Identifier
+        /* Ad ID implementation (pt. 2/3)
         Button btnUpdateAdId = getView().findViewById(R.id.btn_edge_identity_get_gaid);
 
         btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +164,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
                 });
             }
         });
+        /* Ad ID implementation (pt. 2/3) */
     }
 
     @Override
@@ -198,6 +203,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
      *
      * @param callback receives the {@link AdvertisingIdClient.Info} if a valid value can be retrieved, {@code null} otherwise.
      */
+    /* Ad ID implementation (pt. 3/3)
     private void getAdvertisingIdClientInfo(final AdobeCallback<AdvertisingIdClient.Info> callback) {
         if (callback == null) {
             Log.d(LOG_TAG, "Unexpected null callback, provide a callback to retrieve AdvertisingIdClientInfo.");
@@ -222,6 +228,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             }
         });
     }
+    /* Ad ID implementation (pt. 3/3) */
 }
 
 
