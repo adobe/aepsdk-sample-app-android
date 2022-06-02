@@ -28,7 +28,7 @@ import com.adobe.marketing.mobile.edge.identity.IdentityMap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-// For complete instructions on how to enable ad ID features, please see ./Documentation/README.md
+// For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier
 /* Ad ID implementation (pt. 1/3)
 import android.os.Handler;
 import android.os.Looper;
@@ -126,7 +126,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
         btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
-                Log.d(LOG_TAG,"For complete instructions on how to enable ad ID features, please see ./Documentation/README.md");
+                Log.d(LOG_TAG,"For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier");
             }
         });
         

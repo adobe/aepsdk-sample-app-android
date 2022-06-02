@@ -18,7 +18,7 @@ To enable advertising identifier features in the sample app, follow these steps:
 1. Update the value for key `gms_ads_app_id` located in the `secrets.xml` at [aepsdk-sample-app-android/Sample-App/app/src/main/res/values](../Sample-App/app/src/main/res/values/secrets.xml) with a valid Google AdMob app ID.
     - See Google's [quick start reference](https://developers.google.com/admob/android/quick-start) on how to get your AdMob app ID. See step 3 of the [Configure your app](https://developers.google.com/admob/android/quick-start#import_the_mobile_ads_sdk) section for a free public test app ID from Google.
     - Any real key values in the `secrets.xml` file should **not** be committed to the repository.
-2. [Find and replace](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-project.html#replace_search_string_in_project) all instances of:
+2. Uncomment the implemention code using [find and replace](https://www.jetbrains.com/help/idea/finding-and-replacing-text-in-project.html#replace_search_string_in_project) to replace all instances of:
 ```java
 /* Ad ID implementation
 ```
@@ -26,10 +26,8 @@ with:
 ```java
 //* Ad ID implementation
 ```
-Find and replace default shortcuts in Android Studio: 
-[<img src="./assets/find-and-replace-shortcuts.png" alt="Default shortcuts for find and replace"/>](./assets/find-and-replace-shortcuts.png)
-
-This will uncomment all the code blocks required to enable the ad ID feature; one of the blocks requires syncing the project with Gradle file changes (covered in the next step).  
+Find and replace default shortcuts in Android Studio:  
+[<img src="./assets/find-and-replace-shortcuts.png" alt="Default shortcuts for find and replace" width="500"/>](./assets/find-and-replace-shortcuts.png)
 
 3. Sync Project with Gradle files using: File -> Sync Project with Gradle Files
 
