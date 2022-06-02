@@ -26,6 +26,11 @@ with:
 ```java
 //* Ad ID implementation
 ```
+Find and replace default shortcuts in Android Studio: 
+[<img src="./assets/find-and-replace-shortcuts.png" alt="Default shortcuts for find and replace"/>](./assets/find-and-replace-shortcuts.png)
+
+This will uncomment all the code blocks required to enable the ad ID feature; one of the blocks requires syncing the project with Gradle file changes (covered in the next step).  
+
 3. Sync Project with Gradle files using: File -> Sync Project with Gradle Files
 
 The app should now be properly configured to use advertising identifier features.
