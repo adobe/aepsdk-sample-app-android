@@ -31,7 +31,7 @@ Follow the [documentation](https://aep-sdks.gitbook.io/docs/foundation-extension
 Follow the [documentation](Documentation/README.md) for using the messaging features.
 
 ### Advertising Identifier
-Follow the [documentation](Documentation/README.md#advertising-identifier) for using advertising identifier features.
+Follow the [documentation](Documentation/README.md#advertising-identifier) for enabling advertising identifier features.
 
 ## Contributing
 

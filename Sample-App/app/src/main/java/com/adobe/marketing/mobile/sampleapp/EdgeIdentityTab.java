@@ -121,10 +121,17 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             }
         });
 
+        // Default hint for how to enable ad ID features; overwritten by actual implementation when ad ID features are enabled.
+        Button btnUpdateAdId = getView().findViewById(R.id.btn_edge_identity_get_gaid);
+        btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(LOG_TAG,"For complete instructions on how to enable ad ID features, please see ./Documentation/README.md");
+            }
+        });
+        
         // Edge Identity Advertising Identifier
         /* Ad ID implementation (pt. 2/3)
-        Button btnUpdateAdId = getView().findViewById(R.id.btn_edge_identity_get_gaid);
-
         btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
