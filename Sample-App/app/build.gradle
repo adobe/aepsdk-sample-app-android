@@ -51,11 +51,11 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     // For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier
-    /* Ad ID implementation (pt. 1/1)
+    /* Ad ID implementation (pt. 1/4)
     // GAID Advertising Tracking
     implementation("com.google.android.gms:play-services-ads-lite:20.6.0")
     implementation("com.google.guava:guava:31.1-android")
-    /* Ad ID implementation (pt. 1/1) */
+    /* Ad ID implementation (pt. 1/4) */
 
     // Multidex support
     def multidex_version = "2.0.1"

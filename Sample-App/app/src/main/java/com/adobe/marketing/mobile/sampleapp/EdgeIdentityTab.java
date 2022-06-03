@@ -29,7 +29,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 // For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier
-/* Ad ID implementation (pt. 1/3)
+/* Ad ID implementation (pt. 2/4)
 import android.os.Handler;
 import android.os.Looper;
 import com.adobe.marketing.mobile.MobileCore;
@@ -39,7 +39,7 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-/* Ad ID implementation (pt. 1/3) */
+/* Ad ID implementation (pt. 2/4) */
 
 /**
  * A simple {@link Fragment} subclass.
@@ -131,7 +131,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
         });
         
         // Edge Identity Advertising Identifier
-        /* Ad ID implementation (pt. 2/3)
+        /* Ad ID implementation (pt. 3/4)
         btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -171,7 +171,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
                 });
             }
         });
-        /* Ad ID implementation (pt. 2/3) */
+        /* Ad ID implementation (pt. 3/4) */
     }
 
     @Override
@@ -210,7 +210,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
      *
      * @param callback receives the {@link AdvertisingIdClient.Info} if a valid value can be retrieved, {@code null} otherwise.
      */
-    /* Ad ID implementation (pt. 3/3)
+    /* Ad ID implementation (pt. 4/4)
     private void getAdvertisingIdClientInfo(final AdobeCallback<AdvertisingIdClient.Info> callback) {
         if (callback == null) {
             Log.d(LOG_TAG, "Unexpected null callback, provide a callback to retrieve AdvertisingIdClientInfo.");
@@ -235,7 +235,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             }
         });
     }
-    /* Ad ID implementation (pt. 3/3) */
+    /* Ad ID implementation (pt. 4/4) */
 }
 
 

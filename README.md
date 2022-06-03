@@ -12,9 +12,10 @@ This repository contains the Android sample app for the AEP SDK.
 
 ## Installation
 
-- Open Android Studio and select `Open an existing project`  from the main screen or click `File -> Open...` .
-- Import the Sample-App/settings.gradle file into Android Studio.
-- Run Android `app` on the emulator or on real device.
+1. Open Android Studio and select `Open an existing project`  from the main screen or click `File -> Open...` .
+2. Import the Sample-App/settings.gradle file into Android Studio.
+3. Set your `ENVIRONMENT_FILE_ID` in MainApp.java.
+4. Run Android `app` on the emulator or on real device.
 
 ## Documentation
 ### Edge Extensions Prerequisites
