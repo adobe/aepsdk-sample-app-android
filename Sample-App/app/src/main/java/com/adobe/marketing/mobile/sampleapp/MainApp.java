@@ -29,11 +29,13 @@ import android.content.Context;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.multidex.MultiDex;
 
 public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
-    private static final String LAUNCH_ENVIRONMENT_FILE_ID = "";
+    // TODO: Set up the preferred Environment File ID from your mobile property configured in Data Collection UI
+    private static final String ENVIRONMENT_FILE_ID = "";
     private static Context context;
 
     public static Context getAppContext() {
@@ -49,7 +51,7 @@ public class MainApp extends Application {
         MobileCore.setLogLevel(LoggingMode.VERBOSE);
         MobileCore.setSmallIconResourceID(R.mipmap.ic_launcher_round);
         MobileCore.setLargeIconResourceID(R.mipmap.ic_launcher_round);
-        MobileCore.configureWithAppID(LAUNCH_ENVIRONMENT_FILE_ID);
+        MobileCore.configureWithAppID(ENVIRONMENT_FILE_ID);
 
         try {
             UserProfile.registerExtension();
@@ -92,5 +94,11 @@ public class MainApp extends Application {
         } catch (IllegalArgumentException e) {
             Log.e(LOG_TAG, "IllegalArgumentException - Check if google-services.json is added and is correctly configured. \nError message: " + e.getLocalizedMessage());
         }
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

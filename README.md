@@ -12,13 +12,14 @@ This repository contains the Android sample app for the AEP SDK.
 
 ## Installation
 
-- Open Android Studio and select `Open an existing project`  from the main screen or click `File -> Open...` .
-- Import the Sample-App/settings.gradle file into Android Studio.
-- Run Android `app` on the emulator or on real device.
+1. Open Android Studio and select `Open an existing project`  from the main screen or click `File -> Open...` .
+2. Import the Sample-App/settings.gradle file into Android Studio.
+3. Set your `ENVIRONMENT_FILE_ID` in MainApp.java.
+4. Run Android `app` on the emulator or on real device.
 
 ## Documentation
-### Launch Edge Extensions Prerequisites
-App needs to be configured with the following edge extensions in Launch before it can be used: 
+### Edge Extensions Prerequisites
+The app needs to be configured with the following Edge extensions in the Data Collection UI before it can be used: 
 - [Edge](https://aep-sdks.gitbook.io/docs/foundation-extensions/experience-platform-extension)
 - [Edge Identity](https://aep-sdks.gitbook.io/docs/foundation-extensions/identity-for-edge-network)
 - [Consent](https://aep-sdks.gitbook.io/docs/foundation-extensions/consent-for-edge-network)
@@ -29,6 +30,9 @@ Follow the [documentation](https://aep-sdks.gitbook.io/docs/foundation-extension
 
 ### Messaging
 Follow the [documentation](Documentation/README.md) for using the messaging features.
+
+### Advertising Identifier
+Follow the [documentation](Documentation/README.md#advertising-identifier) for enabling advertising identifier features.
 
 ## Contributing
 

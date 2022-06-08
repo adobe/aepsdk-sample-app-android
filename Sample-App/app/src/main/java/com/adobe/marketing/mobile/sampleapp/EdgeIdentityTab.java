@@ -24,8 +24,22 @@ import com.adobe.marketing.mobile.edge.identity.AuthenticatedState;
 import com.adobe.marketing.mobile.edge.identity.Identity;
 import com.adobe.marketing.mobile.edge.identity.IdentityItem;
 import com.adobe.marketing.mobile.edge.identity.IdentityMap;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+// For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier
+/* Ad ID implementation (pt. 2/4)
+import android.os.Handler;
+import android.os.Looper;
+import com.adobe.marketing.mobile.MobileCore;
+import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+/* Ad ID implementation (pt. 2/4) */
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +47,7 @@ import com.google.gson.GsonBuilder;
  */
 public class EdgeIdentityTab extends Fragment implements NavigationAware {
     private static final String LOG_TAG = "EdgeIdentityTab";
+    private static final String ZERO_ADVERTISING_ID = "00000000-0000-0000-0000-000000000000";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +120,75 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
                 });
             }
         });
+
+        // Default hint for how to enable ad ID features; overwritten by actual implementation when ad ID features are enabled.
+        Button btnUpdateAdId = getView().findViewById(R.id.btn_edge_identity_get_gaid);
+        btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                Log.d(LOG_TAG,"For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier");
+            }
+        });
+        
+        // Edge Identity Advertising Identifier
+        /* Ad ID implementation (pt. 3/4)
+        btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                getAdvertisingIdClientInfo(new AdobeCallback<AdvertisingIdClient.Info>() {
+                    @Override
+                    public void call(AdvertisingIdClient.Info info) {
+                        Handler handler = new Handler(Looper.getMainLooper());
+
+                        String adIdText = "Unable to get valid AdvertisingIdClient.Info";
+                        String trackingAuthorizationText = "See console for error logs";
+
+                        if (info != null) {
+                            if (info.isLimitAdTrackingEnabled()) {
+                                adIdText = "";
+                                trackingAuthorizationText = "Ad tracking disabled";
+                            } else {
+                                adIdText = info.getId();
+                                trackingAuthorizationText = "Ad tracking enabled";
+                            }
+                            // Update ad ID through MobileCore only when a valid Info instance is available
+                            // to fetch the latest state
+                            MobileCore.setAdvertisingIdentifier(adIdText);
+                        }
+
+                        final String finalAdId = adIdText;
+                        final String finalTrackingAuthorizationText = trackingAuthorizationText;
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView gaidTextView = getView().findViewById(R.id.label_edge_identity_gaid_placeholder);
+                                gaidTextView.setText(finalAdId);
+                                TextView adTrackingTextView = getView().findViewById(R.id.label_edge_identity_ad_tracking_enabled);
+                                adTrackingTextView.setText(finalTrackingAuthorizationText);
+                            }
+                        });
+                    }
+                });
+            }
+        });
+        /* Ad ID implementation (pt. 3/4) */
+
+        // getURLVariables API's
+        Button btnGetUrlVariables = getView().findViewById(R.id.btn_edge_identity_get_urlvariables);
+        btnGetUrlVariables.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+                Identity.getUrlVariables(new AdobeCallback<String>() {
+                    @Override
+                    public void call(String urlVariablesString) {
+                        Log.i(LOG_TAG, String.format("Received URLVariables from API = %s", urlVariablesString));
+                        TextView getUrlVariablesTextView = getView().findViewById(R.id.label_edge_identity_get_urlvariables_placeholder);
+                        getUrlVariablesTextView.setText(urlVariablesString);
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -136,4 +220,41 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             }
         });
     }
+
+    /**
+     * Async method that retrieves the {@link AdvertisingIdClient.Info} (using Google's gms.ads SDK).
+     * Callers <strong>MUST</strong> verify that the result of the callback is not null before using any of its properties.
+     *
+     * @param callback receives the {@link AdvertisingIdClient.Info} if a valid value can be retrieved, {@code null} otherwise.
+     */
+    /* Ad ID implementation (pt. 4/4)
+    private void getAdvertisingIdClientInfo(final AdobeCallback<AdvertisingIdClient.Info> callback) {
+        if (callback == null) {
+            Log.d(LOG_TAG, "Unexpected null callback, provide a callback to retrieve AdvertisingIdClientInfo.");
+            return;
+        }
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    AdvertisingIdClient.Info idInfo = AdvertisingIdClient.getAdvertisingIdInfo(getContext());
+                    callback.call(idInfo);
+                    return;
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    Log.w(LOG_TAG, "GooglePlayServicesNotAvailableException while retrieving the advertising identifier ${e.localizedMessage}");
+                } catch (GooglePlayServicesRepairableException e) {
+                    Log.w(LOG_TAG, "GooglePlayServicesRepairableException while retrieving the advertising identifier ${e.localizedMessage}");
+                } catch (IOException e) {
+                    Log.w(LOG_TAG, "IOException while retrieving the advertising identifier ${e.localizedMessage}");
+                }
+                callback.call(null);
+            }
+        });
+    }
+    /* Ad ID implementation (pt. 4/4) */
+
 }
+
+
+
