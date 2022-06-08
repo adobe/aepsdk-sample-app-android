@@ -46,7 +46,7 @@
     <!-- Labels -->
     <string name="label_edge_identity_gaid_placeholder">GAID will show here</string>
     <string name="label_edge_identity_ad_tracking_enabled">Ad tracking enabled status will show here</string>
-    <string name="label_edge_identity_get_urlvariables_placeholder">Get URLVariable</string>
+    <string name="label_edge_identity_get_urlvariables_placeholder">Get URLVariables will show here</string>
 
     <string name="home_tv_extensions">Extensions</string>
     <string name="home_btn_core">Core</string>
