@@ -41,10 +41,12 @@
     <!-- Advertising Identifier -->
     <!-- Buttons -->
     <string name="btn_edge_identity_get_gaid">Update Ad ID With Current GAID</string>
+    <string name="btn_edge_identity_get_urlvariables">Get URlVariables</string>
 
     <!-- Labels -->
     <string name="label_edge_identity_gaid_placeholder">GAID will show here</string>
     <string name="label_edge_identity_ad_tracking_enabled">Ad tracking enabled status will show here</string>
+    <string name="label_edge_identity_get_urlvariables_placeholder">Get URLVariable</string>
 
     <string name="home_tv_extensions">Extensions</string>
     <string name="home_btn_core">Core</string>
