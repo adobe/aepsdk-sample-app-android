@@ -172,6 +172,23 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
             }
         });
         /* Ad ID implementation (pt. 3/4) */
+
+        // getURLVariables API's
+        Button btnGetUrlVariables = getView().findViewById(R.id.btn_edge_identity_get_urlvariables);
+        btnGetUrlVariables.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+                Identity.getUrlVariables(new AdobeCallback<String>() {
+                    @Override
+                    public void call(String urlVariablesString) {
+                        Log.i(LOG_TAG, String.format("Received URLVariables from API = %s", urlVariablesString));
+                        TextView getUrlVariablesTextView = getView().findViewById(R.id.label_edge_identity_get_urlvariables_placeholder);
+                        getUrlVariablesTextView.setText(urlVariablesString);
+                    }
+                });
+            }
+        });
     }
 
     @Override
@@ -236,6 +253,7 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
         });
     }
     /* Ad ID implementation (pt. 4/4) */
+
 }
 
 

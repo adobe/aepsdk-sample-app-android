@@ -15,7 +15,7 @@
         <LinearLayout
             android:id="@+id/layoutMain"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
@@ -157,6 +157,33 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/label_edge_identity_ad_tracking_enabled" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_edge_identity_get_urlvariables"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/btn_edge_identity_get_urlvariables" />
+
+                    <TextView
+                        android:id="@+id/label_edge_identity_get_urlvariables_placeholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="93dp"
+                        android:ellipsize="end"
+                        android:text="@string/label_edge_identity_get_urlvariables_placeholder" />
 
                 </LinearLayout>
 
