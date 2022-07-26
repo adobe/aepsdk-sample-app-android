@@ -4,6 +4,7 @@
 
     <string name="tab_Assurance">Assurance</string>
     <string name="tab_Messaging">Messaging</string>
+    <string name="tab_Optimize">Optimize</string>
     <string name="tab_Analytics">Analytics</string>
     <string name="tab_Core">Core</string>
     <string name="tab_Edge">Edge</string>
@@ -51,6 +52,7 @@
     <string name="home_tv_extensions">Extensions</string>
     <string name="home_btn_core">Core</string>
     <string name="home_btn_messaging">Messaging</string>
+    <string name="home_btn_optimize">Optimize</string>
     <string name="home_btn_edge">Edge</string>
     <string name="home_btn_edgeidentity">Edge Identity</string>
     <string name="home_tv_core">CORE</string>
@@ -58,6 +60,7 @@
     <string name="home_btn_consent">Consent</string>
     <string name="home_tv_validation">VALIDATION</string>
     <string name="home_tv_messaging">MESSAGING</string>
+    <string name="home_tv_optimize">OPTIMIZE</string>
     <string name="home_tv_edge">EDGE</string>
 
 </resources>

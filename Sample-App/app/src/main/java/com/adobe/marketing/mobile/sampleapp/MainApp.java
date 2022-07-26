@@ -8,25 +8,25 @@
  */
 package com.adobe.marketing.mobile.sampleapp;
 
-import com.adobe.marketing.mobile.AdobeCallback;
-
-import com.adobe.marketing.mobile.Assurance;
-import com.adobe.marketing.mobile.Edge;
-import com.adobe.marketing.mobile.Messaging;
-import com.adobe.marketing.mobile.MobileCore;
-import com.adobe.marketing.mobile.Lifecycle;
-import com.adobe.marketing.mobile.Signal;
-import com.adobe.marketing.mobile.UserProfile;
-import com.adobe.marketing.mobile.InvalidInitException;
-import com.adobe.marketing.mobile.LoggingMode;
-import com.adobe.marketing.mobile.edge.consent.Consent;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+
+import com.adobe.marketing.mobile.AdobeCallback;
+import com.adobe.marketing.mobile.Assurance;
+import com.adobe.marketing.mobile.Edge;
+import com.adobe.marketing.mobile.InvalidInitException;
+import com.adobe.marketing.mobile.Lifecycle;
+import com.adobe.marketing.mobile.LoggingMode;
+import com.adobe.marketing.mobile.Messaging;
+import com.adobe.marketing.mobile.MobileCore;
+import com.adobe.marketing.mobile.Signal;
+import com.adobe.marketing.mobile.UserProfile;
+import com.adobe.marketing.mobile.edge.consent.Consent;
+import com.adobe.marketing.mobile.optimize.Optimize;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
@@ -35,7 +35,7 @@ public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
     // TODO: Set up the preferred Environment File ID from your mobile property configured in Data Collection UI
-    private static final String ENVIRONMENT_FILE_ID = "";
+    private static final String ENVIRONMENT_FILE_ID = "180687984d6e/ad8bef0e193c/launch-c37f481d8f75-development";
     private static Context context;
 
     public static Context getAppContext() {
@@ -62,14 +62,16 @@ public class MainApp extends Application {
             Signal.registerExtension();
             Edge.registerExtension();
             Assurance.registerExtension();
-            Messaging.registerExtension();
+            //Messaging.registerExtension();
+            Optimize.registerExtension();
+
 
             MobileCore.start(new AdobeCallback() {
 
                 @Override
                 public void call(Object o) {
                     Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
-
+                   // MobileCore.updateConfiguration(Collections.<String, Object>singletonMap("optimize.datasetId", "5ee913a65af48d1917ade745"));
                 }
             });
         } catch (InvalidInitException e) {
