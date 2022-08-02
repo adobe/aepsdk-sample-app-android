@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.adobe.marketing.mobile.AdobeCallbackWithError;
 import com.adobe.marketing.mobile.AdobeError;
+import com.adobe.marketing.mobile.Edge;
+import com.adobe.marketing.mobile.ExperienceEvent;
 import com.adobe.marketing.mobile.optimize.DecisionScope;
 import com.adobe.marketing.mobile.optimize.Offer;
 import com.adobe.marketing.mobile.optimize.Optimize;
@@ -45,13 +47,20 @@ public class OptimizeTab extends Fragment {
 
     public void ShowExperience() {
 
-        String htmlString = ( " <!DOCTYPE html> <html> <body> <img src=\"https://live.staticflickr.com/5228/5679642883_24a2e905e0_b.jpg\" alt=\"Earth Image\" width=\"150\" height=\"200\"> </body> </html>" );
+        String htmlString ;
 
         htmlString = htmlOfferList.get(0).getContent();
         System.out.println("OFFER  SIZE"+ htmlOfferList.size());
 
         WebView mywebview = (WebView) getView().findViewById(R.id.viewMbox);
+        mywebview.clearCache(false);
         mywebview.loadData(htmlString, "text/html", "UTF-8" );
+
+        final Map<String, Object> displayInteractionXdm = htmlOfferList.get(0).generateDisplayInteractionXdm(); // Offer display tracking XDM
+        final Map<String, Object> additionalData = new HashMap<>();
+
+        final ExperienceEvent experienceEvent = new ExperienceEvent.Builder().setXdmSchema(displayInteractionXdm).setData(additionalData).build();
+        Edge.sendEvent(experienceEvent, null);
 
     }
 
