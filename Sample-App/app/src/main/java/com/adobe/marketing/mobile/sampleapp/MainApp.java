@@ -35,7 +35,7 @@ public class MainApp extends Application {
 
     private static final String LOG_TAG = "MainApp";
     // TODO: Set up the preferred Environment File ID from your mobile property configured in Data Collection UI
-    private static final String ENVIRONMENT_FILE_ID = "180687984d6e/ad8bef0e193c/launch-c37f481d8f75-development";
+    private static final String ENVIRONMENT_FILE_ID = "";
     private static Context context;
 
     public static Context getAppContext() {
@@ -60,10 +60,11 @@ public class MainApp extends Application {
             com.adobe.marketing.mobile.edge.identity.Identity.registerExtension();
             Lifecycle.registerExtension();
             Signal.registerExtension();
+            Messaging.registerExtension();
             Edge.registerExtension();
             Assurance.registerExtension();
-            //Messaging.registerExtension();
             Optimize.registerExtension();
+
 
 
             MobileCore.start(new AdobeCallback() {
@@ -71,9 +72,9 @@ public class MainApp extends Application {
                 @Override
                 public void call(Object o) {
                     Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
-                   // MobileCore.updateConfiguration(Collections.<String, Object>singletonMap("optimize.datasetId", "5ee913a65af48d1917ade745"));
                 }
             });
+
         } catch (InvalidInitException e) {
             e.printStackTrace();
         }
@@ -96,6 +97,8 @@ public class MainApp extends Application {
         } catch (IllegalArgumentException e) {
             Log.e(LOG_TAG, "IllegalArgumentException - Check if google-services.json is added and is correctly configured. \nError message: " + e.getLocalizedMessage());
         }
+
+
     }
 
     @Override

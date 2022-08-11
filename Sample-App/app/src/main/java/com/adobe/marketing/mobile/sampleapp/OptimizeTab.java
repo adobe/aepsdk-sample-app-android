@@ -49,42 +49,44 @@ public class OptimizeTab extends Fragment {
 
         String htmlString ;
 
-        htmlString = htmlOfferList.get(0).getContent();
-        System.out.println("OFFER  SIZE"+ htmlOfferList.size());
+        if(!htmlOfferList.isEmpty()) {
 
-        WebView mywebview = (WebView) getView().findViewById(R.id.viewMbox);
-        mywebview.clearCache(false);
-        mywebview.loadData(htmlString, "text/html", "UTF-8" );
+            htmlString = htmlOfferList.get(0).getContent();
 
-        final Map<String, Object> displayInteractionXdm = htmlOfferList.get(0).generateDisplayInteractionXdm(); // Offer display tracking XDM
-        final Map<String, Object> additionalData = new HashMap<>();
+            WebView mywebview = (WebView) getView().findViewById(R.id.viewMbox);
+            mywebview.clearCache(false);
+            mywebview.loadData(htmlString, "text/html", "UTF-8");
 
-        final ExperienceEvent experienceEvent = new ExperienceEvent.Builder().setXdmSchema(displayInteractionXdm).setData(additionalData).build();
-        Edge.sendEvent(experienceEvent, null);
+            // Emit the displayed event when the HTML offer is clicked
+            htmlOfferList.get(0).displayed();
+        }
 
     }
 
     public void FetchTargetPropositions() {
 
+        // The following code is a sample showing how a custom parameter 'myAnimal' is used to fetch the right experience to show to the users
+        // Please modify this code for your specific Target activity and parameters
+
+        // Step 1: Add mbox parameters
         final Map<String, Object> data = new HashMap<>();
         final Map<String, String> targetParameters = new HashMap<>();
-
-        // Add mbox parameters
         EditText textFieldAnimal = getView().findViewById(R.id.txtAnimalChoice);
         targetParameters.put("myAnimal", textFieldAnimal.getText().toString());
         data.put("__adobe", new HashMap<String, Object>() {
             { put("target", targetParameters); }
         });
 
-        DecisionScope decisionScope = new DecisionScope("AEPSampleApp_Optimize_HTMLField");
-
+        // Step 2: Define a decisionScope which matches the hardcoded location.
+        DecisionScope decisionScope = new DecisionScope("_TargetPoweredLoc");
         final ArrayList<DecisionScope> decisionScopeList = new ArrayList<DecisionScope>();
         decisionScopeList.add(decisionScope);
 
+        // Step 3: Call the API method updatePropositions to fetch the experiences from Target
         Optimize.updatePropositions(decisionScopeList, null, data);
 
+        // Step 4: Implement the callback method which will be called when the propositions are returned
         Proposition proposition;
-
         Optimize.onPropositionsUpdate(new AdobeCallbackWithError<Map<DecisionScope, Proposition>>() {
             @Override
             public void fail(final AdobeError adobeError) {
@@ -93,10 +95,10 @@ public class OptimizeTab extends Fragment {
 
             @Override
             public void call(final Map<DecisionScope, Proposition> propositionsMap) {
+
                 if (propositionsMap != null && !propositionsMap.isEmpty()) {
                     // handle propositions
                     for (Proposition prop : propositionsMap.values()) {
-                        System.out.println("number of offers"+ prop.getOffers().size());
                         htmlOfferList.addAll(prop.getOffers());
                     }
                 }
