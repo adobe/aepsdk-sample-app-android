@@ -2,36 +2,23 @@ package com.adobe.marketing.mobile.sampleapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import com.adobe.marketing.mobile.AdobeCallback;
+import com.adobe.marketing.mobile.Messaging;
+import com.adobe.marketing.mobile.edge.identity.Identity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.adobe.marketing.mobile.AdobeCallback;
-import com.adobe.marketing.mobile.Edge;
-import com.adobe.marketing.mobile.EdgeCallback;
-import com.adobe.marketing.mobile.EdgeEventHandle;
-import com.adobe.marketing.mobile.ExperienceEvent;
-import com.adobe.marketing.mobile.edge.identity.Identity;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-
 public class MessageTab extends Fragment {
     TextView tvECID;
 
-    private static final String LOG_TAG = "Assurance Tab";
+    private static final String LOG_TAG = "Message Tab";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +34,18 @@ public class MessageTab extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        final TextView tv_version = getView().findViewById(R.id.tv_messaging_version);
+        view.post(new Runnable() {
+            @Override
+            public void run() {
+                if (tv_version != null) {
+                    tv_version.setText("Messaging v" + Messaging.extensionVersion());
+                }
+            }
+        });
+
+
         tvECID = view.findViewById(R.id.tv_lbl_ecidLabel);
     }
 

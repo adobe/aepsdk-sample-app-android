@@ -1,13 +1,13 @@
 package com.adobe.marketing.mobile.sampleapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -19,6 +19,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     Button btnConsent;
     Button btnAssurance;
     Button btnMessaging;
+    Button btnOptimize;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnEdgeIdentity = findViewById(R.id.btn_edgeidentity);
         btnConsent = findViewById(R.id.btn_consent);
         btnMessaging = findViewById(R.id.btn_messaging);
+        btnOptimize = findViewById(R.id.btn_optimize);
+
 
         btnCore.setOnClickListener(this);
         btnEdge.setOnClickListener(this);
@@ -46,6 +49,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         btnEdgeIdentity.setOnClickListener(this);
         btnConsent.setOnClickListener(this);
         btnMessaging.setOnClickListener(this);
+        btnOptimize.setOnClickListener(this);
     }
 
     private void openMainActivity(int tab) {
@@ -68,6 +72,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_assurance: openMainActivity(4);
                 break;
             case R.id.btn_messaging: openMainActivity(5);
+                break;
+            case R.id.btn_optimize: openMainActivity(6);
                 break;
             default:
                 break;

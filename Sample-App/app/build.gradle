@@ -6,6 +6,7 @@ android {
     defaultConfig {
         applicationId "com.adobe.marketing.mobile.sampleapp"
         minSdkVersion 19
+        buildToolsVersion '30.0.2'
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -37,17 +38,21 @@ dependencies {
     implementation 'com.adobe.marketing.mobile:userprofile:1.+'
     implementation 'com.adobe.marketing.mobile:sdk-core:1.+'
     implementation 'com.adobe.marketing.mobile:assurance:1.+'
+    implementation 'com.adobe.marketing.mobile:optimize:1.+'
     implementation 'com.adobe.marketing.mobile:analytics:1.+'
     implementation 'com.adobe.marketing.mobile:edge:1.+'
     implementation 'com.adobe.marketing.mobile:edgeconsent:1.+'
     implementation 'com.adobe.marketing.mobile:edgeidentity:1.+'
-    implementation 'com.adobe.marketing.mobile:messaging:1.+'
+    implementation 'com.adobe.marketing.mobile:messaging:1.2.0-beta-2-SNAPSHOT'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-messaging'
 
     // Image loading
     implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 
     // For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier

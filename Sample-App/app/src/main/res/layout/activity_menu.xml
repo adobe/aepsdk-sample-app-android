@@ -26,9 +26,10 @@
             android:id="@+id/tv_core"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="12dp"
             android:text="@string/home_tv_core"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_header" />
 
@@ -39,6 +40,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/home_btn_core"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.39"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_core" />
 
@@ -46,10 +48,10 @@
             android:id="@+id/tv_edge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:text="@string/home_tv_edge"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_core" />
 
@@ -87,16 +89,17 @@
             android:id="@+id/tv_validation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:text="@string/home_tv_validation"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.609"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_consent" />
 
         <Button
             android:id="@+id/btn_assurance"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="345dp"
+            android:layout_height="49dp"
             android:layout_marginTop="10dp"
             android:text="@string/home_btn_assurance"
             app:layout_constraintEnd_toEndOf="parent"
@@ -107,9 +110,10 @@
             android:id="@+id/tv_messaging"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="12dp"
             android:text="@string/home_tv_messaging"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_assurance" />
 
@@ -122,6 +126,28 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_messaging" />
+
+        <TextView
+            android:id="@+id/tv_optimize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="@string/home_tv_optimize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.609"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_messaging" />
+
+        <Button
+            android:id="@+id/btn_optimize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/home_btn_optimize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_optimize" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

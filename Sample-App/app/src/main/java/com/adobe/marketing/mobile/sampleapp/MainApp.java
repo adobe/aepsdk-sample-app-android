@@ -8,25 +8,25 @@
  */
 package com.adobe.marketing.mobile.sampleapp;
 
-import com.adobe.marketing.mobile.AdobeCallback;
-
-import com.adobe.marketing.mobile.Assurance;
-import com.adobe.marketing.mobile.Edge;
-import com.adobe.marketing.mobile.Messaging;
-import com.adobe.marketing.mobile.MobileCore;
-import com.adobe.marketing.mobile.Lifecycle;
-import com.adobe.marketing.mobile.Signal;
-import com.adobe.marketing.mobile.UserProfile;
-import com.adobe.marketing.mobile.InvalidInitException;
-import com.adobe.marketing.mobile.LoggingMode;
-import com.adobe.marketing.mobile.edge.consent.Consent;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+
+import com.adobe.marketing.mobile.AdobeCallback;
+import com.adobe.marketing.mobile.Assurance;
+import com.adobe.marketing.mobile.Edge;
+import com.adobe.marketing.mobile.InvalidInitException;
+import com.adobe.marketing.mobile.Lifecycle;
+import com.adobe.marketing.mobile.LoggingMode;
+import com.adobe.marketing.mobile.Messaging;
+import com.adobe.marketing.mobile.MobileCore;
+import com.adobe.marketing.mobile.Signal;
+import com.adobe.marketing.mobile.UserProfile;
+import com.adobe.marketing.mobile.edge.consent.Consent;
+import com.adobe.marketing.mobile.optimize.Optimize;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
@@ -60,18 +60,21 @@ public class MainApp extends Application {
             com.adobe.marketing.mobile.edge.identity.Identity.registerExtension();
             Lifecycle.registerExtension();
             Signal.registerExtension();
+            Messaging.registerExtension();
             Edge.registerExtension();
             Assurance.registerExtension();
-            Messaging.registerExtension();
+            Optimize.registerExtension();
+
+
 
             MobileCore.start(new AdobeCallback() {
 
                 @Override
                 public void call(Object o) {
                     Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
-
                 }
             });
+
         } catch (InvalidInitException e) {
             e.printStackTrace();
         }
@@ -94,6 +97,8 @@ public class MainApp extends Application {
         } catch (IllegalArgumentException e) {
             Log.e(LOG_TAG, "IllegalArgumentException - Check if google-services.json is added and is correctly configured. \nError message: " + e.getLocalizedMessage());
         }
+
+
     }
 
     @Override

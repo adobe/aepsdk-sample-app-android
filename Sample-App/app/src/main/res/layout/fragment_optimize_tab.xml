@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OptimizeTab">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_optimize_version"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        android:textAllCaps="false"
+                        android:textColor="@color/common_google_signin_btn_text_light"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/lblEnterAnimalChoice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Enter your favorite animal:"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/txtAnimalChoice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:text=""
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnFetchExperience"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Fetch Experience"
+                        android:textAlignment="center" />
+
+                    <Button
+                        android:id="@+id/btnShowExperience"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Show Experience"
+                        android:textAlignment="center" />
+
+                    <WebView
+                        android:id="@+id/viewMbox"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+
+                </LinearLayout>
+
+             </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
