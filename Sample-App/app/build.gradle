@@ -2,11 +2,11 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
     defaultConfig {
         applicationId "com.adobe.marketing.mobile.sampleapp"
         minSdkVersion 19
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -22,25 +22,45 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    lintOptions {
+
+        checkReleaseBuilds false
+
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.2.1'
-    implementation 'com.google.android.gms:play-services-location:17.1.0'
-    implementation 'com.google.code.gson:gson:2.3.1'
+    //noinspection GradleDependency
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
 
-
-    implementation 'com.adobe.marketing.mobile:userprofile:1.+'
-    implementation 'com.adobe.marketing.mobile:sdk-core:1.+'
-    implementation 'com.adobe.marketing.mobile:assurance:1.+'
-    implementation 'com.adobe.marketing.mobile:analytics:1.+'
-    implementation 'com.adobe.marketing.mobile:edge:1.+'
-    implementation 'com.adobe.marketing.mobile:edgeconsent:1.+'
-    implementation 'com.adobe.marketing.mobile:edgeidentity:1.+'
+    implementation 'com.adobe.marketing.mobile:core:2.0.0-SNAPSHOT'
+    implementation('com.adobe.marketing.mobile:analytics:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+    implementation('com.adobe.marketing.mobile:lifecycle:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+    implementation('com.adobe.marketing.mobile:identity:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+    implementation('com.adobe.marketing.mobile:signal:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+    implementation('com.adobe.marketing.mobile:assurance:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+    implementation('com.adobe.marketing.mobile:userprofile:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+//    implementation 'com.adobe.marketing.mobile:edge:1.+'
+//    implementation 'com.adobe.marketing.mobile:edgeconsent:1.+'
+//    implementation 'com.adobe.marketing.mobile:edgeidentity:1.+'
     implementation 'com.adobe.marketing.mobile:messaging:1.+'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
