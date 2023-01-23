@@ -58,9 +58,16 @@ dependencies {
     implementation('com.adobe.marketing.mobile:userprofile:2.0.0-SNAPSHOT'){
         transitive = false
     }
-//    implementation 'com.adobe.marketing.mobile:edge:1.+'
-//    implementation 'com.adobe.marketing.mobile:edgeconsent:1.+'
-//    implementation 'com.adobe.marketing.mobile:edgeidentity:1.+'
+    implementation('com.adobe.marketing.mobile:edge:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+    implementation('com.adobe.marketing.mobile:edgeconsent:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+    implementation('com.adobe.marketing.mobile:edgeidentity:2.0.0-SNAPSHOT'){
+        transitive = false
+    }
+
     implementation 'com.adobe.marketing.mobile:messaging:1.+'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
