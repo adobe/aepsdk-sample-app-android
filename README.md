@@ -23,7 +23,7 @@ The app needs to be configured with the following Edge extensions in the Data Co
 - [Edge](https://developer.adobe.com/client-sdks/documentation/edge-network)
 - [Edge Identity](https://developer.adobe.com/client-sdks/documentation/identity-for-edge-network)
 - [Consent](https://developer.adobe.com/client-sdks/documentation/consent-for-edge-network)
-- [Messaging](https://developer.adobe.com/client-sdks/documentation/adobe-journey-optimizer)
+- [Messaging](https://developer.adobe.com/client-sdks/documentation/iam)
 
 ### Lifecycle for Edge Network 
 Follow the [documentation](https://developer.adobe.com/client-sdks/documentation/lifecycle-for-edge-network) to forward Lifecycle extension metrics to the Adobe Experience Platform.
