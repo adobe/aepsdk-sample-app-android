@@ -64,28 +64,17 @@ public class ConsentTab extends Fragment implements NavigationAware {
         Button btnCollectConsentN = getView().findViewById(R.id.btn_collectConsentN);
         Button btnGetConsents = getView().findViewById(R.id.btn_getConsents);
 
-        btnCollectConsentY.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectConsentUpdate("y");
-                getConsent();
-            }
+        btnCollectConsentY.setOnClickListener(v -> {
+            collectConsentUpdate("y");
+            getConsent();
         });
 
-        btnCollectConsentN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                collectConsentUpdate("n");
-                getConsent();
-            }
+        btnCollectConsentN.setOnClickListener(v -> {
+            collectConsentUpdate("n");
+            getConsent();
         });
 
-        btnGetConsents.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                getConsent();
-            }
-        });
+        btnGetConsents.setOnClickListener(v -> getConsent());
     }
 
     @Override
@@ -115,14 +104,11 @@ public class ConsentTab extends Fragment implements NavigationAware {
     }
 
     private void getConsent() {
-        Consent.getConsents(new AdobeCallback<Map<String, Object>>() {
-            @Override
-            public void call(Map<String, Object> map) {
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                String json = gson.toJson(map);
-                Log.i(LOG_TAG, String.format("Received Consent from API = %s", json));
-                updateTextView(json);
-            }
+        Consent.getConsents(consents -> {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = gson.toJson(consents);
+            Log.i(LOG_TAG, String.format("getConsent returned: %s", json));
+            updateTextView(json);
         });
     }
 
