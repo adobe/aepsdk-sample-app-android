@@ -11,6 +11,7 @@ package com.adobe.marketing.mobile.sampleapp;
 import com.adobe.marketing.mobile.Assurance;
 import com.adobe.marketing.mobile.Edge;
 import com.adobe.marketing.mobile.Extension;
+import com.adobe.marketing.mobile.Messaging;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Lifecycle;
 import com.adobe.marketing.mobile.Signal;
@@ -60,7 +61,7 @@ public class MainApp extends Application {
         extensions.add(Edge.EXTENSION);
         extensions.add(Assurance.EXTENSION);
         extensions.add(Consent.EXTENSION);
-//        extensions.add(Messaging.EXTENSION);
+        extensions.add(Messaging.EXTENSION);
         extensions.add(com.adobe.marketing.mobile.Identity.EXTENSION);
         extensions.add(com.adobe.marketing.mobile.edge.identity.Identity.EXTENSION);
         MobileCore.registerExtensions(extensions, o -> {
