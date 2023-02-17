@@ -84,170 +84,91 @@ public class CoreTab extends Fragment implements NavigationAware {
         final TextView txtCurrentPrivacy = getView().findViewById(R.id.text_currentPrivacy);
 
 
-        btnCollectPII.setOnClickListener(new View.OnClickListener() {
+        btnCollectPII.setOnClickListener(v -> MobileCore.collectPii(Collections.singletonMap("name", "Adobe Experience Platform")));
+        btnUpdateConfig.setOnClickListener(v -> MobileCore.updateConfiguration(Collections.singletonMap("analytics.batchLimit", 3)));
+        btnSetAdvertisingId.setOnClickListener(v -> MobileCore.setAdvertisingIdentifier("advertisingIdentifier"));
+        btnSetPushId.setOnClickListener(v -> MobileCore.setPushIdentifier("9516258b6230afdd93cf0cd07b8dd845"));
+        btnGetECID.setOnClickListener(v -> Identity.getExperienceCloudId(new AdobeCallbackWithError<String>() {
             @Override
-            public void onClick(View v) {
-                MobileCore.collectPii(Collections.singletonMap("name", "Adobe Experience Platform"));
+            public void fail(AdobeError adobeError) {
+                Log.i(LOG_TAG, "getExperienceCloudId failed with error: " + adobeError.getErrorName());
             }
+
+            @Override
+            public void call(String s) {
+                Log.i(LOG_TAG, "getExperienceCloudId returned: " + s);
+            }
+        }));
+
+        btnGetUrlVar.setOnClickListener(v -> Identity.getUrlVariables(new AdobeCallbackWithError<String>() {
+            @Override
+            public void fail(AdobeError adobeError) {
+                Log.i(LOG_TAG, "getUrlVariables failed with error: " + adobeError.getErrorName());
+            }
+
+            @Override
+            public void call(String s) {
+                Log.i(LOG_TAG, "getUrlVariables returned: " + s);
+            }
+        }));
+
+        btnGetSdkId.setOnClickListener(v -> MobileCore.getSdkIdentities(new AdobeCallbackWithError<String>() {
+            @Override
+            public void fail(AdobeError adobeError) {
+                Log.i(LOG_TAG, "getSdkIdentities failed with error: " + adobeError.getErrorName());
+            }
+
+            @Override
+            public void call(String s) {
+                Log.i(LOG_TAG, "getSdkIdentities returned: " + s);
+            }
+        }));
+
+        btnSyncId.setOnClickListener(v -> Identity.syncIdentifier("idType1", "1234567", VisitorID.AuthenticationState.AUTHENTICATED));
+        btnAppendUrl.setOnClickListener(v -> Identity.appendVisitorInfoForURL("https://example.com", new AdobeCallbackWithError<String>() {
+            @Override
+            public void fail(AdobeError adobeError) {
+                Log.i(LOG_TAG, "appendVisitorInfoForURL failed with error: " + adobeError.getErrorName());
+            }
+
+            @Override
+            public void call(String s) {
+                Log.i(LOG_TAG, "appendVisitorInfoForURL returned: " + s);
+            }
+        }));
+
+        btnGetPrivacy.setOnClickListener(v -> MobileCore.getPrivacyStatus(mobilePrivacyStatus -> getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                txtCurrentPrivacy.setText("Current Privacy: " + mobilePrivacyStatus.getValue());
+            }
+        })));
+
+        btnEmitActionEvent.setOnClickListener(v -> {
+            String eventName = "sampleAction";
+
+            Map<String, String> additionalContextData = new HashMap<String, String>();
+            additionalContextData.put("exampleCustomKey", "exampleValue");
+            MobileCore.trackAction(eventName, additionalContextData);
+
+            showToast("Analytics action \"" + eventName + "\" triggered");
+
         });
 
-        btnUpdateConfig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.updateConfiguration(Collections.<String, Object>singletonMap("analytics.batchLimit", 3));
-            }
+        btnEmitStateEvent.setOnClickListener(v -> {
+            String eventName = "sampleState";
+
+            Map<String, String> additionalContextData = new HashMap<>();
+            additionalContextData.put("exampleCustomKey", "exampleValue");
+            MobileCore.trackState(eventName, additionalContextData);
+
+            showToast("Analytics state \"" + eventName + "\" triggered");
+
         });
 
-        btnSetAdvertisingId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.setAdvertisingIdentifier("advertisingIdentifier");
-            }
-        });
-
-        btnSetPushId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.setPushIdentifier("9516258b6230afdd93cf0cd07b8dd845");
-            }
-        });
-
-        btnGetECID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Identity.getExperienceCloudId(new AdobeCallbackWithError<String>() {
-                    @Override
-                    public void fail(AdobeError adobeError) {
-
-                    }
-
-                    @Override
-                    public void call(String s) {
-                        Log.i(LOG_TAG, "ECID : " + s);
-                    }
-                });
-            }
-        });
-
-        btnGetUrlVar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Identity.getUrlVariables(new AdobeCallbackWithError<String>() {
-                    @Override
-                    public void fail(AdobeError adobeError) {
-                    }
-
-                    @Override
-                    public void call(String s) {
-                        Log.i(LOG_TAG, "URL Variables : " + s);
-                    }
-                });
-            }
-        });
-
-        btnGetSdkId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.getSdkIdentities(new AdobeCallbackWithError<String>() {
-                    @Override
-                    public void fail(AdobeError adobeError) {
-                    }
-
-                    @Override
-                    public void call(String s) {
-                        Log.i(LOG_TAG, "SDK Identities : " + s);
-                    }
-                });
-            }
-        });
-
-        btnSyncId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Identity.syncIdentifier("idType1", "1234567", VisitorID.AuthenticationState.AUTHENTICATED);
-            }
-        });
-
-        btnAppendUrl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Identity.appendVisitorInfoForURL("https://example.com", new AdobeCallbackWithError<String>() {
-                    @Override
-                    public void fail(AdobeError adobeError) {
-                    }
-
-                    @Override
-                    public void call(String s) {
-                        Log.i(LOG_TAG, "URL : " + s);
-                    }
-                });
-            }
-        });
-
-
-        btnGetPrivacy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.getPrivacyStatus(new AdobeCallback<MobilePrivacyStatus>() {
-                    @Override
-                    public void call(final MobilePrivacyStatus mobilePrivacyStatus) {
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                txtCurrentPrivacy.setText("Current Privacy: " + mobilePrivacyStatus.getValue());
-                            }
-                        });
-                    }
-                });
-            }
-        });
-
-        btnEmitActionEvent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String eventName = "sampleAction";
-
-                Map<String, String> additionalContextData = new HashMap<String, String>();
-                additionalContextData.put("exampleCustomKey", "exampleValue");
-                MobileCore.trackAction(eventName, additionalContextData);
-
-                showToast("Analytics action \"" + eventName + "\" triggered");
-
-            }
-        });
-
-        btnEmitStateEvent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String eventName = "sampleState";
-
-                Map<String, String> additionalContextData = new HashMap<>();
-                additionalContextData.put("exampleCustomKey", "exampleValue");
-                MobileCore.trackState(eventName, additionalContextData);
-
-                showToast("Analytics state \"" + eventName + "\" triggered");
-
-            }
-        });
-
-        rdoOptIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.setPrivacyStatus(MobilePrivacyStatus.OPT_IN);
-            }
-        });
-        rdoOptOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.setPrivacyStatus(MobilePrivacyStatus.OPT_OUT);
-            }
-        });
-        rdoOptUnknown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MobileCore.setPrivacyStatus(MobilePrivacyStatus.UNKNOWN);
-            }
-        });
+        rdoOptIn.setOnClickListener(v -> MobileCore.setPrivacyStatus(MobilePrivacyStatus.OPT_IN));
+        rdoOptOut.setOnClickListener(v -> MobileCore.setPrivacyStatus(MobilePrivacyStatus.OPT_OUT));
+        rdoOptUnknown.setOnClickListener(v -> MobileCore.setPrivacyStatus(MobilePrivacyStatus.UNKNOWN));
     }
 
     @Override
