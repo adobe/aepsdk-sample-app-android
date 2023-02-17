@@ -43,18 +43,18 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.code.gson:gson:2.8.6'
 
-    implementation 'com.adobe.marketing.mobile:core:2.0.1'
-    implementation'com.adobe.marketing.mobile:lifecycle:2.0.1'
-    implementation 'com.adobe.marketing.mobile:identity:2.0.1'
-    implementation 'com.adobe.marketing.mobile:signal:2.0.1'
-    implementation 'com.adobe.marketing.mobile:assurance:2.0.0'
-    implementation 'com.adobe.marketing.mobile:userprofile:2.0.0'
-    implementation 'com.adobe.marketing.mobile:edge:2.0.0'
-    implementation 'com.adobe.marketing.mobile:edgeconsent:2.0.0'
-    implementation 'com.adobe.marketing.mobile:edgeidentity:2.0.0'
-    implementation 'com.adobe.marketing.mobile:messaging:2.0.1'
-    implementation 'com.adobe.marketing.mobile:analytics:2.0.0'
-
+    // Using dynamic dependency versions is not recommended for production apps. For more information, please read https://developer.adobe.com/client-sdks/documentation/manage-gradle-dependencies
+    implementation 'com.adobe.marketing.mobile:core:2.+'
+    implementation'com.adobe.marketing.mobile:lifecycle:2.+'
+    implementation 'com.adobe.marketing.mobile:identity:2.+'
+    implementation 'com.adobe.marketing.mobile:signal:2.+'
+    implementation 'com.adobe.marketing.mobile:assurance:2.+'
+    implementation 'com.adobe.marketing.mobile:userprofile:2.+'
+    implementation 'com.adobe.marketing.mobile:edge:2.+'
+    implementation 'com.adobe.marketing.mobile:edgeconsent:2.+'
+    implementation 'com.adobe.marketing.mobile:edgeidentity:2.+'
+    implementation 'com.adobe.marketing.mobile:messaging:2.+'
+    implementation 'com.adobe.marketing.mobile:analytics:2.+'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-messaging'
