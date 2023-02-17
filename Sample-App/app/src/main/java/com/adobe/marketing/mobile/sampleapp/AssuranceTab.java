@@ -53,12 +53,7 @@ public class AssuranceTab extends Fragment implements NavigationAware {
 
 
         // start session
-        btnConnectToAssuranceSession.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Assurance.startSession(txtAssuranceSessionURL.getText().toString());
-            }
-        });
+        btnConnectToAssuranceSession.setOnClickListener(v -> Assurance.startSession(txtAssuranceSessionURL.getText().toString()));
     }
 
     @Override

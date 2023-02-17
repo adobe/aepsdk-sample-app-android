@@ -7,11 +7,10 @@ buildscript {
         maven {
             url "https://plugins.gradle.org/m2/"
         }
-        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.1'
-        classpath 'com.google.gms:google-services:4.3.5'
+        classpath 'com.android.tools.build:gradle:4.0.2'
+        classpath 'com.google.gms:google-services:4.3.14'
     }
 }
 

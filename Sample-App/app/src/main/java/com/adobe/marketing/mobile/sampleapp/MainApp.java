@@ -8,16 +8,14 @@
  */
 package com.adobe.marketing.mobile.sampleapp;
 
-import com.adobe.marketing.mobile.AdobeCallback;
-
 import com.adobe.marketing.mobile.Assurance;
 import com.adobe.marketing.mobile.Edge;
+import com.adobe.marketing.mobile.Extension;
 import com.adobe.marketing.mobile.Messaging;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Lifecycle;
 import com.adobe.marketing.mobile.Signal;
 import com.adobe.marketing.mobile.UserProfile;
-import com.adobe.marketing.mobile.InvalidInitException;
 import com.adobe.marketing.mobile.LoggingMode;
 import com.adobe.marketing.mobile.edge.consent.Consent;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +28,9 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.multidex.MultiDex;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainApp extends Application {
 
@@ -53,28 +54,19 @@ public class MainApp extends Application {
         MobileCore.setLargeIconResourceID(R.mipmap.ic_launcher_round);
         MobileCore.configureWithAppID(ENVIRONMENT_FILE_ID);
 
-        try {
-            UserProfile.registerExtension();
-            Consent.registerExtension();
-            com.adobe.marketing.mobile.Identity.registerExtension();
-            com.adobe.marketing.mobile.edge.identity.Identity.registerExtension();
-            Lifecycle.registerExtension();
-            Signal.registerExtension();
-            Edge.registerExtension();
-            Assurance.registerExtension();
-            Messaging.registerExtension();
-
-            MobileCore.start(new AdobeCallback() {
-
-                @Override
-                public void call(Object o) {
-                    Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
-
-                }
-            });
-        } catch (InvalidInitException e) {
-            e.printStackTrace();
-        }
+        List<Class<? extends Extension>> extensions = new ArrayList<>();
+        extensions.add(Lifecycle.EXTENSION);
+        extensions.add(Signal.EXTENSION);
+        extensions.add(UserProfile.EXTENSION);
+        extensions.add(Edge.EXTENSION);
+        extensions.add(Assurance.EXTENSION);
+        extensions.add(Consent.EXTENSION);
+        extensions.add(Messaging.EXTENSION);
+        extensions.add(com.adobe.marketing.mobile.Identity.EXTENSION);
+        extensions.add(com.adobe.marketing.mobile.edge.identity.Identity.EXTENSION);
+        MobileCore.registerExtensions(extensions, o -> {
+            Log.d(LOG_TAG, "AEP Mobile SDK is initialized");
+        });
 
         try {
             FirebaseMessaging.getInstance().getToken()

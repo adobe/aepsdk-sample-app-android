@@ -2,7 +2,11 @@
 
 ## About this Project
 
-This repository contains the Android sample app for the AEP SDK. 
+This repository contains the Android sample app for the latest versions of the Android Mobile SDKs. 
+
+> **Note**
+> The sample app with the previous Android SDKs is archived in [sdk-1.x](https://github.com/adobe/aepsdk-sample-app-android/tree/sdk-1.x) branch.
+
 
 ## Prerequisites
 
@@ -20,13 +24,13 @@ This repository contains the Android sample app for the AEP SDK.
 ## Documentation
 ### Edge Extensions Prerequisites
 The app needs to be configured with the following Edge extensions in the Data Collection UI before it can be used: 
-- [Edge](https://aep-sdks.gitbook.io/docs/foundation-extensions/experience-platform-extension)
-- [Edge Identity](https://aep-sdks.gitbook.io/docs/foundation-extensions/identity-for-edge-network)
-- [Consent](https://aep-sdks.gitbook.io/docs/foundation-extensions/consent-for-edge-network)
-- [Messaging](https://aep-sdks.gitbook.io/docs/beta/adobe-journey-optimizer#configure-extension-in-launch)
+- [Edge](https://developer.adobe.com/client-sdks/documentation/edge-network)
+- [Edge Identity](https://developer.adobe.com/client-sdks/documentation/identity-for-edge-network)
+- [Consent](https://developer.adobe.com/client-sdks/documentation/consent-for-edge-network)
+- [Messaging](https://developer.adobe.com/client-sdks/documentation/iam)
 
 ### Lifecycle for Edge Network 
-Follow the [documentation](https://aep-sdks.gitbook.io/docs/foundation-extensions/lifecycle-for-edge-network) to forward Lifecycle extension metrics to the Adobe Experience Platform.
+Follow the [documentation](https://developer.adobe.com/client-sdks/documentation/lifecycle-for-edge-network) to forward Lifecycle extension metrics to the Adobe Experience Platform.
 
 ### Messaging
 Follow the [documentation](Documentation/README.md) for using the messaging features.

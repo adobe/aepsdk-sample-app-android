@@ -89,54 +89,45 @@ public class EdgeTab extends Fragment implements NavigationAware {
         });
 
         Button buttonAddToCart = view.findViewById(R.id.button_add_to_cart);
-        buttonAddToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sendAddToCartXdmEvent();
+        buttonAddToCart.setOnClickListener(v -> {
+            sendAddToCartXdmEvent();
 
-                Resources res = getResources();
-                View view = getView().findViewById(R.id.layoutMain);
-                Snackbar.make(view, res.getString(R.string.add_to_cart_message), Snackbar.LENGTH_SHORT)
-                        .show();
-            }
+            Resources res = getResources();
+            View view1 = getView().findViewById(R.id.layoutMain);
+            Snackbar.make(view1, res.getString(R.string.add_to_cart_message), Snackbar.LENGTH_SHORT)
+                    .show();
         });
 
         Button buttonPurchase = view.findViewById(R.id.button_purchase);
-        buttonPurchase.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Send a sample Commerce Purchase Experience Event to the AEP Edge extension
-                sendPurchaseXdmEvent();
+        buttonPurchase.setOnClickListener(v -> {
+            // Send a sample Commerce Purchase Experience Event to the AEP Edge extension
+            sendPurchaseXdmEvent();
 
-                Resources res = getResources();
-                View view = getView().findViewById(R.id.layoutMain);
-                Snackbar.make(view, res.getString(R.string.purchase_complete_message), Snackbar.LENGTH_SHORT)
-                        .show();
-            }
+            Resources res = getResources();
+            View view12 = getView().findViewById(R.id.layoutMain);
+            Snackbar.make(view12, res.getString(R.string.purchase_complete_message), Snackbar.LENGTH_SHORT)
+                    .show();
         });
 
         Button buttonReview = view.findViewById(R.id.button_review);
-        buttonReview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                EditText reviewerEmailEditText = getView().findViewById(R.id.reviewer_email);
-                Spinner productsSpinner = getView().findViewById(R.id.products_spinner);
-                RatingBar ratingBar = getView().findViewById(R.id.review_ratingbar);
-                EditText productReviewEditText = getView().findViewById(R.id.text_review_text);
+        buttonReview.setOnClickListener(v -> {
+            EditText reviewerEmailEditText = getView().findViewById(R.id.reviewer_email);
+            Spinner productsSpinner = getView().findViewById(R.id.products_spinner);
+            RatingBar ratingBar = getView().findViewById(R.id.review_ratingbar);
+            EditText productReviewEditText = getView().findViewById(R.id.text_review_text);
 
-                String reviewerId = reviewerEmailEditText.getText().toString();
-                ProductItem product = (ProductItem) productsSpinner.getSelectedItem();
-                int rating = (int) ratingBar.getRating();
-                String productReview = productReviewEditText.getText().toString();
+            String reviewerId = reviewerEmailEditText.getText().toString();
+            ProductItem product = (ProductItem) productsSpinner.getSelectedItem();
+            int rating = (int) ratingBar.getRating();
+            String productReview = productReviewEditText.getText().toString();
 
-                sendProductReviewXdmEvent(product, reviewerId, rating, productReview);
+            sendProductReviewXdmEvent(product, reviewerId, rating, productReview);
 
-                Resources res = getResources();
-                View view = getView().findViewById(R.id.layoutMain);
-                Snackbar.make(view, res.getString(R.string.review_complete_message), Snackbar.LENGTH_SHORT)
-                        .show();
+            Resources res = getResources();
+            View view13 = getView().findViewById(R.id.layoutMain);
+            Snackbar.make(view13, res.getString(R.string.review_complete_message), Snackbar.LENGTH_SHORT)
+                    .show();
 
-            }
         });
 
         // Setup product list spinner

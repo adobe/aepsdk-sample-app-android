@@ -81,54 +81,33 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
         Button btnGetECID = getView().findViewById(R.id.btn_getECID);
 
 
-        btnUpdateIdentityMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IdentityMap map = new IdentityMap();
-                map.addItem(new IdentityItem("primary@email.com", AuthenticatedState.AUTHENTICATED, false), "Email");
-                map.addItem(new IdentityItem("secondary@email.com"), "Email");
-                map.addItem(new IdentityItem("uniqueUserID", AuthenticatedState.AUTHENTICATED, true), "UserId");
-                Identity.updateIdentities(map);
-                getIdentities();
-            }
+        btnUpdateIdentityMap.setOnClickListener(v -> {
+            IdentityMap map = new IdentityMap();
+            map.addItem(new IdentityItem("primary@email.com", AuthenticatedState.AUTHENTICATED, false), "Email");
+            map.addItem(new IdentityItem("secondary@email.com"), "Email");
+            map.addItem(new IdentityItem("uniqueUserID", AuthenticatedState.AUTHENTICATED, true), "UserId");
+            Identity.updateIdentities(map);
+            getIdentities();
         });
 
-        btnRemoveIdentityMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Identity.removeIdentity(new IdentityItem("secondary@email.com"), "Email");
-                getIdentities();
-            }
+        btnRemoveIdentityMap.setOnClickListener(v -> {
+            Identity.removeIdentity(new IdentityItem("secondary@email.com"), "Email");
+            getIdentities();
         });
 
-        btnGetIdentityMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                getIdentities();
-            }
-        });
+        btnGetIdentityMap.setOnClickListener(v -> getIdentities());
 
-        btnGetECID.setOnClickListener(new View.OnClickListener() {
+        btnGetECID.setOnClickListener(v -> Identity.getExperienceCloudId(new AdobeCallback<String>() {
             @Override
-            public void onClick(final View v) {
-                Identity.getExperienceCloudId(new AdobeCallback<String>() {
-                    @Override
-                    public void call(String ecid) {
-                        Log.i(LOG_TAG, String.format("Received ECID from API = %s", ecid));
-                        updateTextView(String.format("ECID : %s", ecid));
-                    }
-                });
+            public void call(String ecid) {
+                Log.i(LOG_TAG, String.format("Received ECID from API = %s", ecid));
+                updateTextView(String.format("ECID : %s", ecid));
             }
-        });
+        }));
 
         // Default hint for how to enable ad ID features; overwritten by actual implementation when ad ID features are enabled.
         Button btnUpdateAdId = getView().findViewById(R.id.btn_edge_identity_get_gaid);
-        btnUpdateAdId.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                Log.d(LOG_TAG,"For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier");
-            }
-        });
+        btnUpdateAdId.setOnClickListener(v -> Log.d(LOG_TAG,"For complete instructions on how to enable ad ID features, please see ./Documentation/README.md#advertising-identifier"));
         
         // Edge Identity Advertising Identifier
         /* Ad ID implementation (pt. 3/4)
@@ -175,20 +154,14 @@ public class EdgeIdentityTab extends Fragment implements NavigationAware {
 
         // getURLVariables API's
         Button btnGetUrlVariables = getView().findViewById(R.id.btn_edge_identity_get_urlvariables);
-        btnGetUrlVariables.setOnClickListener(new View.OnClickListener() {
+        btnGetUrlVariables.setOnClickListener(v -> Identity.getUrlVariables(new AdobeCallback<String>() {
             @Override
-            public void onClick(final View v) {
-
-                Identity.getUrlVariables(new AdobeCallback<String>() {
-                    @Override
-                    public void call(String urlVariablesString) {
-                        Log.i(LOG_TAG, String.format("Received URLVariables from API = %s", urlVariablesString));
-                        TextView getUrlVariablesTextView = getView().findViewById(R.id.label_edge_identity_get_urlvariables_placeholder);
-                        getUrlVariablesTextView.setText(urlVariablesString);
-                    }
-                });
+            public void call(String urlVariablesString) {
+                Log.i(LOG_TAG, String.format("Received URLVariables from API = %s", urlVariablesString));
+                TextView getUrlVariablesTextView = getView().findViewById(R.id.label_edge_identity_get_urlvariables_placeholder);
+                getUrlVariablesTextView.setText(urlVariablesString);
             }
-        });
+        }));
     }
 
     @Override
