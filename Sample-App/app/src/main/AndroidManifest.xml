@@ -55,7 +55,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBJC-MlfUopWa_IMZM9-yc5HEwn331nMok" />
 
-<!--        <activity android:name="com.adobe.marketing.mobile.FullscreenMessageActivity" />-->
         <receiver android:name="com.adobe.marketing.mobile.LocalNotificationHandler" />
 
         <!--    Messaging    -->
