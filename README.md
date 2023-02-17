@@ -2,7 +2,11 @@
 
 ## About this Project
 
-This repository contains the Android sample app for the AEP SDK. 
+This repository contains the Android sample app for the latest versions of the Android Mobile SDKs. 
+
+> **Note**
+> The sample app with the previous Android SDKs is archived in [sdk-1.x](https://github.com/adobe/aepsdk-sample-app-android/tree/sdk-1.x) branch.
+
 
 ## Prerequisites
 
