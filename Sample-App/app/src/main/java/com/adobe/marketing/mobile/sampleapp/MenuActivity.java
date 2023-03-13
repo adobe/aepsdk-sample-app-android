@@ -84,7 +84,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
     private void askNotificationPermission() {
         // This is only necessary for API level >= 33 (TIRAMISU)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -118,6 +117,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                         if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
                             showNotificationPermissionRationale();
                         } else {
+                            Log.d(LOG_TAG, "Grant notification permission from settings");
                             Toast.makeText(this, "Grant notification permission from settings", Toast.LENGTH_SHORT).show();
                         }
                     }
