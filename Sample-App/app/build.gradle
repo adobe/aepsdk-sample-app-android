@@ -44,17 +44,18 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Using dynamic dependency versions is not recommended for production apps. For more information, please read https://developer.adobe.com/client-sdks/documentation/manage-gradle-dependencies
-    implementation 'com.adobe.marketing.mobile:core:2.+'
-    implementation 'com.adobe.marketing.mobile:lifecycle:2.+'
-    implementation 'com.adobe.marketing.mobile:identity:2.+'
-    implementation 'com.adobe.marketing.mobile:signal:2.+'
-    implementation 'com.adobe.marketing.mobile:assurance:2.+'
-    implementation 'com.adobe.marketing.mobile:userprofile:2.+'
-    implementation 'com.adobe.marketing.mobile:edge:2.+'
-    implementation 'com.adobe.marketing.mobile:edgeconsent:2.+'
-    implementation 'com.adobe.marketing.mobile:edgeidentity:2.+'
-    implementation 'com.adobe.marketing.mobile:messaging:2.+'
-    implementation 'com.adobe.marketing.mobile:analytics:2.+'
+    implementation platform('com.adobe.marketing.mobile:sdk-bom:2.+')
+    implementation 'com.adobe.marketing.mobile:core'
+    implementation 'com.adobe.marketing.mobile:lifecycle'
+    implementation 'com.adobe.marketing.mobile:identity'
+    implementation 'com.adobe.marketing.mobile:signal'
+    implementation 'com.adobe.marketing.mobile:assurance'
+    implementation 'com.adobe.marketing.mobile:userprofile'
+    implementation 'com.adobe.marketing.mobile:edge'
+    implementation 'com.adobe.marketing.mobile:edgeconsent'
+    implementation 'com.adobe.marketing.mobile:edgeidentity'
+    implementation 'com.adobe.marketing.mobile:messaging'
+    implementation 'com.adobe.marketing.mobile:analytics'
 
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-messaging'
