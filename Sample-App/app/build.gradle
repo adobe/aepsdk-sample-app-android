@@ -44,7 +44,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Using dynamic dependency versions is not recommended for production apps. For more information, please read https://developer.adobe.com/client-sdks/documentation/manage-gradle-dependencies
-    implementation platform('com.adobe.marketing.mobile:sdk-bom:1.+')
+    implementation platform('com.adobe.marketing.mobile:sdk-bom:2.+')
     implementation 'com.adobe.marketing.mobile:core'
     implementation 'com.adobe.marketing.mobile:lifecycle'
     implementation 'com.adobe.marketing.mobile:identity'
