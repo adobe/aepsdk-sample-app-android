@@ -1,5 +1,9 @@
 # AEP SDK Sample App for Android
 
+# Notice of deprecation
+
+Each [respective extension repository](https://developer.adobe.com/client-sdks/documentation/current-sdk-versions/#android) now has its own sample app. Please refer to those repositories for their sample apps.
+
 ## About this Project
 
 This repository contains the Android sample app for the latest versions of the Android Mobile SDKs. 
