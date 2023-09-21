@@ -2,7 +2,7 @@
 
 # Notice of deprecation
 
-Each [respective extension repository](https://developer.adobe.com/client-sdks/documentation/current-sdk-versions/#android) now has its own sample app. Please refer to those repositories for their sample apps.
+Each [respective extension repository](https://developer.adobe.com/client-sdks/documentation/current-sdk-versions/#android) now has its own test app. Please refer to those repositories for their test apps.
 
 ## About this Project
 
